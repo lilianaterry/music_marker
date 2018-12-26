@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE21E91921D2ACAB005A7B81 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91821D2ACAB005A7B81 /* ColorButton.swift */; };
+		CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91C21D2D479005A7B81 /* ViewController.swift */; };
 		CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BAF20AA35F10082754C /* AppDelegate.swift */; };
-		CE9A9BB220AA35F10082754C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB120AA35F10082754C /* ViewController.swift */; };
+		CE9A9BB220AA35F10082754C /* OrigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB120AA35F10082754C /* OrigViewController.swift */; };
 		CE9A9BB520AA35F10082754C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB320AA35F10082754C /* Main.storyboard */; };
 		CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */; };
 		CE9A9BBA20AA35F10082754C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB920AA35F10082754C /* Assets.xcassets */; };
@@ -18,9 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE21E91821D2ACAB005A7B81 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
+		CE21E91C21D2D479005A7B81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE9A9BAC20AA35F10082754C /* Do Your Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Do Your Bars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9A9BAF20AA35F10082754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE9A9BB120AA35F10082754C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE9A9BB120AA35F10082754C /* OrigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrigViewController.swift; sourceTree = "<group>"; };
 		CE9A9BB420AA35F10082754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE9A9BB720AA35F10082754C /* Do_Your_Bars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Do_Your_Bars.xcdatamodel; sourceTree = "<group>"; };
 		CE9A9BB920AA35F10082754C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE21E91E21D30C2B005A7B81 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */,
+				CE9A9BB320AA35F10082754C /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		CE9A9BA320AA35F10082754C = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +73,16 @@
 		CE9A9BAE20AA35F10082754C /* Do Your Bars */ = {
 			isa = PBXGroup;
 			children = (
+				CE21E91E21D30C2B005A7B81 /* Storyboards */,
 				CE9A9BC820AD1CF70082754C /* SF Font */,
 				CE9A9BC620AD07660082754C /* UI_Extensions.swift */,
 				CE9A9BAF20AA35F10082754C /* AppDelegate.swift */,
-				CE9A9BB120AA35F10082754C /* ViewController.swift */,
-				CE9A9BB320AA35F10082754C /* Main.storyboard */,
+				CE9A9BB120AA35F10082754C /* OrigViewController.swift */,
 				CE9A9BB920AA35F10082754C /* Assets.xcassets */,
-				CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */,
 				CE9A9BBE20AA35F10082754C /* Info.plist */,
 				CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */,
+				CE21E91821D2ACAB005A7B81 /* ColorButton.swift */,
+				CE21E91C21D2D479005A7B81 /* ViewController.swift */,
 			);
 			path = "Do Your Bars";
 			sourceTree = "<group>";
@@ -100,11 +114,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Liliana Terry";
 				TargetAttributes = {
 					CE9A9BAB20AA35F10082754C = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -146,10 +161,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9A9BB220AA35F10082754C /* ViewController.swift in Sources */,
+				CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */,
+				CE9A9BB220AA35F10082754C /* OrigViewController.swift in Sources */,
 				CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */,
 				CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */,
 				CE9A9BC720AD07660082754C /* UI_Extensions.swift in Sources */,
+				CE21E91921D2ACAB005A7B81 /* ColorButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +206,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -196,6 +214,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -246,6 +265,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -253,6 +273,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -292,7 +313,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Liliana-Terry.Do-Your-Bars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -307,7 +328,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Liliana-Terry.Do-Your-Bars";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
