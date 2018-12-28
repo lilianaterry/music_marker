@@ -9,75 +9,65 @@
 import Foundation
 import UIKit
 
+@IBDesignable
+
 class ViewController: UIViewController {
     
-    @IBOutlet weak var blueButton: ColorButton!
-    @IBOutlet weak var redButton: ColorButton!
-    @IBOutlet weak var greenButton: ColorButton!
-    @IBOutlet weak var blackButton: ColorButton!
+    @IBOutlet weak var rootView: UIView!
     
-    var buttonList: Array<ColorButton>!
+    var wedgeList = Array<SimonWedgeView>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 1
-        buttonList = [blueButton, redButton, greenButton, blackButton]
-        
-        blueButton.color = UIColor.blue
-        redButton.color = UIColor.red
-        greenButton.color = UIColor.green
-        blackButton.color = UIColor.black
-        
-        for button in buttonList {
-            button.setNeedsDisplay()
-        }
-        
-        // 2
-        for button in buttonList {
-            button.addGestureRecognizer(setGestureRecognizer())
-            button.isUserInteractionEnabled = true
-        }
+        createSimonWheel()
     }
     
-    func setGestureRecognizer() -> UIGestureRecognizer {
+    func createSimonWheel() {
+        rootView.backgroundColor = .clear
+        
+        addWedgeView(color: UIColor.blue, angle: 0, colorId: Color.blue)
+        addWedgeView(color: UIColor.black, angle: 0.5 * .pi, colorId: Color.black)
+        addWedgeView(color: UIColor.green, angle: .pi, colorId: Color.green)
+        addWedgeView(color: UIColor.red, angle: 1.5 * .pi, colorId: Color.red)
+    }
+    
+    func addWedgeView(color: UIColor, angle: Radians, colorId: Color) {
+        let wedgeView = SimonWedgeView(frame: rootView.bounds)
+        wedgeView.fillColor = color
+        wedgeView.centerAngle = angle
+        wedgeView.colorId = colorId
+        wedgeView.addGestureRecognizer(setGestureRecognizer())
+        
+        rootView.addSubview(wedgeView)
+        wedgeList.append(wedgeView)
+    }
+    
+    func setGestureRecognizer() -> UITapGestureRecognizer {
         return UITapGestureRecognizer(target: self, action: #selector(ViewController.tapDetected(tapRecognizer:)))
     }
     
-    @objc public func tapDetected(tapRecognizer:UITapGestureRecognizer) {
-        print("******** tap detected *********")
-        var missed = true
-        for button in buttonList {
-            let tapLocation:CGPoint = tapRecognizer.location(in: button)
-            if (self.hitTest(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y), button: button)) {
-                missed = false
+    @objc public func tapDetected(tapRecognizer: UITapGestureRecognizer) {
+        let tapLocation: CGPoint = tapRecognizer.location(in: rootView)
+        
+        for wedge in wedgeList {
+            if (self.hitTest(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y), wedge: wedge)) {
+                addBar(wedge: wedge)
                 break
             }
         }
-        
-        if (missed) {
-            print ("missed")
-        }
     }
     
-    private func hitTest(tapLocation:CGPoint, button: ColorButton) -> Bool {
-        let path:UIBezierPath = button.shapePath
-        let pathCopy:CGPath = path.cgPath.copy(strokingWithWidth: path.lineWidth, lineCap: CGLineCap(rawValue: 0)!, lineJoin: CGLineJoin(rawValue: 0)!, miterLimit: 1)
+    private func hitTest(tapLocation: CGPoint, wedge: SimonWedgeView) -> Bool {
+        let pathCopy: CGPath = wedge.path.cgPath.copy(strokingWithWidth: wedge.path.lineWidth, lineCap: CGLineCap(rawValue: 0)!, lineJoin: CGLineJoin(rawValue: 0)!, miterLimit: 1)
         
-        if (path.contains(tapLocation) || pathCopy.contains(tapLocation)) {
-            if button.color == UIColor.black {
-                print("hit black")
-            } else if button.color == UIColor.green {
-                print("hit green")
-            } else if button.color == UIColor.blue {
-                print("hit blue")
-            } else if button.color == UIColor.red {
-                print("hit red")
-            }
+        if (wedge.path.contains(tapLocation) || pathCopy.contains(tapLocation)) {
             return true
-        } else{
-            return false
         }
+        return false
     }
     
+    private func addBar(wedge: SimonWedgeView) {
+        print(wedge.colorId.debugDescription)
+    }
 }

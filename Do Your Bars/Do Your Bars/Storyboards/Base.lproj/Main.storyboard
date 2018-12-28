@@ -357,36 +357,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WOr-gJ-KN6" customClass="ColorButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="281" width="375" height="250"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-Ia-qbv">
+                                <rect key="frame" x="37" y="256" width="300" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nSU-3E-DyO" customClass="ColorButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="deJ-RE-QZT" customClass="ColorButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="161" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GlL-fj-e61" customClass="ColorButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="419" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97613006830215454" green="0.98425990343093872" blue="0.9924507737159729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="riL-q6-3ZG"/>
                     </view>
                     <connections>
-                        <outlet property="blackButton" destination="GlL-fj-e61" id="4qc-1U-RHW"/>
-                        <outlet property="blueButton" destination="nSU-3E-DyO" id="6n5-KF-3vn"/>
-                        <outlet property="greenButton" destination="WOr-gJ-KN6" id="13y-KY-tqY"/>
-                        <outlet property="redButton" destination="deJ-RE-QZT" id="kjj-rV-lCf"/>
+                        <outlet property="rootView" destination="eIk-Ia-qbv" id="xB0-Mm-9gM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUR-mo-zqC" userLabel="First Responder" sceneMemberID="firstResponder"/>

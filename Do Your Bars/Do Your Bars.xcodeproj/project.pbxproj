@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE21E91921D2ACAB005A7B81 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91821D2ACAB005A7B81 /* ColorButton.swift */; };
+		CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */; };
 		CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91C21D2D479005A7B81 /* ViewController.swift */; };
 		CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BAF20AA35F10082754C /* AppDelegate.swift */; };
 		CE9A9BB220AA35F10082754C /* OrigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB120AA35F10082754C /* OrigViewController.swift */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE21E91821D2ACAB005A7B81 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
+		CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonWedgeView.swift; sourceTree = "<group>"; };
 		CE21E91C21D2D479005A7B81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE9A9BAC20AA35F10082754C /* Do Your Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Do Your Bars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9A9BAF20AA35F10082754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 				CE9A9BB920AA35F10082754C /* Assets.xcassets */,
 				CE9A9BBE20AA35F10082754C /* Info.plist */,
 				CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */,
-				CE21E91821D2ACAB005A7B81 /* ColorButton.swift */,
+				CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */,
 				CE21E91C21D2D479005A7B81 /* ViewController.swift */,
 			);
 			path = "Do Your Bars";
@@ -166,7 +166,7 @@
 				CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */,
 				CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */,
 				CE9A9BC720AD07660082754C /* UI_Extensions.swift in Sources */,
-				CE21E91921D2ACAB005A7B81 /* ColorButton.swift in Sources */,
+				CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
