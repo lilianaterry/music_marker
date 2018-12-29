@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */; };
 		CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91C21D2D479005A7B81 /* ViewController.swift */; };
+		CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */; };
 		CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BAF20AA35F10082754C /* AppDelegate.swift */; };
 		CE9A9BB220AA35F10082754C /* OrigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB120AA35F10082754C /* OrigViewController.swift */; };
 		CE9A9BB520AA35F10082754C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB320AA35F10082754C /* Main.storyboard */; };
 		CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */; };
 		CE9A9BBA20AA35F10082754C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB920AA35F10082754C /* Assets.xcassets */; };
 		CE9A9BBD20AA35F10082754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */; };
-		CE9A9BC720AD07660082754C /* UI_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BC620AD07660082754C /* UI_Extensions.swift */; };
+		CE9A9BC720AD07660082754C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BC620AD07660082754C /* UIExtensions.swift */; };
 		CE9A9BC920AD1CF70082754C /* SF Font in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BC820AD1CF70082754C /* SF Font */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonWedgeView.swift; sourceTree = "<group>"; };
 		CE21E91C21D2D479005A7B81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE9A9BAC20AA35F10082754C /* Do Your Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Do Your Bars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9A9BAF20AA35F10082754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE9A9BB120AA35F10082754C /* OrigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrigViewController.swift; sourceTree = "<group>"; };
@@ -30,7 +32,7 @@
 		CE9A9BB920AA35F10082754C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE9A9BBC20AA35F10082754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE9A9BBE20AA35F10082754C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE9A9BC620AD07660082754C /* UI_Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UI_Extensions.swift; sourceTree = "<group>"; };
+		CE9A9BC620AD07660082754C /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		CE9A9BC820AD1CF70082754C /* SF Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Font"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +77,7 @@
 			children = (
 				CE21E91E21D30C2B005A7B81 /* Storyboards */,
 				CE9A9BC820AD1CF70082754C /* SF Font */,
-				CE9A9BC620AD07660082754C /* UI_Extensions.swift */,
+				CE9A9BC620AD07660082754C /* UIExtensions.swift */,
 				CE9A9BAF20AA35F10082754C /* AppDelegate.swift */,
 				CE9A9BB120AA35F10082754C /* OrigViewController.swift */,
 				CE9A9BB920AA35F10082754C /* Assets.xcassets */,
@@ -83,6 +85,7 @@
 				CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */,
 				CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */,
 				CE21E91C21D2D479005A7B81 /* ViewController.swift */,
+				CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */,
 			);
 			path = "Do Your Bars";
 			sourceTree = "<group>";
@@ -163,9 +166,10 @@
 			files = (
 				CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */,
 				CE9A9BB220AA35F10082754C /* OrigViewController.swift in Sources */,
+				CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */,
 				CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */,
 				CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */,
-				CE9A9BC720AD07660082754C /* UI_Extensions.swift in Sources */,
+				CE9A9BC720AD07660082754C /* UIExtensions.swift in Sources */,
 				CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

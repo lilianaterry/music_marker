@@ -10,11 +10,11 @@ import UIKit
 
 typealias Radians = CGFloat
 
-enum Color {
-    case blue
-    case red
-    case green
-    case black
+enum ColorId: Int {
+    case blue = 0x5595FF
+    case red = 0xEB4973
+    case green = 0x2BD88A
+    case black = 0x333D4E
 }
 
 extension UIBezierPath {
@@ -48,7 +48,7 @@ class SimonWedgeView: UIView {
     
     var centerAngle: Radians = 0 { didSet { setNeedsDisplay() } }
     var fillColor: UIColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1) { didSet { setNeedsDisplay() } }
-    var colorId: Color?
+    var colorId: ColorId?
     
     override func draw(_ rect: CGRect) {
         createWedgePath()
