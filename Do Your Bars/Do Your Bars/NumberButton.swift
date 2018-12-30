@@ -8,7 +8,9 @@
 
 import UIKit
 
-@IBDesignable class NumberButton: UIButton {
+@IBDesignable class NumberButton: UIButton, Button {
+    
+    var path: UIBezierPath!
     
     let colorPalette = UIExtensions()
     
@@ -30,5 +32,14 @@ import UIKit
         layer.backgroundColor = UIColor.white.cgColor
         layer.cornerRadius = frame.width / 2
         layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
+        path = UIBezierPath()
+    }
+    
+    func addItem(barList: Array<BarInput>) -> BarInput {
+        if let lastItem = barList.last {
+            return BarInput(text: (self.titleLabel?.text)!, colorId: lastItem.colorId, size: colorPalette.numberSize)
+        } else {
+            return BarInput(text: (self.titleLabel?.text)!, colorId: ColorId.black, size: colorPalette.numberSize)
+        }
     }
 }

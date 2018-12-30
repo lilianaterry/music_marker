@@ -32,7 +32,7 @@ extension UIBezierPath {
     
 }
 
-class SimonWedgeView: UIView {
+class SimonWedgeView: UIView, Button {
     
     var path: UIBezierPath!
     let colorPalette = UIExtensions()
@@ -72,6 +72,10 @@ class SimonWedgeView: UIView {
         path.apply(CGAffineTransform(translationX: bounds.midX, y: bounds.midY))
         
         self.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 6, blur: 4, spread: 0)
+    }
+    
+    func addItem(barList: Array<BarInput>) -> BarInput {
+        return BarInput(text: "I", colorId: self.colorId!, size: colorPalette.barSize)
     }
 }
 

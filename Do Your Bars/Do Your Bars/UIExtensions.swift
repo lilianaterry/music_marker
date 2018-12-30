@@ -25,6 +25,10 @@ class UIExtensions {
     let header = UIColor.init(hex: 0x667B9D)
     let subheader = UIColor.init(hex: 0xDBE0E6)
     let defaultText = UIColor.init(hex: 0x007AFF)
+    
+    // text size
+    let barSize = 30.0 as CGFloat
+    let numberSize = 15.0 as CGFloat
 }
 
 // create UI color from hex code

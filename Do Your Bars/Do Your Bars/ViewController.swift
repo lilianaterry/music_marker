@@ -12,65 +12,92 @@ import UIKit
 struct BarInput {
     var text: String
     var colorId: ColorId
+    var size: CGFloat
+}
+
+protocol Button {
+    var path: UIBezierPath! { get set }
+    func addItem(barList: Array<BarInput>) -> BarInput
 }
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var rootView: UIView!
+    @IBOutlet weak var wheelView: UIView!
     @IBOutlet weak var barCollection: UICollectionView!
+    var innerWheelView: UIView!
     
     let colorPalette = UIExtensions()
     
-    var wedgeList = Array<SimonWedgeView>()
+    var buttonList = Array<Button>()
     var barList = Array<BarInput>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createSimonWheel()
+        barCollection.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 4, blur: 4, spread: 0)
+        barCollection.clipsToBounds = false
     }
     
     // MARK: - Wheel
     func createSimonWheel() {
-        rootView.backgroundColor = .clear
+        // 1 - Create view for inner buttons
+        let innerViewSize = CGSize(width: wheelView.frame.width * 0.36, height: wheelView.frame.height * 0.36)
+        let innerFrame = CGRect(origin: wheelView.frame.origin, size: innerViewSize)
+        innerWheelView = UIView(frame: innerFrame)
+        wheelView.addSubview(innerWheelView)
+        innerWheelView.center = wheelView.convert(wheelView.center, to: innerWheelView)
         
+        innerWheelView.backgroundColor = .clear
+        wheelView.backgroundColor = .clear
+        
+        // 2 - Add wedge buttons
         addWedgeView(color: colorPalette.blue, angle: 0, colorId: ColorId.blue)
         addWedgeView(color: colorPalette.black, angle: 0.5 * .pi, colorId: ColorId.black)
         addWedgeView(color: colorPalette.green, angle: .pi, colorId: ColorId.green)
         addWedgeView(color: colorPalette.red, angle: 1.5 * .pi, colorId: ColorId.red)
         
-        addSemiCircleView(clockwise: false, text: "?", textYMultiplier: 3, shadow: true)
-        addSemiCircleView(clockwise: true, text: "=", textYMultiplier: 1, shadow: true)
+        // 3 - Add inner buttons
+        addSemiCircleShadow()
         addSemiCircleView(clockwise: false, text: "?", textYMultiplier: 3, shadow: false)
         addSemiCircleView(clockwise: true, text: "=", textYMultiplier: 1, shadow: false)
     }
     
     func addWedgeView(color: UIColor, angle: Radians, colorId: ColorId) {
-        let wedgeView = SimonWedgeView(frame: rootView.bounds)
+        let wedgeView = SimonWedgeView(frame: wheelView.bounds)
         wedgeView.fillColor = color
         wedgeView.centerAngle = angle
         wedgeView.colorId = colorId
         wedgeView.addGestureRecognizer(setGestureRecognizer())
         
-        rootView.addSubview(wedgeView)
-        wedgeList.append(wedgeView)
+        wheelView.addSubview(wedgeView)
+        buttonList.append(wedgeView)
     }
     
     func addSemiCircleView(clockwise: Bool, text: String, textYMultiplier: CGFloat, shadow: Bool) {
-        let innerView = UIView(frame: rootView.bounds)
+        let semiCircleView = InnerButtonView(frame: innerWheelView.frame)
+        semiCircleView.text = text
+        semiCircleView.clockwise = clockwise
+        semiCircleView.textYMultiplyer = textYMultiplier
         
-        innerView.transform = CGAffineTransform(scaleX: 0.33, y: 0.33)
+        semiCircleView.addGestureRecognizer(setGestureRecognizer())
         
-        let semiCircle = InnerButtonView(frame: innerView.frame)
-        semiCircle.text = text
-        semiCircle.clockwise = clockwise
-        semiCircle.textYMultiplyer = textYMultiplier
+        innerWheelView.addSubview(semiCircleView)
+        semiCircleView.center = innerWheelView.convert(innerWheelView.center, to: semiCircleView)
+        buttonList.append(semiCircleView)
+    }
+    
+    func addSemiCircleShadow() {
+        let topAndBottom = [InnerButtonView(frame: innerWheelView.frame), InnerButtonView(frame: innerWheelView.frame)]
+
+        topAndBottom[0].clockwise = true
+        topAndBottom[1].clockwise = false
         
-        if (shadow) {
-            semiCircle.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
+        for view in topAndBottom {
+            view.layer.applyShadow(color: colorPalette.shadow, alpha: 0.25, x: 0, y: 4, blur: 12, spread: 0)
+            innerWheelView.addSubview(view)
+            view.center = innerWheelView.convert(innerWheelView.center, to: view)
         }
-        
-        rootView.addSubview(semiCircle)
     }
     
     func setGestureRecognizer() -> UITapGestureRecognizer {
@@ -78,31 +105,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @objc public func tapDetected(tapRecognizer: UITapGestureRecognizer) {
-        let tapLocation: CGPoint = tapRecognizer.location(in: rootView)
-        
-        for wedge in wedgeList {
-            if (self.hitTest(tapLocation: CGPoint(x: tapLocation.x, y: tapLocation.y), wedge: wedge)) {
-                addBar(wedge: wedge)
+        let outerTapLocation: CGPoint = tapRecognizer.location(in: self.wheelView)
+        let innerTapLocation: CGPoint = tapRecognizer.location(in: self.innerWheelView)
+
+        for button in buttonList {
+            let tapLocation = button is SimonWedgeView ? outerTapLocation : innerTapLocation
+            if (self.hitTest(tapLocation: tapLocation, button: button)) {
+                addBarItem(button: button)
                 break
             }
         }
     }
     
-    private func hitTest(tapLocation: CGPoint, wedge: SimonWedgeView) -> Bool {
-        let pathCopy: CGPath = wedge.path.cgPath.copy(strokingWithWidth: wedge.path.lineWidth, lineCap: CGLineCap(rawValue: 0)!, lineJoin: CGLineJoin(rawValue: 0)!, miterLimit: 1)
-        
-        if (wedge.path.contains(tapLocation) || pathCopy.contains(tapLocation)) {
+    private func hitTest(tapLocation: CGPoint, button: Button) -> Bool {
+        if (button.path.contains(tapLocation)) {
             return true
         }
         return false
     }
     
     // MARK: - Bar Collection
-    private func addBar(wedge: SimonWedgeView) {
-        let newBar = BarInput(text: "I", colorId: wedge.colorId!)
-        
-        barList.append(newBar)
-        
+    private func addBarItem(button: Button) {
+        let newItem = button.addItem(barList: barList)
+        barList.append(newItem)
         barCollection.reloadData()
     }
     
@@ -116,9 +141,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let bar = barList[indexPath.item]
         let textColor = UIColor.init(hex: bar.colorId.rawValue)
         
+        cell.label.adjustsFontSizeToFitWidth = true
+        cell.label.minimumScaleFactor = 0.5
         cell.label.text = bar.text
         cell.label.textColor = textColor
         
         return cell
     }
+    
+    // MARK - Number Buttons
+    @IBAction func numberButtonPressed(_ sender: Any) {
+        addBarItem(button: sender as! Button)
+    }
+    
 }

@@ -8,9 +8,10 @@
 
 import UIKit
 
-@IBDesignable class InnerButtonView: UIView {
+@IBDesignable class InnerButtonView: UIView, Button {
     
     var path: UIBezierPath!
+    
     let colorPalette = UIExtensions()
     
     var text: String = "" { didSet { setNeedsDisplay() } }
@@ -33,8 +34,8 @@ import UIKit
         UIColor.white.setFill()
         colorPalette.grey.setStroke()
         path.fill()
-        path.lineWidth = 4.0
-        path.stroke(with: .destinationIn, alpha: 0.16)
+        path.lineWidth = 5.0
+        path.stroke(with: .destinationIn, alpha: 0)
     }
     
     private func commonInit() {
@@ -44,9 +45,8 @@ import UIKit
     }
 
     private func createSemiCircle() {
-        let halfWidth = self.bounds.width / 2
-        let center = CGPoint(x: halfWidth, y: halfWidth)
-        let radius = halfWidth
+        let center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+        let radius = self.bounds.width / 2
         
         let startAngle = .pi as CGFloat
         let endAngle = 0 as CGFloat
@@ -62,9 +62,16 @@ import UIKit
         label.center = CGPoint(x: self.bounds.width / 2, y: textYMultiplyer * (self.bounds.width / 4))
         label.textAlignment = .center
         label.textColor = colorPalette.defaultText
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         label.text = text
         self.addSubview(label)
     }
-
+    
+    func addItem(barList: Array<BarInput>) -> BarInput {
+        if let lastItem = barList.last {
+            return BarInput(text: self.text, colorId: lastItem.colorId, size: colorPalette.barSize)
+        } else {
+            return BarInput(text: self.text, colorId: ColorId.black, size: colorPalette.barSize)
+        }
+    }
 }
