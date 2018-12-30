@@ -35,6 +35,7 @@ extension UIBezierPath {
 class SimonWedgeView: UIView {
     
     var path: UIBezierPath!
+    let colorPalette = UIExtensions()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,10 +63,6 @@ class SimonWedgeView: UIView {
         isOpaque = false
     }
     
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        return UIBezierPath(ovalIn: bounds).contains(point)
-    }
-    
     private func createWedgePath() {
         let bounds = self.bounds
         let outerRadius = min(bounds.size.width, bounds.size.height) / 2
@@ -73,6 +70,8 @@ class SimonWedgeView: UIView {
         let gap = (outerRadius - innerRadius) / 4
         path = UIBezierPath.simonWedge(innerRadius: innerRadius, outerRadius: outerRadius, centerAngle: centerAngle, gap: gap)
         path.apply(CGAffineTransform(translationX: bounds.midX, y: bounds.midY))
+        
+        self.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 6, blur: 4, spread: 0)
     }
 }
 

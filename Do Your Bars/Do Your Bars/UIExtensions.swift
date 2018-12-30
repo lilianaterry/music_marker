@@ -14,17 +14,17 @@ class UIExtensions {
     let blue = UIColor.init(hex: 0x5595FF)
     let green = UIColor.init(hex: 0x2BD88A)
     let black = UIColor.init(hex: 0x333D4E)
+    let grey = UIColor.init(hex: 0xDAE0EA)
 
     // depth
     let shadow = UIColor.init(hex: 0x1B407E)
     let background = UIColor.init(hex: 0xF9FBFD)
     let header_background = UIColor.init(hex: 0xF9FBFD)
-
     
     // text colors
     let header = UIColor.init(hex: 0x667B9D)
     let subheader = UIColor.init(hex: 0xDBE0E6)
-
+    let defaultText = UIColor.init(hex: 0x007AFF)
 }
 
 // create UI color from hex code

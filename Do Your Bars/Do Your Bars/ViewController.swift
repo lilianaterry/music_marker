@@ -38,6 +38,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         addWedgeView(color: colorPalette.black, angle: 0.5 * .pi, colorId: ColorId.black)
         addWedgeView(color: colorPalette.green, angle: .pi, colorId: ColorId.green)
         addWedgeView(color: colorPalette.red, angle: 1.5 * .pi, colorId: ColorId.red)
+        
+        addSemiCircleView(clockwise: false, text: "?", textYMultiplier: 3, shadow: true)
+        addSemiCircleView(clockwise: true, text: "=", textYMultiplier: 1, shadow: true)
+        addSemiCircleView(clockwise: false, text: "?", textYMultiplier: 3, shadow: false)
+        addSemiCircleView(clockwise: true, text: "=", textYMultiplier: 1, shadow: false)
     }
     
     func addWedgeView(color: UIColor, angle: Radians, colorId: ColorId) {
@@ -46,10 +51,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         wedgeView.centerAngle = angle
         wedgeView.colorId = colorId
         wedgeView.addGestureRecognizer(setGestureRecognizer())
-        wedgeView.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 6, blur: 4, spread: 0)
         
         rootView.addSubview(wedgeView)
         wedgeList.append(wedgeView)
+    }
+    
+    func addSemiCircleView(clockwise: Bool, text: String, textYMultiplier: CGFloat, shadow: Bool) {
+        let innerView = UIView(frame: rootView.bounds)
+        
+        innerView.transform = CGAffineTransform(scaleX: 0.33, y: 0.33)
+        
+        let semiCircle = InnerButtonView(frame: innerView.frame)
+        semiCircle.text = text
+        semiCircle.clockwise = clockwise
+        semiCircle.textYMultiplyer = textYMultiplier
+        
+        if (shadow) {
+            semiCircle.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
+        }
+        
+        rootView.addSubview(semiCircle)
     }
     
     func setGestureRecognizer() -> UITapGestureRecognizer {
