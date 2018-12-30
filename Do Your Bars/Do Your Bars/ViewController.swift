@@ -23,6 +23,7 @@ protocol Button {
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var wheelView: UIView!
+    @IBOutlet weak var barView: UIView!
     @IBOutlet weak var barCollection: UICollectionView!
     var innerWheelView: UIView!
     
@@ -30,13 +31,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     var buttonList = Array<Button>()
     var barList = Array<BarInput>()
+    
+    var currBarCount: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createSimonWheel()
-        barCollection.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 4, blur: 4, spread: 0)
-        barCollection.clipsToBounds = false
+        barView.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 4, blur: 4, spread: 0)
+        barView.clipsToBounds = false
+        
+        currBarCount = 0
     }
     
     // MARK: - Wheel
@@ -127,8 +132,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - Bar Collection
     private func addBarItem(button: Button) {
         let newItem = button.addItem(barList: barList)
+        
+        if let prevItem = barList.last {
+            // add empty item if new color added
+            if (newItem.colorId != prevItem.colorId || currBarCount == 4) {
+                barList.append(BarInput(text: "", colorId: newItem.colorId, size: 60))
+                currBarCount = 0
+            }
+        }
+        
+        if newItem.text != "=" {
+            currBarCount += 1
+        }
+        
         barList.append(newItem)
         barCollection.reloadData()
+        barCollection.scrollToLast()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
