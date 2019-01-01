@@ -34,7 +34,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     var currBarCount: Int!
 
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
         
         createSimonWheel()
@@ -135,15 +135,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         if let prevItem = barList.last {
             // add empty item if new color added
-            if (newItem.colorId != prevItem.colorId || currBarCount == 4) {
+            if (newItem.colorId != prevItem.colorId || (currBarCount == 4 && newItem.text != "=")) {
                 barList.append(BarInput(text: "", colorId: newItem.colorId, size: 60))
                 currBarCount = 0
             }
         }
         
-        if newItem.text != "=" {
-            currBarCount += 1
-        }
+        currBarCount = newItem.text != "=" ? currBarCount + 1 : 0
         
         barList.append(newItem)
         barCollection.reloadData()
