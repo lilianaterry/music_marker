@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BWt-1w-ZQT">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="7Ly-eV-tz8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="KSA-Uz-Mbj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VcN-7l-g4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="217" y="58"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="Wta-Fc-XKC">
+            <objects>
+                <viewController id="BWt-1w-ZQT" customClass="EditViewController" customModule="Do_Your_Bars" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QbM-rX-axm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJm-6a-GRp">
+                                <rect key="frame" x="16" y="44" width="343" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvL-Ct-tyP">
+                                        <rect key="frame" x="8" y="0.0" width="48" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <segue destination="KSA-Uz-Mbj" kind="show" animates="NO" id="WFU-3s-dZM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygm-zk-Ezy">
+                                        <rect key="frame" x="309" y="0.0" width="34" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Save"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="QCr-T6-b3c"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-mn-zpI" userLabel="KeyboardView">
+                                <rect key="frame" x="0.0" y="529" width="375" height="200"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jK2-j7-mnm" userLabel="KeyBoard">
+                                        <rect key="frame" x="16" y="24" width="343" height="152.66666666666666"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QWP-xK-eC5" userLabel="Top Row">
+                                                <rect key="frame" x="107" y="0.0" width="129" height="37.666666666666664"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiI-qf-Ieo" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37.666666666666664" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="xiI-qf-Ieo" secondAttribute="height" multiplier="1:1" id="SFW-w8-Mp6"/>
+                                                        </constraints>
+                                                        <state key="normal" title="I"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAJ-G7-pqj" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="45.666666666666657" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="dAJ-G7-pqj" secondAttribute="height" multiplier="1:1" id="0Hn-vh-GM6"/>
+                                                        </constraints>
+                                                        <state key="normal" title="="/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bs-aM-mjq" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="91.333333333333343" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="7bs-aM-mjq" secondAttribute="height" multiplier="1:1" id="jUZ-I0-kRO"/>
+                                                        </constraints>
+                                                        <state key="normal" title="?"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CMA-dt-lHt" userLabel="Middle Row">
+                                                <rect key="frame" x="16" y="57.666666666666629" width="311" height="37.333333333333343"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrM-ui-PEC" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37.666666666666664" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="height" multiplier="1:1" id="5Ki-93-YI7"/>
+                                                        </constraints>
+                                                        <state key="normal" title="1"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-qo-FH4" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="45.666666666666671" y="0.0" width="37.333333333333329" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="YhJ-qo-FH4" secondAttribute="height" multiplier="1:1" id="euJ-lP-ncz"/>
+                                                        </constraints>
+                                                        <state key="normal" title="2"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa0-nB-DrZ" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="91" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Qa0-nB-DrZ" secondAttribute="height" multiplier="1:1" id="5OX-1K-HYU"/>
+                                                        </constraints>
+                                                        <state key="normal" title="3"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-ir-40J" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="136.66666666666666" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="GRh-ir-40J" secondAttribute="height" multiplier="1:1" id="bpO-qn-GwM"/>
+                                                        </constraints>
+                                                        <state key="normal" title="4"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53Q-sB-K4G" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="182.33333333333334" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="53Q-sB-K4G" secondAttribute="height" multiplier="1:1" id="cZK-RL-0Nw"/>
+                                                        </constraints>
+                                                        <state key="normal" title="5"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLE-lz-NWK" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="228" y="0.0" width="37.333333333333314" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="oLE-lz-NWK" secondAttribute="height" multiplier="1:1" id="xRz-QD-Ukh"/>
+                                                        </constraints>
+                                                        <state key="normal" title="6"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rge-cj-5os" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="273.33333333333331" y="0.0" width="37.666666666666686" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="rge-cj-5os" secondAttribute="height" multiplier="1:1" id="Rva-wG-wvu"/>
+                                                        </constraints>
+                                                        <state key="normal" title="7"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vWl-Uk-PXL" userLabel="Bottom Row">
+                                                <rect key="frame" x="38.666666666666657" y="115.00000000000001" width="265.66666666666674" height="37.666666666666671"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oG2-bi-TP6" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37.666666666666664" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="oG2-bi-TP6" secondAttribute="height" multiplier="1:1" id="z33-4E-Q2M"/>
+                                                        </constraints>
+                                                        <state key="normal" title="R"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1H-vX-Ruk" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="45.666666666666671" y="0.0" width="37.666666666666671" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Y1H-vX-Ruk" secondAttribute="height" multiplier="1:1" id="wTw-zw-CZy"/>
+                                                        </constraints>
+                                                        <state key="normal" title="B"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SF8-U7-YHw" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="91.333333333333343" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="SF8-U7-YHw" secondAttribute="height" multiplier="1:1" id="cTm-Dx-1Vc"/>
+                                                        </constraints>
+                                                        <state key="normal" title="G"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrM-Uq-iu9" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="137" y="0.0" width="37.333333333333343" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="xrM-Uq-iu9" secondAttribute="height" multiplier="1:1" id="aOg-SJ-wkk"/>
+                                                        </constraints>
+                                                        <state key="normal" title="B"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfj-OO-cvz" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="182.33333333333334" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Pfj-OO-cvz" secondAttribute="height" multiplier="1:1" id="dsj-Pa-KBI"/>
+                                                        </constraints>
+                                                        <state key="normal" title="__"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-xD-AzA" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="228.00000000000003" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="lJC-xD-AzA" secondAttribute="height" multiplier="1:1" id="h7J-yb-UmY"/>
+                                                        </constraints>
+                                                        <state key="normal" title="X"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="oG2-bi-TP6" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="KYT-Kb-tJr"/>
+                                            <constraint firstItem="dAJ-G7-pqj" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="NYm-jZ-wiq"/>
+                                            <constraint firstItem="SF8-U7-YHw" firstAttribute="height" secondItem="RrM-ui-PEC" secondAttribute="height" id="Q9d-p9-YxQ"/>
+                                            <constraint firstItem="xiI-qf-Ieo" firstAttribute="height" secondItem="RrM-ui-PEC" secondAttribute="height" id="bQa-h1-8eI"/>
+                                            <constraint firstItem="7bs-aM-mjq" firstAttribute="height" secondItem="RrM-ui-PEC" secondAttribute="height" id="bxm-FP-iY6"/>
+                                            <constraint firstAttribute="trailing" secondItem="CMA-dt-lHt" secondAttribute="trailing" constant="16" id="cmd-TT-DUb"/>
+                                            <constraint firstItem="xiI-qf-Ieo" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="eTU-Fn-uKY"/>
+                                            <constraint firstItem="7bs-aM-mjq" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="hAQ-ma-lt9"/>
+                                            <constraint firstItem="dAJ-G7-pqj" firstAttribute="height" secondItem="RrM-ui-PEC" secondAttribute="height" id="oGZ-7x-Gfd"/>
+                                            <constraint firstItem="CMA-dt-lHt" firstAttribute="leading" secondItem="jK2-j7-mnm" secondAttribute="leading" constant="16" id="xy2-8E-PnU"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="jK2-j7-mnm" secondAttribute="trailing" constant="16" id="4UQ-PF-HzI"/>
+                                    <constraint firstAttribute="height" constant="200" id="SJf-Mn-7qh"/>
+                                    <constraint firstItem="jK2-j7-mnm" firstAttribute="leading" secondItem="gSC-mn-zpI" secondAttribute="leading" constant="16" id="amI-aO-aoF"/>
+                                    <constraint firstItem="jK2-j7-mnm" firstAttribute="top" secondItem="gSC-mn-zpI" secondAttribute="top" constant="24" id="gVl-bW-tab"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omU-LP-mhe">
+                                <rect key="frame" x="0.0" y="74" width="375" height="447"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1AQ-2z-bij">
+                                        <rect key="frame" x="16" y="4" width="343" height="439"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="1AQ-2z-bij" firstAttribute="leading" secondItem="omU-LP-mhe" secondAttribute="leading" constant="16" id="9Q7-Aj-qoV"/>
+                                    <constraint firstAttribute="bottom" secondItem="1AQ-2z-bij" secondAttribute="bottom" constant="4" id="KJD-z6-dHP"/>
+                                    <constraint firstItem="1AQ-2z-bij" firstAttribute="top" secondItem="omU-LP-mhe" secondAttribute="top" constant="4" id="N05-7n-DoV"/>
+                                    <constraint firstAttribute="trailing" secondItem="1AQ-2z-bij" secondAttribute="trailing" constant="16" id="UVS-8F-FY9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gSC-mn-zpI" firstAttribute="leading" secondItem="BKp-Uw-Muz" secondAttribute="leading" id="3Uf-9i-JAb"/>
+                            <constraint firstItem="BKp-Uw-Muz" firstAttribute="bottom" secondItem="gSC-mn-zpI" secondAttribute="bottom" id="61N-z2-H0P"/>
+                            <constraint firstItem="BKp-Uw-Muz" firstAttribute="trailing" secondItem="gSC-mn-zpI" secondAttribute="trailing" id="B6H-8a-hMk"/>
+                            <constraint firstItem="hJm-6a-GRp" firstAttribute="top" secondItem="BKp-Uw-Muz" secondAttribute="top" id="KHj-eZ-Xq1"/>
+                            <constraint firstItem="omU-LP-mhe" firstAttribute="leading" secondItem="BKp-Uw-Muz" secondAttribute="leading" id="PhZ-Q1-nBL"/>
+                            <constraint firstItem="BKp-Uw-Muz" firstAttribute="trailing" secondItem="omU-LP-mhe" secondAttribute="trailing" id="Rao-xV-rAo"/>
+                            <constraint firstItem="hJm-6a-GRp" firstAttribute="leading" secondItem="BKp-Uw-Muz" secondAttribute="leading" constant="16" id="SXZ-uL-ljw"/>
+                            <constraint firstItem="gSC-mn-zpI" firstAttribute="top" secondItem="omU-LP-mhe" secondAttribute="bottom" constant="8" id="Txr-4H-1Df"/>
+                            <constraint firstItem="BKp-Uw-Muz" firstAttribute="trailing" secondItem="hJm-6a-GRp" secondAttribute="trailing" constant="16" id="a7F-ED-i34"/>
+                            <constraint firstItem="omU-LP-mhe" firstAttribute="top" secondItem="hJm-6a-GRp" secondAttribute="bottom" id="dWm-lU-zNe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BKp-Uw-Muz"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="keyboard" destination="gSC-mn-zpI" id="5G9-Ld-WWr"/>
+                        <outlet property="textView" destination="1AQ-2z-bij" id="vBn-gv-xju"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kVC-ze-hlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="890.39999999999998" y="77.58620689655173"/>
+        </scene>
+    </scenes>
+</document>

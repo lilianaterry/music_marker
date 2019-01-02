@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */; };
 		CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91C21D2D479005A7B81 /* ViewController.swift */; };
+		CE64E78021DC236A008C3A03 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64E77F21DC236A008C3A03 /* EditViewController.swift */; };
+		CE64E78221DC23D3008C3A03 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE64E78121DC23D3008C3A03 /* Edit.storyboard */; };
 		CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */; };
+		CE95857321DD394700FB163D /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95857221DD394600FB163D /* KeyboardButton.swift */; };
 		CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BAF20AA35F10082754C /* AppDelegate.swift */; };
 		CE9A9BB520AA35F10082754C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB320AA35F10082754C /* Main.storyboard */; };
 		CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */; };
@@ -28,7 +31,10 @@
 		C9A00E284DDEBF60E194EBBA /* Pods-Do Your Bars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Do Your Bars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars.debug.xcconfig"; sourceTree = "<group>"; };
 		CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonWedgeView.swift; sourceTree = "<group>"; };
 		CE21E91C21D2D479005A7B81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE64E77F21DC236A008C3A03 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		CE64E78121DC23D3008C3A03 /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
 		CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE95857221DD394600FB163D /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		CE9A9BAC20AA35F10082754C /* Do Your Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Do Your Bars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9A9BAF20AA35F10082754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE9A9BB420AA35F10082754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,8 +74,29 @@
 			children = (
 				CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */,
 				CE9A9BB320AA35F10082754C /* Main.storyboard */,
+				CE64E78121DC23D3008C3A03 /* Edit.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CE64E77D21DC2326008C3A03 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */,
+				CEBDD24D21D7F1B300FC5D19 /* NumberButton.swift */,
+				CEBDD24F21D848C400FC5D19 /* InnerButtonView.swift */,
+				CE95857221DD394600FB163D /* KeyboardButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		CE64E77E21DC2349008C3A03 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE21E91C21D2D479005A7B81 /* ViewController.swift */,
+				CE64E77F21DC236A008C3A03 /* EditViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CE9A9BA320AA35F10082754C = {
@@ -93,6 +120,8 @@
 		CE9A9BAE20AA35F10082754C /* Do Your Bars */ = {
 			isa = PBXGroup;
 			children = (
+				CE64E77E21DC2349008C3A03 /* ViewControllers */,
+				CE64E77D21DC2326008C3A03 /* Buttons */,
 				CE21E91E21D30C2B005A7B81 /* Storyboards */,
 				CE9A9BC820AD1CF70082754C /* SF Font */,
 				CE9A9BC620AD07660082754C /* UIExtensions.swift */,
@@ -100,11 +129,7 @@
 				CE9A9BB920AA35F10082754C /* Assets.xcassets */,
 				CE9A9BBE20AA35F10082754C /* Info.plist */,
 				CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */,
-				CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */,
-				CE21E91C21D2D479005A7B81 /* ViewController.swift */,
 				CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */,
-				CEBDD24D21D7F1B300FC5D19 /* NumberButton.swift */,
-				CEBDD24F21D848C400FC5D19 /* InnerButtonView.swift */,
 			);
 			path = "Do Your Bars";
 			sourceTree = "<group>";
@@ -180,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9A9BBD20AA35F10082754C /* LaunchScreen.storyboard in Resources */,
+				CE64E78221DC23D3008C3A03 /* Edit.storyboard in Resources */,
 				CE9A9BBA20AA35F10082754C /* Assets.xcassets in Resources */,
 				CE9A9BB520AA35F10082754C /* Main.storyboard in Resources */,
 				CE9A9BC920AD1CF70082754C /* SF Font in Resources */,
@@ -232,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE95857321DD394700FB163D /* KeyboardButton.swift in Sources */,
 				CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */,
 				CEBDD24E21D7F1B300FC5D19 /* NumberButton.swift in Sources */,
 				CEBDD25021D848C400FC5D19 /* InnerButtonView.swift in Sources */,
@@ -240,6 +267,7 @@
 				CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */,
 				CE9A9BC720AD07660082754C /* UIExtensions.swift in Sources */,
 				CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */,
+				CE64E78021DC236A008C3A03 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

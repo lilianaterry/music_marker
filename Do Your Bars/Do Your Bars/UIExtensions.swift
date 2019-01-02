@@ -19,7 +19,7 @@ class UIExtensions {
     // depth
     let shadow = UIColor.init(hex: 0x1B407E)
     let background = UIColor.init(hex: 0xF9FBFD)
-    let header_background = UIColor.init(hex: 0xF9FBFD)
+    let header_background = UIColor.init(hex: 0xE9EEF4)
     
     // text colors
     let header = UIColor.init(hex: 0x667B9D)
