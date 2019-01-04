@@ -20,6 +20,7 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        keyboard.removeFromSuperview()
         textView.inputView = keyboard
         textView.attributedText = NSAttributedString()
         self.view.backgroundColor = colorPalette.header_background
@@ -28,5 +29,9 @@ class EditViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         textView.attributedText = barText
+    }
+    
+    @IBAction func cancelSelected(_ sender: Any) {
+        self.navigationController?.popViewController(animated: false)
     }
 }

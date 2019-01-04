@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var wheelView: UIView!
     @IBOutlet weak var barView: UIView!
     @IBOutlet weak var barTextView: UITextView!
+    @IBOutlet weak var numberButtonView: UIStackView!
     
     var currBarCount: Int!
     
@@ -27,14 +28,19 @@ class ViewController: UIViewController {
     var buttonList = Array<Button>()
     
     let colorPalette = UIExtensions()
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidLoad()
-        
-        setupBarView()
-        createSimonWheel()
-        
+    
+    override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = true
         currBarCount = 0
+        setupBarView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // have to set this when all views have been loaded AND sized to phone dimensions
+        if wheelView.subviews.count <= 0 {
+            createSimonWheel()
+            setupNumberButtonView()
+        }
     }
     
     func setupBarView() {
@@ -50,8 +56,14 @@ class ViewController: UIViewController {
         barTextView.attributedText = NSMutableAttributedString()
     }
     
+    private func setupNumberButtonView() {
+        for button in numberButtonView.subviews {
+            button.layer.cornerRadius = button.frame.width / 2
+        }
+    }
+    
     // MARK: - Wheel
-    func createSimonWheel() {
+    private func createSimonWheel() {
         // 1 - Create view for inner buttons
         let innerViewSize = CGSize(width: wheelView.frame.width * 0.36, height: wheelView.frame.height * 0.36)
         let innerFrame = CGRect(origin: wheelView.frame.origin, size: innerViewSize)
@@ -74,7 +86,7 @@ class ViewController: UIViewController {
         addSemiCircleView(clockwise: true, text: "=", textYMultiplier: 1, shadow: false)
     }
     
-    func addWedgeView(color: UIColor, angle: Radians, colorId: ColorId) {
+    private func addWedgeView(color: UIColor, angle: Radians, colorId: ColorId) {
         let wedgeView = SimonWedgeView(frame: wheelView.bounds)
         wedgeView.fillColor = color
         wedgeView.centerAngle = angle
@@ -85,7 +97,7 @@ class ViewController: UIViewController {
         buttonList.append(wedgeView)
     }
     
-    func addSemiCircleView(clockwise: Bool, text: String, textYMultiplier: CGFloat, shadow: Bool) {
+    private func addSemiCircleView(clockwise: Bool, text: String, textYMultiplier: CGFloat, shadow: Bool) {
         let semiCircleView = InnerButtonView(frame: innerWheelView.frame)
         semiCircleView.text = text
         semiCircleView.clockwise = clockwise
@@ -98,7 +110,7 @@ class ViewController: UIViewController {
         buttonList.append(semiCircleView)
     }
     
-    func addSemiCircleShadow() {
+    private func addSemiCircleShadow() {
         let topAndBottom = [InnerButtonView(frame: innerWheelView.frame), InnerButtonView(frame: innerWheelView.frame)]
 
         topAndBottom[0].clockwise = true
@@ -111,7 +123,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func setGestureRecognizer() -> UITapGestureRecognizer {
+    private func setGestureRecognizer() -> UITapGestureRecognizer {
         return UITapGestureRecognizer(target: self, action: #selector(ViewController.buttonTapDetected(tapRecognizer:)))
     }
     

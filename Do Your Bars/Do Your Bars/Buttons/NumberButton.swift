@@ -18,7 +18,7 @@ import UIKit
         super.init(frame: frame)
         commonInit()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -30,7 +30,6 @@ import UIKit
     
     func commonInit() {
         layer.backgroundColor = UIColor.white.cgColor
-        layer.cornerRadius = frame.width / 2
         layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
         path = UIBezierPath()
     }
