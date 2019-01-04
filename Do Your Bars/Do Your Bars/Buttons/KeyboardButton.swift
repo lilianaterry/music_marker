@@ -31,5 +31,4 @@ class KeyboardButton: UIButton {
         layer.cornerRadius = frame.width / 2
         layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
     }
-
 }

@@ -74,8 +74,13 @@ class SimonWedgeView: UIView, Button {
         self.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 6, blur: 4, spread: 0)
     }
     
-    func addItem(barList: Array<BarInput>) -> BarInput {
-        return BarInput(text: "I", colorId: self.colorId!, size: colorPalette.barSize)
+    func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString {
+        let color = UIColor.init(hex: (self.colorId?.rawValue)!)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: colorPalette.barSize),
+            .foregroundColor: color,
+        ]
+        return NSMutableAttributedString(string: "I", attributes: attributes)
     }
 }
 

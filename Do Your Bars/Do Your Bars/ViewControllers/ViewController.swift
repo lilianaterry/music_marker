@@ -9,39 +9,45 @@
 import Foundation
 import UIKit
 
-struct BarInput {
-    var text: String
-    var colorId: ColorId
-    var size: CGFloat
-}
-
 protocol Button {
     var path: UIBezierPath! { get set }
-    func addItem(barList: Array<BarInput>) -> BarInput
+    func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString
 }
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var wheelView: UIView!
     @IBOutlet weak var barView: UIView!
-    @IBOutlet weak var barCollection: UICollectionView!
-    var innerWheelView: UIView!
-    
-    let colorPalette = UIExtensions()
-    
-    var buttonList = Array<Button>()
-    var barList = Array<BarInput>()
+    @IBOutlet weak var barTextView: UITextView!
     
     var currBarCount: Int!
+    
+    var innerWheelView: UIView!
+    
+    var buttonList = Array<Button>()
+    
+    let colorPalette = UIExtensions()
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidLoad()
         
+        setupBarView()
         createSimonWheel()
-        barView.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 4, blur: 4, spread: 0)
-        barView.clipsToBounds = false
         
         currBarCount = 0
+    }
+    
+    func setupBarView() {
+        let tappedView = UITapGestureRecognizer(target: self, action: #selector(ViewController.viewTapDetected))
+        
+        barView.addGestureRecognizer(tappedView)
+        barView.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 4, blur: 8, spread: 0)
+        barView.clipsToBounds = false
+        barView.layer.cornerRadius = 10
+        
+        barTextView.scrollToTop()
+        barTextView.textContainerInset = UIEdgeInsets.zero
+        barTextView.attributedText = NSMutableAttributedString()
     }
     
     // MARK: - Wheel
@@ -106,10 +112,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func setGestureRecognizer() -> UITapGestureRecognizer {
-        return UITapGestureRecognizer(target: self, action: #selector(ViewController.tapDetected(tapRecognizer:)))
+        return UITapGestureRecognizer(target: self, action: #selector(ViewController.buttonTapDetected(tapRecognizer:)))
     }
     
-    @objc public func tapDetected(tapRecognizer: UITapGestureRecognizer) {
+    @objc public func buttonTapDetected(tapRecognizer: UITapGestureRecognizer) {
         let outerTapLocation: CGPoint = tapRecognizer.location(in: self.wheelView)
         let innerTapLocation: CGPoint = tapRecognizer.location(in: self.innerWheelView)
 
@@ -131,39 +137,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // MARK: - Bar Collection
     private func addBarItem(button: Button) {
-        let newItem = button.addItem(barList: barList)
+        let currString = barTextView.attributedText.mutableCopy() as! NSMutableAttributedString
+        let newItem = button.addItem(prevChar: currString.last())
         
-        if let prevItem = barList.last {
-            // add empty item if new color added
-            if (newItem.colorId != prevItem.colorId || (currBarCount == 4 && newItem.text != "=")) {
-                barList.append(BarInput(text: "", colorId: newItem.colorId, size: 60))
+        // check if a space is needed
+        if barTextView.attributedText.length > 0 {
+            let currColor = newItem.attribute(.foregroundColor, at: newItem.length - 1, effectiveRange: nil) as! UIColor
+            let prevColor = currString.attribute(.foregroundColor, at: currString.length - 1, effectiveRange: nil) as! UIColor
+            
+            // add empty space if new color added or four bars of the same color have occured
+            if (currColor != prevColor || (currBarCount == 4 && newItem.string != "=")) {
+                currString.append(NSAttributedString(string: "  "))
                 currBarCount = 0
             }
         }
         
-        currBarCount = newItem.text != "=" ? currBarCount + 1 : 0
+        currBarCount = newItem.string != "=" ? currBarCount + 1 : 0
         
-        barList.append(newItem)
-        barCollection.reloadData()
-        barCollection.scrollToLast()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return barList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "barCell", for: indexPath) as! BarCollectionViewCell
-        
-        let bar = barList[indexPath.item]
-        let textColor = UIColor.init(hex: bar.colorId.rawValue)
-        
-        cell.label.adjustsFontSizeToFitWidth = true
-        cell.label.minimumScaleFactor = 0.5
-        cell.label.text = bar.text
-        cell.label.textColor = textColor
-        
-        return cell
+        currString.append(newItem)
+        barTextView.attributedText = currString
+        barTextView.scrollToBottom()
     }
     
     // MARK - Number Buttons
@@ -171,4 +164,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         addBarItem(button: sender as! Button)
     }
     
+    
+    // MARK - Segue to Edit
+    @IBAction func deleteSelected(_ sender: Any) {
+        barTextView.attributedText = NSAttributedString()
+    }
+    
+    @IBAction func undoSelected(_ sender: Any) {
+        barTextView.attributedText = barTextView.attributedText.removeLast()
+    }
+    
+    @IBAction func editSelected(_ sender: Any) {
+        performSegue(withIdentifier: "editSegue", sender: self)
+    }
+    
+    @objc public func viewTapDetected() {
+        performSegue(withIdentifier: "editSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC : EditViewController = segue.destination as! EditViewController
+        destVC.barText = barTextView.attributedText.mutableCopy() as! NSMutableAttributedString
+    }
 }

@@ -35,11 +35,17 @@ import UIKit
         path = UIBezierPath()
     }
     
-    func addItem(barList: Array<BarInput>) -> BarInput {
-        if let lastItem = barList.last {
-            return BarInput(text: (self.titleLabel?.text)!, colorId: lastItem.colorId, size: colorPalette.numberSize)
+    func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString {
+        let color: UIColor
+        if prevChar.length > 0 {
+            color = prevChar.attribute(.foregroundColor, at: 0, effectiveRange: nil) as! UIColor
         } else {
-            return BarInput(text: (self.titleLabel?.text)!, colorId: ColorId.black, size: colorPalette.numberSize)
+            color = colorPalette.black
         }
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: colorPalette.numSize),
+            .foregroundColor: color,
+        ]
+        return NSMutableAttributedString(string: (self.titleLabel?.text)!, attributes: attributes)
     }
 }

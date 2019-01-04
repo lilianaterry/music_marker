@@ -67,11 +67,17 @@ import UIKit
         self.addSubview(label)
     }
     
-    func addItem(barList: Array<BarInput>) -> BarInput {
-        if let lastItem = barList.last {
-            return BarInput(text: self.text, colorId: lastItem.colorId, size: colorPalette.barSize)
+    func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString {
+        let color: UIColor
+        if prevChar.length > 0 {
+            color = prevChar.attribute(.foregroundColor, at: 0, effectiveRange: nil) as! UIColor
         } else {
-            return BarInput(text: self.text, colorId: ColorId.black, size: colorPalette.barSize)
+            color = colorPalette.black
         }
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: colorPalette.barSize),
+            .foregroundColor: color,
+            ]
+        return NSMutableAttributedString(string: self.text, attributes: attributes)
     }
 }
