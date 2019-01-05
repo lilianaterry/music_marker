@@ -14,8 +14,8 @@
         <!--Main-->
         <scene sceneID="7Ly-eV-tz8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VcN-7l-g4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="Main" id="KSA-Uz-Mbj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VcN-7l-g4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="217" y="58"/>
         </scene>
@@ -43,7 +43,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
-                                            <segue destination="KSA-Uz-Mbj" kind="show" identifier="saveSegue" id="SeD-g4-iJt"/>
+                                            <action selector="saveSelected:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="6GI-u8-JMa"/>
+                                            <segue destination="KSA-Uz-Mbj" kind="show" identifier="saveSegue" animates="NO" id="SeD-g4-iJt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -61,80 +62,110 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QWP-xK-eC5" userLabel="Top Row">
                                                 <rect key="frame" x="107" y="0.0" width="129" height="37.666666666666664"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiI-qf-Ieo" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiI-qf-Ieo" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="37.666666666666664" height="37.666666666666664"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="xiI-qf-Ieo" secondAttribute="height" multiplier="1:1" id="SFW-w8-Mp6"/>
                                                         </constraints>
                                                         <state key="normal" title="I"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="UQK-8d-9c9"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAJ-G7-pqj" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAJ-G7-pqj" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="45.666666666666657" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="dAJ-G7-pqj" secondAttribute="height" multiplier="1:1" id="0Hn-vh-GM6"/>
                                                         </constraints>
                                                         <state key="normal" title="="/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="7Sr-kf-zgF"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bs-aM-mjq" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bs-aM-mjq" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="91.333333333333343" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="7bs-aM-mjq" secondAttribute="height" multiplier="1:1" id="jUZ-I0-kRO"/>
                                                         </constraints>
                                                         <state key="normal" title="?"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="mdJ-Cz-83J"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CMA-dt-lHt" userLabel="Middle Row">
                                                 <rect key="frame" x="16" y="57.666666666666629" width="311" height="37.333333333333343"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrM-ui-PEC" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrM-ui-PEC" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="37.666666666666664" height="37.333333333333336"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="height" multiplier="1:1" id="5Ki-93-YI7"/>
                                                         </constraints>
                                                         <state key="normal" title="1"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="4n6-VJ-pLi"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-qo-FH4" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-qo-FH4" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="45.666666666666671" y="0.0" width="37.333333333333329" height="37.333333333333336"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="YhJ-qo-FH4" secondAttribute="height" multiplier="1:1" id="euJ-lP-ncz"/>
                                                         </constraints>
                                                         <state key="normal" title="2"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="1oe-Xi-4dj"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa0-nB-DrZ" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa0-nB-DrZ" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="91" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Qa0-nB-DrZ" secondAttribute="height" multiplier="1:1" id="5OX-1K-HYU"/>
                                                         </constraints>
                                                         <state key="normal" title="3"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="QJ5-Ym-fGs"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-ir-40J" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-ir-40J" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="136.66666666666666" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="GRh-ir-40J" secondAttribute="height" multiplier="1:1" id="bpO-qn-GwM"/>
                                                         </constraints>
                                                         <state key="normal" title="4"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="4II-2u-o33"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53Q-sB-K4G" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53Q-sB-K4G" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="182.33333333333334" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="53Q-sB-K4G" secondAttribute="height" multiplier="1:1" id="cZK-RL-0Nw"/>
                                                         </constraints>
                                                         <state key="normal" title="5"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="0dn-II-plP"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLE-lz-NWK" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLE-lz-NWK" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="228" y="0.0" width="37.333333333333314" height="37.333333333333336"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="oLE-lz-NWK" secondAttribute="height" multiplier="1:1" id="xRz-QD-Ukh"/>
                                                         </constraints>
                                                         <state key="normal" title="6"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="ivx-oe-U3i"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rge-cj-5os" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rge-cj-5os" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="273.33333333333331" y="0.0" width="37.666666666666686" height="37.333333333333336"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="rge-cj-5os" secondAttribute="height" multiplier="1:1" id="Rva-wG-wvu"/>
                                                         </constraints>
                                                         <state key="normal" title="7"/>
+                                                        <connections>
+                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="kbd-We-z03"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -175,6 +206,9 @@
                                                             <constraint firstAttribute="width" secondItem="Pfj-OO-cvz" secondAttribute="height" multiplier="1:1" id="dsj-Pa-KBI"/>
                                                         </constraints>
                                                         <state key="normal" title="__"/>
+                                                        <connections>
+                                                            <action selector="insertSpace:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="Nd0-z0-UEU"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-xD-AzA" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
                                                         <rect key="frame" x="228.00000000000003" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
@@ -182,6 +216,9 @@
                                                             <constraint firstAttribute="width" secondItem="lJC-xD-AzA" secondAttribute="height" multiplier="1:1" id="h7J-yb-UmY"/>
                                                         </constraints>
                                                         <state key="normal" title="X"/>
+                                                        <connections>
+                                                            <action selector="deleteItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="4ji-TX-EJQ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>

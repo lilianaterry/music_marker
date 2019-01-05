@@ -29,6 +29,9 @@ class UIExtensions {
     // text size
     let barSize = 40.0 as CGFloat
     let numSize = 30.0 as CGFloat
+    
+    // space character
+    let space = NSAttributedString(string: "  ")
 }
 
 // create UI color from hex code
@@ -101,6 +104,10 @@ extension String {
         let fontAttributes = [NSAttributedString.Key.font: font]
         let size = self.size(withAttributes: fontAttributes)
         return size.width
+    }
+    
+    var isNumber: Bool {
+        return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
     }
 }
 

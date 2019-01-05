@@ -12,7 +12,7 @@ import UIKit
     
     var path: UIBezierPath!
     
-    let colorPalette = UIExtensions()
+    let toolKit = UIExtensions()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +30,7 @@ import UIKit
     
     func commonInit() {
         layer.backgroundColor = UIColor.white.cgColor
-        layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
+        layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
         path = UIBezierPath()
     }
     
@@ -39,10 +39,10 @@ import UIKit
         if prevChar.length > 0 {
             color = prevChar.attribute(.foregroundColor, at: 0, effectiveRange: nil) as! UIColor
         } else {
-            color = colorPalette.black
+            color = toolKit.black
         }
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: colorPalette.numSize),
+            .font: UIFont.boldSystemFont(ofSize: toolKit.numSize),
             .foregroundColor: color,
         ]
         return NSMutableAttributedString(string: (self.titleLabel?.text)!, attributes: attributes)

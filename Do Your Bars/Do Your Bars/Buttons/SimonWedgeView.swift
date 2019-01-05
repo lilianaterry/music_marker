@@ -35,7 +35,7 @@ extension UIBezierPath {
 class SimonWedgeView: UIView, Button {
     
     var path: UIBezierPath!
-    let colorPalette = UIExtensions()
+    let toolKit = UIExtensions()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,13 +71,13 @@ class SimonWedgeView: UIView, Button {
         path = UIBezierPath.simonWedge(innerRadius: innerRadius, outerRadius: outerRadius, centerAngle: centerAngle, gap: gap)
         path.apply(CGAffineTransform(translationX: bounds.midX, y: bounds.midY))
         
-        self.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 6, blur: 4, spread: 0)
+        self.layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 6, blur: 4, spread: 0)
     }
     
     func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString {
         let color = UIColor.init(hex: (self.colorId?.rawValue)!)
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: colorPalette.barSize),
+            .font: UIFont.boldSystemFont(ofSize: toolKit.barSize),
             .foregroundColor: color,
         ]
         return NSMutableAttributedString(string: "I", attributes: attributes)

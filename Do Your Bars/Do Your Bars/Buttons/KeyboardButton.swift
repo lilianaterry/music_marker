@@ -10,7 +10,7 @@ import UIKit
 
 class KeyboardButton: UIButton {
 
-    let colorPalette = UIExtensions()
+    let toolKit = UIExtensions()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +29,18 @@ class KeyboardButton: UIButton {
     func commonInit() {
         layer.backgroundColor = UIColor.white.cgColor
         layer.cornerRadius = frame.width / 2
-        layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
+        layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
+    }
+}
+
+class CharKeyboardButton: KeyboardButton {
+    
+    func addItem(color: UIColor) -> NSAttributedString {
+        let size = (self.titleLabel?.text?.isNumber)! ? toolKit.numSize : toolKit.barSize
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: size),
+            .foregroundColor: color,
+        ]
+        return NSMutableAttributedString(string: (self.titleLabel?.text)!, attributes: attributes)
     }
 }

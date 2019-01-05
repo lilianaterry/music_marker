@@ -21,17 +21,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var barTextView: UITextView!
     @IBOutlet weak var numberButtonView: UIStackView!
     
-    var currBarCount: Int!
+    var barText: NSAttributedString = NSAttributedString()
+    var currBarCount: Int = 0
     
     var innerWheelView: UIView!
     
     var buttonList = Array<Button>()
     
-    let colorPalette = UIExtensions()
+    let toolKit = UIExtensions()
     
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
-        currBarCount = 0
         setupBarView()
     }
     
@@ -47,13 +47,13 @@ class ViewController: UIViewController {
         let tappedView = UITapGestureRecognizer(target: self, action: #selector(ViewController.viewTapDetected))
         
         barView.addGestureRecognizer(tappedView)
-        barView.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 4, blur: 8, spread: 0)
+        barView.layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 4, blur: 8, spread: 0)
         barView.clipsToBounds = false
         barView.layer.cornerRadius = 10
         
         barTextView.scrollToTop()
         barTextView.textContainerInset = UIEdgeInsets.zero
-        barTextView.attributedText = NSMutableAttributedString()
+        barTextView.attributedText = barText
     }
     
     private func setupNumberButtonView() {
@@ -75,10 +75,10 @@ class ViewController: UIViewController {
         wheelView.backgroundColor = .clear
         
         // 2 - Add wedge buttons
-        addWedgeView(color: colorPalette.blue, angle: 0, colorId: ColorId.blue)
-        addWedgeView(color: colorPalette.black, angle: 0.5 * .pi, colorId: ColorId.black)
-        addWedgeView(color: colorPalette.green, angle: .pi, colorId: ColorId.green)
-        addWedgeView(color: colorPalette.red, angle: 1.5 * .pi, colorId: ColorId.red)
+        addWedgeView(color: toolKit.blue, angle: 0, colorId: ColorId.blue)
+        addWedgeView(color: toolKit.black, angle: 0.5 * .pi, colorId: ColorId.black)
+        addWedgeView(color: toolKit.green, angle: .pi, colorId: ColorId.green)
+        addWedgeView(color: toolKit.red, angle: 1.5 * .pi, colorId: ColorId.red)
         
         // 3 - Add inner buttons
         addSemiCircleShadow()
@@ -117,7 +117,7 @@ class ViewController: UIViewController {
         topAndBottom[1].clockwise = false
         
         for view in topAndBottom {
-            view.layer.applyShadow(color: colorPalette.shadow, alpha: 0.25, x: 0, y: 4, blur: 12, spread: 0)
+            view.layer.applyShadow(color: toolKit.shadow, alpha: 0.25, x: 0, y: 4, blur: 12, spread: 0)
             innerWheelView.addSubview(view)
             view.center = innerWheelView.convert(innerWheelView.center, to: view)
         }
@@ -159,7 +159,7 @@ class ViewController: UIViewController {
             
             // add empty space if new color added or four bars of the same color have occured
             if (currColor != prevColor || (currBarCount == 4 && newItem.string != "=")) {
-                currString.append(NSAttributedString(string: "  "))
+                currString.append(toolKit.space)
                 currBarCount = 0
             }
         }
@@ -180,10 +180,12 @@ class ViewController: UIViewController {
     // MARK - Segue to Edit
     @IBAction func deleteSelected(_ sender: Any) {
         barTextView.attributedText = NSAttributedString()
+        currBarCount = 0
     }
     
     @IBAction func undoSelected(_ sender: Any) {
         barTextView.attributedText = barTextView.attributedText.removeLast()
+        currBarCount = currBarCount - 1
     }
     
     @IBAction func editSelected(_ sender: Any) {
@@ -196,6 +198,6 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destVC : EditViewController = segue.destination as! EditViewController
-        destVC.barText = barTextView.attributedText.mutableCopy() as! NSMutableAttributedString
+        destVC.barText = barTextView.attributedText
     }
 }
