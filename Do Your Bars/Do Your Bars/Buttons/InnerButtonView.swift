@@ -12,7 +12,7 @@ import UIKit
     
     var path: UIBezierPath!
     
-    let colorPalette = UIExtensions()
+    let toolKit = UIExtensions()
     
     var text: String = "" { didSet { setNeedsDisplay() } }
     var clockwise: Bool = true { didSet { setNeedsDisplay() } }
@@ -32,7 +32,7 @@ import UIKit
         createSemiCircle()
         addLabel()
         UIColor.white.setFill()
-        colorPalette.grey.setStroke()
+        toolKit.grey.setStroke()
         path.fill()
         path.lineWidth = 5.0
         path.stroke(with: .destinationIn, alpha: 0)
@@ -61,17 +61,23 @@ import UIKit
         let label = UILabel(frame: self.bounds)
         label.center = CGPoint(x: self.bounds.width / 2, y: textYMultiplyer * (self.bounds.width / 4))
         label.textAlignment = .center
-        label.textColor = colorPalette.defaultText
+        label.textColor = toolKit.defaultText
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.text = text
         self.addSubview(label)
     }
     
-    func addItem(barList: Array<BarInput>) -> BarInput {
-        if let lastItem = barList.last {
-            return BarInput(text: self.text, colorId: lastItem.colorId, size: colorPalette.barSize)
+    func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString {
+        let color: UIColor
+        if prevChar.length > 0 {
+            color = prevChar.attribute(.foregroundColor, at: 0, effectiveRange: nil) as! UIColor
         } else {
-            return BarInput(text: self.text, colorId: ColorId.black, size: colorPalette.barSize)
+            color = toolKit.black
         }
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: toolKit.barSize),
+            .foregroundColor: color,
+            ]
+        return NSMutableAttributedString(string: self.text, attributes: attributes)
     }
 }

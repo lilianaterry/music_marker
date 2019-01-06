@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="df7-Um-xyi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7s1-a8-z8U">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,200 +19,198 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="94R-xc-5PL">
-                                <rect key="frame" x="32" y="161.66666666666666" width="311" height="498.66666666666674"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2LW-Xt-Afj">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="50"/>
-                                        <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QlS-ae-YaX">
-                                                <rect key="frame" x="10" y="0.0" width="291" height="50"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="zaM-gi-UGU"/>
-                                                </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="jNL-4S-ZaJ">
-                                                    <size key="itemSize" width="10" height="50"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="barCell" id="oYj-WT-pb0" customClass="BarCollectionViewCell" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="10" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="10" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="j0h-kB-ae2">
-                                                                    <rect key="frame" x="0.0" y="7" width="10" height="36"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="10" id="72p-FF-oX9"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </view>
-                                                        <constraints>
-                                                            <constraint firstItem="j0h-kB-ae2" firstAttribute="centerY" secondItem="oYj-WT-pb0" secondAttribute="centerY" id="VcB-je-Nle"/>
-                                                            <constraint firstItem="j0h-kB-ae2" firstAttribute="centerX" secondItem="oYj-WT-pb0" secondAttribute="centerX" id="cOV-dO-qb0"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outlet property="label" destination="j0h-kB-ae2" id="PFf-kU-1k1"/>
-                                                        </connections>
-                                                    </collectionViewCell>
-                                                </cells>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="df7-Um-xyi" id="SR8-mD-bsb"/>
-                                                    <outlet property="delegate" destination="df7-Um-xyi" id="oAQ-hj-bIl"/>
-                                                </connections>
-                                            </collectionView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="QlS-ae-YaX" firstAttribute="centerY" secondItem="2LW-Xt-Afj" secondAttribute="centerY" id="26M-UN-7X5"/>
-                                            <constraint firstItem="QlS-ae-YaX" firstAttribute="leading" secondItem="2LW-Xt-Afj" secondAttribute="leading" constant="10" id="U9q-lK-pu7"/>
-                                            <constraint firstItem="QlS-ae-YaX" firstAttribute="centerX" secondItem="2LW-Xt-Afj" secondAttribute="centerX" id="WDB-bi-EPF"/>
-                                            <constraint firstAttribute="trailing" secondItem="QlS-ae-YaX" secondAttribute="trailing" constant="10" id="X5Q-lp-q9K"/>
-                                            <constraint firstAttribute="height" constant="50" id="g6m-MX-pzX"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-Ia-qbv">
-                                        <rect key="frame" x="0.0" y="100.00000000000003" width="311" height="311"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="eIk-Ia-qbv" secondAttribute="height" multiplier="1:1" id="VP3-xr-rHT"/>
-                                        </constraints>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ymo-Xx-UUq">
-                                        <rect key="frame" x="0.0" y="461" width="311" height="37.666666666666686"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcc-kE-v7e" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="37.666666666666664" height="37.666666666666664"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="xcc-kE-v7e" secondAttribute="height" multiplier="1:1" id="LOI-cK-Y56"/>
-                                                </constraints>
-                                                <state key="normal" title="1">
-                                                    <color key="titleColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="MBs-K3-xu5"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mm-x1-NIY" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                <rect key="frame" x="45.666666666666671" y="0.0" width="37.333333333333329" height="37.666666666666664"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="9mm-x1-NIY" secondAttribute="height" multiplier="1:1" id="08l-qs-To4"/>
-                                                </constraints>
-                                                <state key="normal" title="2"/>
-                                                <connections>
-                                                    <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="ZLa-t8-qkT"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdK-3u-EDc" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                <rect key="frame" x="91" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="QdK-3u-EDc" secondAttribute="height" multiplier="1:1" id="qkq-hC-ctl"/>
-                                                </constraints>
-                                                <state key="normal" title="3"/>
-                                                <connections>
-                                                    <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="UDr-M3-o0i"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUw-Nc-IhY" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                <rect key="frame" x="136.66666666666666" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="QUw-Nc-IhY" secondAttribute="height" multiplier="1:1" id="sas-y3-TSm"/>
-                                                </constraints>
-                                                <state key="normal" title="4"/>
-                                                <connections>
-                                                    <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="3dr-a6-QYZ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsc-ZL-ihi" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                <rect key="frame" x="182.33333333333334" y="0.0" width="37.666666666666657" height="37.666666666666664"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="xsc-ZL-ihi" secondAttribute="height" multiplier="1:1" id="VQu-k0-9t1"/>
-                                                </constraints>
-                                                <state key="normal" title="5"/>
-                                                <connections>
-                                                    <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="jJk-B7-m5d"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JxG-Vp-q2i" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                <rect key="frame" x="228" y="0.0" width="37.333333333333314" height="37.666666666666664"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="JxG-Vp-q2i" secondAttribute="height" multiplier="1:1" id="YmN-LW-H0a"/>
-                                                </constraints>
-                                                <state key="normal" title="6"/>
-                                                <connections>
-                                                    <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="kQN-qh-fao"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUK-h2-XeH" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                <rect key="frame" x="273.33333333333331" y="0.0" width="37.666666666666686" height="37.666666666666664"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="nUK-h2-XeH" secondAttribute="height" multiplier="1:1" id="9ns-tL-zS7"/>
-                                                </constraints>
-                                                <state key="normal" title="7"/>
-                                                <connections>
-                                                    <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="svR-uj-X4a"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Ymo-Xx-UUq" secondAttribute="bottom" id="2Hu-gC-ggx"/>
-                                    <constraint firstItem="Ymo-Xx-UUq" firstAttribute="top" secondItem="eIk-Ia-qbv" secondAttribute="bottom" constant="50" id="7ON-JV-ogG"/>
-                                    <constraint firstItem="Ymo-Xx-UUq" firstAttribute="leading" secondItem="94R-xc-5PL" secondAttribute="leading" id="Ahu-oR-liG"/>
-                                    <constraint firstAttribute="trailing" secondItem="eIk-Ia-qbv" secondAttribute="trailing" id="Mva-ql-oE2"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ymo-Xx-UUq" secondAttribute="trailing" id="YvY-Je-M5x"/>
-                                    <constraint firstItem="eIk-Ia-qbv" firstAttribute="top" secondItem="2LW-Xt-Afj" secondAttribute="bottom" constant="50" id="b3W-oZ-EGb"/>
-                                    <constraint firstAttribute="trailing" secondItem="2LW-Xt-Afj" secondAttribute="trailing" id="fDF-V1-UPr"/>
-                                    <constraint firstItem="eIk-Ia-qbv" firstAttribute="leading" secondItem="94R-xc-5PL" secondAttribute="leading" id="n8f-mR-c2M"/>
-                                    <constraint firstItem="2LW-Xt-Afj" firstAttribute="leading" secondItem="94R-xc-5PL" secondAttribute="leading" id="nMV-RC-66h"/>
-                                </constraints>
-                            </stackView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jim-rb-v6I">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jim-rb-v6I">
                                 <rect key="frame" x="0.0" y="734" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="RY6-XG-UeM"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="mvC-wk-Tvv"/>
-                                    <barButtonItem title="Edit" id="Hhg-nT-gbd">
+                                    <barButtonItem title="Export" id="VBy-6B-cZR"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aHg-HV-MKK"/>
+                                    <barButtonItem title="Delete" id="Hhg-nT-gbd">
                                         <connections>
-                                            <segue destination="eMQ-gT-3BW" kind="show" animates="NO" id="0xJ-M3-tx4"/>
+                                            <action selector="deleteSelected:" destination="df7-Um-xyi" id="ZCI-pg-Wh9"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aHg-HV-MKK"/>
-                                    <barButtonItem title="Export" id="VBy-6B-cZR"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="w1u-0r-Bhz"/>
+                                    <barButtonItem title="Undo" id="kgC-fz-vpZ">
+                                        <connections>
+                                            <action selector="undoSelected:" destination="df7-Um-xyi" id="fmC-hR-HmD"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Pj4-5T-gi8"/>
-                                    <barButtonItem title="Delete" id="4Uf-5b-y2b"/>
+                                    <barButtonItem title="Edit" id="4Uf-5b-y2b">
+                                        <connections>
+                                            <action selector="editSelected:" destination="df7-Um-xyi" id="98m-9B-VUC"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="lOL-x7-P1Y"/>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9U-k5-fH8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="94R-xc-5PL">
+                                        <rect key="frame" x="32" y="100.33333333333331" width="311" height="533.33333333333348"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2LW-Xt-Afj">
+                                                <rect key="frame" x="0.0" y="0.0" width="311" height="105"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Us5-Q1-Lkf">
+                                                        <rect key="frame" x="5" y="5" width="301" height="95"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content=" ">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="20" name=".SFNSText"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="Us5-Q1-Lkf" secondAttribute="bottom" constant="5" id="SaO-Ke-FGW"/>
+                                                    <constraint firstItem="Us5-Q1-Lkf" firstAttribute="leading" secondItem="2LW-Xt-Afj" secondAttribute="leading" constant="5" id="eab-Y2-SOh"/>
+                                                    <constraint firstAttribute="height" constant="105" id="g6m-MX-pzX"/>
+                                                    <constraint firstItem="Us5-Q1-Lkf" firstAttribute="top" secondItem="2LW-Xt-Afj" secondAttribute="top" constant="5" id="oDS-RM-PYb"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Us5-Q1-Lkf" secondAttribute="trailing" constant="5" id="pfc-D9-SQf"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eIk-Ia-qbv">
+                                                <rect key="frame" x="0.0" y="145" width="311" height="311"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="eIk-Ia-qbv" secondAttribute="height" multiplier="1:1" id="VP3-xr-rHT"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ymo-Xx-UUq">
+                                                <rect key="frame" x="0.0" y="496.00000000000006" width="311" height="37.333333333333314"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcc-kE-v7e" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37.666666666666664" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="xcc-kE-v7e" secondAttribute="height" multiplier="1:1" id="LOI-cK-Y56"/>
+                                                        </constraints>
+                                                        <state key="normal" title="1">
+                                                            <color key="titleColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="MBs-K3-xu5"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mm-x1-NIY" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="45.666666666666671" y="0.0" width="37.333333333333329" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="9mm-x1-NIY" secondAttribute="height" multiplier="1:1" id="08l-qs-To4"/>
+                                                        </constraints>
+                                                        <state key="normal" title="2"/>
+                                                        <connections>
+                                                            <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="ZLa-t8-qkT"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QdK-3u-EDc" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="91" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="QdK-3u-EDc" secondAttribute="height" multiplier="1:1" id="qkq-hC-ctl"/>
+                                                        </constraints>
+                                                        <state key="normal" title="3"/>
+                                                        <connections>
+                                                            <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="UDr-M3-o0i"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUw-Nc-IhY" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="136.66666666666666" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="QUw-Nc-IhY" secondAttribute="height" multiplier="1:1" id="sas-y3-TSm"/>
+                                                        </constraints>
+                                                        <state key="normal" title="4"/>
+                                                        <connections>
+                                                            <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="3dr-a6-QYZ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsc-ZL-ihi" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="182.33333333333334" y="0.0" width="37.666666666666657" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="xsc-ZL-ihi" secondAttribute="height" multiplier="1:1" id="VQu-k0-9t1"/>
+                                                        </constraints>
+                                                        <state key="normal" title="5"/>
+                                                        <connections>
+                                                            <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="jJk-B7-m5d"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JxG-Vp-q2i" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="228" y="0.0" width="37.333333333333314" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="JxG-Vp-q2i" secondAttribute="height" multiplier="1:1" id="YmN-LW-H0a"/>
+                                                        </constraints>
+                                                        <state key="normal" title="6"/>
+                                                        <connections>
+                                                            <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="kQN-qh-fao"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUK-h2-XeH" customClass="NumberButton" customModule="Do_Your_Bars" customModuleProvider="target">
+                                                        <rect key="frame" x="273.33333333333331" y="0.0" width="37.666666666666686" height="37.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="nUK-h2-XeH" secondAttribute="height" multiplier="1:1" id="9ns-tL-zS7"/>
+                                                        </constraints>
+                                                        <state key="normal" title="7"/>
+                                                        <connections>
+                                                            <action selector="numberButtonPressed:" destination="df7-Um-xyi" eventType="touchUpInside" id="svR-uj-X4a"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Ymo-Xx-UUq" secondAttribute="bottom" id="2Hu-gC-ggx"/>
+                                            <constraint firstItem="Ymo-Xx-UUq" firstAttribute="top" secondItem="eIk-Ia-qbv" secondAttribute="bottom" constant="40" id="7ON-JV-ogG"/>
+                                            <constraint firstItem="Ymo-Xx-UUq" firstAttribute="leading" secondItem="94R-xc-5PL" secondAttribute="leading" id="Ahu-oR-liG"/>
+                                            <constraint firstAttribute="trailing" secondItem="eIk-Ia-qbv" secondAttribute="trailing" id="Mva-ql-oE2"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ymo-Xx-UUq" secondAttribute="trailing" id="YvY-Je-M5x"/>
+                                            <constraint firstItem="eIk-Ia-qbv" firstAttribute="top" secondItem="2LW-Xt-Afj" secondAttribute="bottom" constant="40" id="b3W-oZ-EGb"/>
+                                            <constraint firstAttribute="trailing" secondItem="2LW-Xt-Afj" secondAttribute="trailing" id="fDF-V1-UPr"/>
+                                            <constraint firstItem="eIk-Ia-qbv" firstAttribute="leading" secondItem="94R-xc-5PL" secondAttribute="leading" id="n8f-mR-c2M"/>
+                                            <constraint firstItem="2LW-Xt-Afj" firstAttribute="leading" secondItem="94R-xc-5PL" secondAttribute="leading" id="nMV-RC-66h"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="94R-xc-5PL" firstAttribute="centerX" secondItem="s9U-k5-fH8" secondAttribute="centerX" id="7C3-7Z-pBO"/>
+                                    <constraint firstAttribute="trailing" secondItem="94R-xc-5PL" secondAttribute="trailing" constant="32" id="H2I-gU-HoT"/>
+                                    <constraint firstItem="94R-xc-5PL" firstAttribute="centerY" secondItem="s9U-k5-fH8" secondAttribute="centerY" id="KBg-JX-cUu"/>
+                                    <constraint firstItem="94R-xc-5PL" firstAttribute="leading" secondItem="s9U-k5-fH8" secondAttribute="leading" constant="32" id="rWH-K8-cDu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97613006830215454" green="0.98425990343093872" blue="0.9924507737159729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="riL-q6-3ZG" firstAttribute="trailing" secondItem="94R-xc-5PL" secondAttribute="trailing" constant="32" id="3Ju-Vc-wzf"/>
-                            <constraint firstItem="94R-xc-5PL" firstAttribute="centerY" secondItem="riL-q6-3ZG" secondAttribute="centerY" id="FdQ-it-tz2"/>
-                            <constraint firstItem="94R-xc-5PL" firstAttribute="centerX" secondItem="riL-q6-3ZG" secondAttribute="centerX" id="ZgN-EB-ZCU"/>
-                            <constraint firstItem="94R-xc-5PL" firstAttribute="leading" secondItem="riL-q6-3ZG" secondAttribute="leading" constant="32" id="ydE-r2-CB4"/>
+                            <constraint firstItem="Jim-rb-v6I" firstAttribute="bottom" secondItem="riL-q6-3ZG" secondAttribute="bottom" id="1tM-0e-4cJ"/>
+                            <constraint firstItem="Jim-rb-v6I" firstAttribute="top" secondItem="s9U-k5-fH8" secondAttribute="bottom" id="5X5-D6-Nvo"/>
+                            <constraint firstItem="s9U-k5-fH8" firstAttribute="trailing" secondItem="riL-q6-3ZG" secondAttribute="trailing" id="T5M-Em-BqN"/>
+                            <constraint firstItem="Jim-rb-v6I" firstAttribute="leading" secondItem="riL-q6-3ZG" secondAttribute="leading" id="g4v-eO-lFE"/>
+                            <constraint firstItem="s9U-k5-fH8" firstAttribute="top" secondItem="ZWI-DT-4gt" secondAttribute="top" id="iCJ-dH-ngF"/>
+                            <constraint firstItem="Jim-rb-v6I" firstAttribute="trailing" secondItem="riL-q6-3ZG" secondAttribute="trailing" id="n0s-C8-aCX"/>
+                            <constraint firstItem="s9U-k5-fH8" firstAttribute="leading" secondItem="riL-q6-3ZG" secondAttribute="leading" id="yu3-FN-AmA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="riL-q6-3ZG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Odd-G2-tp6"/>
                     <connections>
-                        <outlet property="barCollection" destination="QlS-ae-YaX" id="tBV-mm-P0E"/>
+                        <outlet property="barTextView" destination="Us5-Q1-Lkf" id="eYm-Lf-6aJ"/>
                         <outlet property="barView" destination="2LW-Xt-Afj" id="rQO-HJ-3s4"/>
+                        <outlet property="numberButtonView" destination="Ymo-Xx-UUq" id="HFB-Dx-nf0"/>
                         <outlet property="wheelView" destination="eIk-Ia-qbv" id="jIy-2C-WLL"/>
+                        <segue destination="eMQ-gT-3BW" kind="show" identifier="editSegue" animates="NO" id="XMv-3a-BNO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUR-mo-zqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056.8" y="131.52709359605913"/>
+            <point key="canvasLocation" x="2941.5999999999999" y="131.52709359605913"/>
         </scene>
         <!--Edit-->
         <scene sceneID="SOr-Eb-r7x">
@@ -220,7 +218,25 @@
                 <viewControllerPlaceholder storyboardName="Edit" id="eMQ-gT-3BW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PND-xq-Bjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1727" y="132"/>
+            <point key="canvasLocation" x="3611.1999999999998" y="131.52709359605913"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Hw-gT-PxF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7s1-a8-z8U" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="py6-fa-WgP">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="df7-Um-xyi" kind="relationship" relationship="rootViewController" id="7kV-z1-QYf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X0t-TS-Zca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1999.2" y="131.52709359605913"/>
         </scene>
     </scenes>
 </document>

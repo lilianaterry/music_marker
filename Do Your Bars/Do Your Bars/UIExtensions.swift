@@ -27,8 +27,11 @@ class UIExtensions {
     let defaultText = UIColor.init(hex: 0x007AFF)
     
     // text size
-    let barSize = 30.0 as CGFloat
-    let numberSize = 15.0 as CGFloat
+    let barSize = 40.0 as CGFloat
+    let numSize = 30.0 as CGFloat
+    
+    // space character
+    let space = NSAttributedString(string: "  ")
 }
 
 // create UI color from hex code
@@ -93,5 +96,44 @@ extension UICollectionView {
         let lastItemIndexPath = IndexPath(item: numberOfItems(inSection: lastSection) - 1,
                                           section: lastSection)
         scrollToItem(at: lastItemIndexPath, at: .right, animated: false)
+    }
+}
+
+extension String {
+    func widthOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        let size = self.size(withAttributes: fontAttributes)
+        return size.width
+    }
+    
+    var isNumber: Bool {
+        return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+}
+
+extension UITextView {
+    func scrollToTop() {
+        let textCount: Int = text.count
+        guard textCount >= 1 else { return }
+        scrollRangeToVisible(NSMakeRange(0, 1))
+    }
+    
+    func scrollToBottom() {
+        let textCount: Int = text.count
+        guard textCount >= 1 else { return }
+        scrollRangeToVisible(NSMakeRange(textCount - 1, 1))
+    }
+}
+
+extension NSAttributedString {
+    func removeLast() -> NSAttributedString {
+        let length: Int = self.length
+        let newRange: NSRange = NSMakeRange(0, length - 1)
+        return self.attributedSubstring(from: newRange)
+    }
+    
+    func last() -> NSAttributedString {
+        guard self.length > 0 else { return NSAttributedString() }
+        return self.attributedSubstring(from: NSRange(location: self.length - 1, length: 1))
     }
 }

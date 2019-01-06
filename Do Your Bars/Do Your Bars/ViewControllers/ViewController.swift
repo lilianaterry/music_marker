@@ -9,43 +9,62 @@
 import Foundation
 import UIKit
 
-struct BarInput {
-    var text: String
-    var colorId: ColorId
-    var size: CGFloat
-}
-
 protocol Button {
     var path: UIBezierPath! { get set }
-    func addItem(barList: Array<BarInput>) -> BarInput
+    func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString
 }
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var wheelView: UIView!
     @IBOutlet weak var barView: UIView!
-    @IBOutlet weak var barCollection: UICollectionView!
+    @IBOutlet weak var barTextView: UITextView!
+    @IBOutlet weak var numberButtonView: UIStackView!
+    
+    var barText: NSAttributedString = NSAttributedString()
+    var currBarCount: Int = 0
+    var barTotal: Int = 0
+    
     var innerWheelView: UIView!
     
-    let colorPalette = UIExtensions()
-    
     var buttonList = Array<Button>()
-    var barList = Array<BarInput>()
     
-    var currBarCount: Int!
-
+    let toolKit = UIExtensions()
+    
+    override func viewDidLoad() {
+        self.navigationController?.isNavigationBarHidden = true
+        setupBarView()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidLoad()
+        // have to set this when all views have been loaded AND sized to phone dimensions
+        if wheelView.subviews.count <= 0 {
+            createSimonWheel()
+            setupNumberButtonView()
+        }
+    }
+    
+    func setupBarView() {
+        let tappedView = UITapGestureRecognizer(target: self, action: #selector(ViewController.viewTapDetected))
         
-        createSimonWheel()
-        barView.layer.applyShadow(color: colorPalette.shadow, alpha: 0.16, x: 0, y: 4, blur: 4, spread: 0)
+        barView.addGestureRecognizer(tappedView)
+        barView.layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 4, blur: 8, spread: 0)
         barView.clipsToBounds = false
+        barView.layer.cornerRadius = 10
         
-        currBarCount = 0
+        barTextView.scrollToTop()
+        barTextView.textContainerInset = UIEdgeInsets.zero
+        barTextView.attributedText = barText
+    }
+    
+    private func setupNumberButtonView() {
+        for button in numberButtonView.subviews {
+            button.layer.cornerRadius = button.frame.width / 2
+        }
     }
     
     // MARK: - Wheel
-    func createSimonWheel() {
+    private func createSimonWheel() {
         // 1 - Create view for inner buttons
         let innerViewSize = CGSize(width: wheelView.frame.width * 0.36, height: wheelView.frame.height * 0.36)
         let innerFrame = CGRect(origin: wheelView.frame.origin, size: innerViewSize)
@@ -57,10 +76,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         wheelView.backgroundColor = .clear
         
         // 2 - Add wedge buttons
-        addWedgeView(color: colorPalette.blue, angle: 0, colorId: ColorId.blue)
-        addWedgeView(color: colorPalette.black, angle: 0.5 * .pi, colorId: ColorId.black)
-        addWedgeView(color: colorPalette.green, angle: .pi, colorId: ColorId.green)
-        addWedgeView(color: colorPalette.red, angle: 1.5 * .pi, colorId: ColorId.red)
+        addWedgeView(color: toolKit.blue, angle: 0, colorId: ColorId.blue)
+        addWedgeView(color: toolKit.black, angle: 0.5 * .pi, colorId: ColorId.black)
+        addWedgeView(color: toolKit.green, angle: .pi, colorId: ColorId.green)
+        addWedgeView(color: toolKit.red, angle: 1.5 * .pi, colorId: ColorId.red)
         
         // 3 - Add inner buttons
         addSemiCircleShadow()
@@ -68,7 +87,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         addSemiCircleView(clockwise: true, text: "=", textYMultiplier: 1, shadow: false)
     }
     
-    func addWedgeView(color: UIColor, angle: Radians, colorId: ColorId) {
+    private func addWedgeView(color: UIColor, angle: Radians, colorId: ColorId) {
         let wedgeView = SimonWedgeView(frame: wheelView.bounds)
         wedgeView.fillColor = color
         wedgeView.centerAngle = angle
@@ -79,7 +98,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         buttonList.append(wedgeView)
     }
     
-    func addSemiCircleView(clockwise: Bool, text: String, textYMultiplier: CGFloat, shadow: Bool) {
+    private func addSemiCircleView(clockwise: Bool, text: String, textYMultiplier: CGFloat, shadow: Bool) {
         let semiCircleView = InnerButtonView(frame: innerWheelView.frame)
         semiCircleView.text = text
         semiCircleView.clockwise = clockwise
@@ -92,24 +111,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         buttonList.append(semiCircleView)
     }
     
-    func addSemiCircleShadow() {
+    private func addSemiCircleShadow() {
         let topAndBottom = [InnerButtonView(frame: innerWheelView.frame), InnerButtonView(frame: innerWheelView.frame)]
 
         topAndBottom[0].clockwise = true
         topAndBottom[1].clockwise = false
         
         for view in topAndBottom {
-            view.layer.applyShadow(color: colorPalette.shadow, alpha: 0.25, x: 0, y: 4, blur: 12, spread: 0)
+            view.layer.applyShadow(color: toolKit.shadow, alpha: 0.25, x: 0, y: 4, blur: 12, spread: 0)
             innerWheelView.addSubview(view)
             view.center = innerWheelView.convert(innerWheelView.center, to: view)
         }
     }
     
-    func setGestureRecognizer() -> UITapGestureRecognizer {
-        return UITapGestureRecognizer(target: self, action: #selector(ViewController.tapDetected(tapRecognizer:)))
+    private func setGestureRecognizer() -> UITapGestureRecognizer {
+        return UITapGestureRecognizer(target: self, action: #selector(ViewController.buttonTapDetected(tapRecognizer:)))
     }
     
-    @objc public func tapDetected(tapRecognizer: UITapGestureRecognizer) {
+    @objc public func buttonTapDetected(tapRecognizer: UITapGestureRecognizer) {
         let outerTapLocation: CGPoint = tapRecognizer.location(in: self.wheelView)
         let innerTapLocation: CGPoint = tapRecognizer.location(in: self.innerWheelView)
 
@@ -131,39 +150,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // MARK: - Bar Collection
     private func addBarItem(button: Button) {
-        let newItem = button.addItem(barList: barList)
+        let currString = barTextView.attributedText.mutableCopy() as! NSMutableAttributedString
+        let newItem = button.addItem(prevChar: currString.last())
         
-        if let prevItem = barList.last {
-            // add empty item if new color added
-            if (newItem.colorId != prevItem.colorId || (currBarCount == 4 && newItem.text != "=")) {
-                barList.append(BarInput(text: "", colorId: newItem.colorId, size: 60))
+        // check if a space is needed
+        if barTextView.attributedText.length > 0 {
+            let currColor = newItem.attribute(.foregroundColor, at: newItem.length - 1, effectiveRange: nil) as! UIColor
+            let prevColor = currString.attribute(.foregroundColor, at: currString.length - 1, effectiveRange: nil) as! UIColor
+            
+            // add empty space if new color added or four bars of the same color have occured
+            if (currColor != prevColor || (currBarCount == 4 && newItem.string != "=")) {
+                currString.append(toolKit.space)
                 currBarCount = 0
             }
         }
         
-        currBarCount = newItem.text != "=" ? currBarCount + 1 : 0
+        currBarCount = newItem.string != "=" ? currBarCount + 1 : 0
         
-        barList.append(newItem)
-        barCollection.reloadData()
-        barCollection.scrollToLast()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return barList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "barCell", for: indexPath) as! BarCollectionViewCell
-        
-        let bar = barList[indexPath.item]
-        let textColor = UIColor.init(hex: bar.colorId.rawValue)
-        
-        cell.label.adjustsFontSizeToFitWidth = true
-        cell.label.minimumScaleFactor = 0.5
-        cell.label.text = bar.text
-        cell.label.textColor = textColor
-        
-        return cell
+        currString.append(newItem)
+        barTextView.attributedText = currString
+        barTextView.scrollToBottom()
     }
     
     // MARK - Number Buttons
@@ -171,4 +177,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         addBarItem(button: sender as! Button)
     }
     
+    
+    // MARK - Segue to Edit
+    @IBAction func deleteSelected(_ sender: Any) {
+        barTextView.attributedText = NSAttributedString()
+        currBarCount = 0
+    }
+    
+    @IBAction func undoSelected(_ sender: Any) {
+        guard barTextView.text.count > 0 else { return }
+        barTextView.attributedText = barTextView.attributedText.removeLast()
+        currBarCount = currBarCount - 1
+    }
+    
+    @IBAction func editSelected(_ sender: Any) {
+        performSegue(withIdentifier: "editSegue", sender: self)
+    }
+    
+    @objc public func viewTapDetected() {
+        performSegue(withIdentifier: "editSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC : EditViewController = segue.destination as! EditViewController
+        destVC.barText = barTextView.attributedText
+    }
 }
