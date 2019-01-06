@@ -144,19 +144,66 @@ class EditViewController: UIViewController {
         }
     }
     
-    private func updateBarCount() {
+    private func updateBarTotal() -> Int {
+        var total = 0
+        let finalString = textView.text!
         
+        for char in finalString {
+            if (char == "I") {
+                total += 1
+            } else {
+                let charStr = String(char)
+                if (charStr.isNumber) {
+                    total += Int(charStr)!
+                }
+            }
+        }
+        
+        return total
+    }
+    
+    private func updateBarCount() -> Int {
+        var index = textView.text.count - 1
+        guard index >= 0 else { return 0 }
+        
+        let text = textView.attributedText as NSAttributedString
+        var currChar = text.last()
+        var currColor = text.attribute(.foregroundColor, at: index, effectiveRange: nil) as! UIColor
+        let color = currColor
+
+        var count = 0
+        while (color == currColor && index > 0 && count < 4 && currChar.string != "=") {
+            index -= 1
+            count += 1
+            
+            currChar = text.attributedSubstring(from: NSMakeRange(index, 1))
+            if (currChar.string == " ") {
+                break
+            }
+            currColor = text.attribute(.foregroundColor, at: index, effectiveRange: nil) as! UIColor
+        }
+        
+        return count
     }
     
     private func removeTrailingWhitespace() {
+        var lastChar = textView.text.suffix(1)
         
+        while (lastChar == " ") {
+            textView.attributedText = textView.attributedText.removeLast()
+            lastChar = textView.text.suffix(1)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navControl = segue.destination as! UINavigationController
         let destVC = navControl.topViewController as! ViewController
+        
+        removeTrailingWhitespace()
+        
         destVC.barText = textView.attributedText
-        destVC.currBarCount = 4
+        destVC.barTotal = updateBarTotal()
+        destVC.currBarCount = updateBarCount()
     }
     
 

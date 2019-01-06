@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     var barText: NSAttributedString = NSAttributedString()
     var currBarCount: Int = 0
+    var barTotal: Int = 0
     
     var innerWheelView: UIView!
     
@@ -184,6 +185,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func undoSelected(_ sender: Any) {
+        guard barTextView.text.count > 0 else { return }
         barTextView.attributedText = barTextView.attributedText.removeLast()
         currBarCount = currBarCount - 1
     }

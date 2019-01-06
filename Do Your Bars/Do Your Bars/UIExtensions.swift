@@ -128,7 +128,7 @@ extension UITextView {
 extension NSAttributedString {
     func removeLast() -> NSAttributedString {
         let length: Int = self.length
-        let newRange: NSRange = NSMakeRange(0, length-1)
+        let newRange: NSRange = NSMakeRange(0, length - 1)
         return self.attributedSubstring(from: newRange)
     }
     
