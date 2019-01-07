@@ -1,0 +1,6 @@
+framework module Pods_Do_Your_Bars {
+  umbrella header "Pods-Do Your Bars-umbrella.h"
+
+  export *
+  module * { export * }
+}

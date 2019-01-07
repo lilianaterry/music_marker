@@ -1,0 +1,16 @@
+PODS:
+  - SimplePDF (3.0.0)
+
+DEPENDENCIES:
+  - SimplePDF
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SimplePDF
+
+SPEC CHECKSUMS:
+  SimplePDF: 903143ede36965886997a5c1bc6b8940b082ba20
+
+PODFILE CHECKSUM: 36718790961e7496e5b9ce87f6505a816b11a5ca
+
+COCOAPODS: 1.5.3
