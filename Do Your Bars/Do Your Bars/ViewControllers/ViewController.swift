@@ -20,16 +20,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var barView: UIView!
     @IBOutlet weak var barTextView: UITextView!
     @IBOutlet weak var numberButtonView: UIStackView!
+    @IBOutlet weak var totalLabel: UILabel!
+    
+    let toolKit = UIExtensions()
     
     var barText: NSAttributedString = NSAttributedString()
     var currBarCount: Int = 0
-    var barTotal: Int = 0
+    var barTotal: Float = 0 { didSet { updateTotalLabel() } }
     
     var innerWheelView: UIView!
     
     var buttonList = Array<Button>()
-    
-    let toolKit = UIExtensions()
     
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
@@ -55,6 +56,15 @@ class ViewController: UIViewController {
         barTextView.scrollToTop()
         barTextView.textContainerInset = UIEdgeInsets.zero
         barTextView.attributedText = barText
+        
+        updateTotalLabel()
+        totalLabel.textColor = toolKit.header
+    }
+    
+    private func updateTotalLabel() {
+        if totalLabel != nil {
+            totalLabel.text = toolKit.total + String(barTotal)
+        }
     }
     
     private func setupNumberButtonView() {
@@ -165,8 +175,10 @@ class ViewController: UIViewController {
             }
         }
         
-        currBarCount = newItem.string != "=" ? currBarCount + 1 : 0
-        
+        let char = newItem.string
+        currBarCount = char != "=" ? currBarCount + 1 : 0
+        barTotal = char == "I" ? barTotal + 1 : char.isNumber ? barTotal + (Float(char)! / 8) : barTotal
+
         currString.append(newItem)
         barTextView.attributedText = currString
         barTextView.scrollToBottom()
@@ -182,12 +194,15 @@ class ViewController: UIViewController {
     @IBAction func deleteSelected(_ sender: Any) {
         barTextView.attributedText = NSAttributedString()
         currBarCount = 0
+        barTotal = 0
     }
     
     @IBAction func undoSelected(_ sender: Any) {
         guard barTextView.text.count > 0 else { return }
+        let char = barTextView.attributedText.last().string
         barTextView.attributedText = barTextView.attributedText.removeLast()
-        currBarCount = currBarCount - 1
+        currBarCount -= char != "=" ? 1 : 0
+        barTotal -= char == "I" ? 1 : char.isNumber ? Float(char)! / 8 : 0
     }
     
     @IBAction func editSelected(_ sender: Any) {

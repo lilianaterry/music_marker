@@ -30,8 +30,9 @@ class UIExtensions {
     let barSize = 40.0 as CGFloat
     let numSize = 30.0 as CGFloat
     
-    // space character
+    // text
     let space = NSAttributedString(string: "  ")
+    let total = "Total: "
 }
 
 // create UI color from hex code

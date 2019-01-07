@@ -26,6 +26,12 @@ class EditViewController: UIViewController {
     
     var colorButtons: Array<ColorKeyboardButton> = Array<ColorKeyboardButton>()
     
+    var restrictRotation:UIInterfaceOrientationMask = .portrait
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.restrictRotation
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -144,8 +150,8 @@ class EditViewController: UIViewController {
         }
     }
     
-    private func updateBarTotal() -> Int {
-        var total = 0
+    private func updateBarTotal() -> Float {
+        var total: Float = 0
         let finalString = textView.text!
         
         for char in finalString {
@@ -154,7 +160,7 @@ class EditViewController: UIViewController {
             } else {
                 let charStr = String(char)
                 if (charStr.isNumber) {
-                    total += Int(charStr)!
+                    total += Float(charStr)! / 8
                 }
             }
         }
@@ -205,6 +211,4 @@ class EditViewController: UIViewController {
         destVC.barTotal = updateBarTotal()
         destVC.currBarCount = updateBarCount()
     }
-    
-
 }
