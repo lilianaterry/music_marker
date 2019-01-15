@@ -137,4 +137,12 @@ extension NSAttributedString {
         guard self.length > 0 else { return NSAttributedString() }
         return self.attributedSubstring(from: NSRange(location: self.length - 1, length: 1))
     }
+    
+    func removeWhiteSpace() -> NSAttributedString {
+        var string = self
+        while (string.length > 0 && string.string.suffix(1) == " ") {
+            string = string.removeLast()
+        }
+        return string
+    }
 }

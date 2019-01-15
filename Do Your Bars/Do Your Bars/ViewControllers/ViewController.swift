@@ -200,9 +200,11 @@ class ViewController: UIViewController {
     @IBAction func undoSelected(_ sender: Any) {
         guard barTextView.text.count > 0 else { return }
         let char = barTextView.attributedText.last().string
-        barTextView.attributedText = barTextView.attributedText.removeLast()
         currBarCount -= char != "=" ? 1 : 0
         barTotal -= char == "I" ? 1 : char.isNumber ? Float(char)! / 8 : 0
+        
+        barTextView.attributedText = barTextView.attributedText.removeLast()
+        barTextView.attributedText = barTextView.attributedText.removeWhiteSpace()
     }
     
     @IBAction func editSelected(_ sender: Any) {
