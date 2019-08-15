@@ -219,4 +219,5 @@ class ViewController: UIViewController {
         let destVC : EditViewController = segue.destination as! EditViewController
         destVC.barText = barTextView.attributedText
     }
+    
 }
