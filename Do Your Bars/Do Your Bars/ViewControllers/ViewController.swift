@@ -191,7 +191,28 @@ class ViewController: UIViewController {
     
     
     // MARK - Segue to Edit
-    @IBAction func deleteSelected(_ sender: Any) {
+    @IBAction func deleteSelectedButton(_ sender: Any) {
+        // Declare Alert message
+        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to clear all bars?", preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            self.deleteSelected()
+        })
+        
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    // if use really wants to delete all of the current bars
+    private func deleteSelected() {
         barTextView.attributedText = NSAttributedString()
         currBarCount = 0
         barTotal = 0

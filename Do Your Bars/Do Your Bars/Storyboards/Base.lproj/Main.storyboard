@@ -25,34 +25,34 @@
                                     <constraint firstAttribute="height" constant="44" id="RY6-XG-UeM"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="mvC-wk-Tvv"/>
-                                    <barButtonItem title="Undo" width="20" id="kgC-fz-vpZ">
-                                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
-                                        <connections>
-                                            <action selector="undoSelected:" destination="df7-Um-xyi" id="fmC-hR-HmD"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Pj4-5T-gi8"/>
-                                    <barButtonItem title="Delete" width="20" id="Hhg-nT-gbd">
-                                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
-                                        <connections>
-                                            <action selector="deleteSelected:" destination="df7-Um-xyi" id="ZCI-pg-Wh9"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="w1u-0r-Bhz"/>
-                                    <barButtonItem title="Edit" width="20" id="4Uf-5b-y2b">
+                                    <barButtonItem width="32" style="plain" systemItem="fixedSpace" id="mvC-wk-Tvv"/>
+                                    <barButtonItem title="Edit" id="4Uf-5b-y2b">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
                                         <connections>
                                             <action selector="editSelected:" destination="df7-Um-xyi" id="98m-9B-VUC"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="lOL-x7-P1Y"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Pj4-5T-gi8"/>
+                                    <barButtonItem systemItem="undo" id="kgC-fz-vpZ">
+                                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                                        <connections>
+                                            <action selector="undoSelected:" destination="df7-Um-xyi" id="fmC-hR-HmD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="w1u-0r-Bhz"/>
+                                    <barButtonItem title="Clear" width="20" id="Hhg-nT-gbd">
+                                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                                        <connections>
+                                            <action selector="deleteSelectedButton:" destination="df7-Um-xyi" id="ZCI-pg-Wh9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="32" style="plain" systemItem="fixedSpace" id="lOL-x7-P1Y"/>
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9U-k5-fH8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="94R-xc-5PL">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="94R-xc-5PL">
                                         <rect key="frame" x="32" y="108" width="311" height="518"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mw6-D1-xUI" userLabel="Bar Stack">
@@ -211,8 +211,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97613006830215454" green="0.98425990343093872" blue="0.9924507737159729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Jim-rb-v6I" firstAttribute="bottom" secondItem="riL-q6-3ZG" secondAttribute="bottom" id="1tM-0e-4cJ"/>
-                            <constraint firstItem="Jim-rb-v6I" firstAttribute="top" secondItem="s9U-k5-fH8" secondAttribute="bottom" id="5X5-D6-Nvo"/>
+                            <constraint firstItem="Jim-rb-v6I" firstAttribute="top" secondItem="s9U-k5-fH8" secondAttribute="bottom" id="Dm4-0X-1J7"/>
+                            <constraint firstItem="Jim-rb-v6I" firstAttribute="bottom" secondItem="riL-q6-3ZG" secondAttribute="bottom" id="Sh5-Z9-MKG"/>
                             <constraint firstItem="s9U-k5-fH8" firstAttribute="trailing" secondItem="riL-q6-3ZG" secondAttribute="trailing" id="T5M-Em-BqN"/>
                             <constraint firstItem="Jim-rb-v6I" firstAttribute="leading" secondItem="riL-q6-3ZG" secondAttribute="leading" id="g4v-eO-lFE"/>
                             <constraint firstItem="2LW-Xt-Afj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="riL-q6-3ZG" secondAttribute="top" constant="20" id="giN-Ky-zgC"/>

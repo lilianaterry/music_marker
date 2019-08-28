@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */; };
 		CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91C21D2D479005A7B81 /* ViewController.swift */; };
+		CE54305A230617B300E050AA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE543059230617B300E050AA /* KeyboardView.swift */; };
 		CE64E78021DC236A008C3A03 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64E77F21DC236A008C3A03 /* EditViewController.swift */; };
 		CE64E78221DC23D3008C3A03 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE64E78121DC23D3008C3A03 /* Edit.storyboard */; };
 		CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */; };
@@ -25,12 +26,26 @@
 		F4C1F66FBDA5D6630E9BD78C /* Pods_Do_Your_Bars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E448717C72B36B2CA66B13D /* Pods_Do_Your_Bars.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CE543055230612DA00E050AA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3E448717C72B36B2CA66B13D /* Pods_Do_Your_Bars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Do_Your_Bars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8590E6CB3B02B63FE09CE7F /* Pods-Do Your Bars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Do Your Bars.release.xcconfig"; path = "Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars.release.xcconfig"; sourceTree = "<group>"; };
 		C9A00E284DDEBF60E194EBBA /* Pods-Do Your Bars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Do Your Bars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars.debug.xcconfig"; sourceTree = "<group>"; };
 		CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonWedgeView.swift; sourceTree = "<group>"; };
 		CE21E91C21D2D479005A7B81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE543059230617B300E050AA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		CE64E77F21DC236A008C3A03 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		CE64E78121DC23D3008C3A03 /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
 		CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +94,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		CE5430582306178700E050AA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE543059230617B300E050AA /* KeyboardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CE64E77D21DC2326008C3A03 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +143,7 @@
 		CE9A9BAE20AA35F10082754C /* Do Your Bars */ = {
 			isa = PBXGroup;
 			children = (
+				CE5430582306178700E050AA /* Views */,
 				CE64E77E21DC2349008C3A03 /* ViewControllers */,
 				CE64E77D21DC2326008C3A03 /* Buttons */,
 				CE21E91E21D30C2B005A7B81 /* Storyboards */,
@@ -154,6 +178,7 @@
 				CE9A9BA920AA35F10082754C /* Frameworks */,
 				CE9A9BAA20AA35F10082754C /* Resources */,
 				43618C0A89E516CA89326E39 /* [CP] Embed Pods Frameworks */,
+				CE543055230612DA00E050AA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -170,7 +195,7 @@
 		CE9A9BA420AA35F10082754C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Liliana Terry";
 				TargetAttributes = {
@@ -262,6 +287,7 @@
 				CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */,
 				CEBDD24E21D7F1B300FC5D19 /* NumberButton.swift in Sources */,
 				CEBDD25021D848C400FC5D19 /* InnerButtonView.swift in Sources */,
+				CE54305A230617B300E050AA /* KeyboardView.swift in Sources */,
 				CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */,
 				CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */,
 				CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */,

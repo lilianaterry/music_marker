@@ -11,9 +11,11 @@ import UIKit
 class KeyboardButton: UIButton {
 
     let toolKit = UIExtensions()
+    weak var delegate: AnyObject?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.frame = frame
         commonInit()
     }
     
@@ -22,23 +24,19 @@ class KeyboardButton: UIButton {
         commonInit()
     }
     
-    override func prepareForInterfaceBuilder() {
-        commonInit()
-    }
-    
-    override func awakeFromNib() {
-        commonInit()
-    }
-    
     func commonInit() {
         layer.backgroundColor = UIColor.white.cgColor
         layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
     }
+    
+    func isPressed() {
+        // TODO: MAKE IT LOOK LIKE BUTTON IS PRESSED
+    }
 }
 
 class CharKeyboardButton: KeyboardButton {
-    
-    func addItem(color: UIColor) -> NSAttributedString {
+
+    @objc func addItem(color: UIColor) -> NSAttributedString {
         let size = (self.titleLabel?.text?.isNumber)! ? toolKit.numSize : toolKit.barSize
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: size),
@@ -62,6 +60,11 @@ class ColorKeyboardButton: KeyboardButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addSelectedLayer()
+    }
+    
+    override func isPressed() {
+        (delegate as! ColorDelegate).changeColor(color: self.color!)
+        select()
     }
     
     func addSelectedLayer() {

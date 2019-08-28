@@ -11,20 +11,14 @@ import UIKit
 class EditViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var keyboard: UIView!
     
-    @IBOutlet weak var redButton: ColorKeyboardButton!
-    @IBOutlet weak var blueButton: ColorKeyboardButton!
-    @IBOutlet weak var greenButton: ColorKeyboardButton!
-    @IBOutlet weak var blackButton: ColorKeyboardButton!
+    var keyboard: KeyboardView!
     
     let toolKit = UIExtensions()
     
     var barText: NSAttributedString = NSAttributedString()
     
     var currColor: ColorKeyboardButton = ColorKeyboardButton()
-    
-    var colorButtons: Array<ColorKeyboardButton> = Array<ColorKeyboardButton>()
     
     var restrictRotation:UIInterfaceOrientationMask = .portrait
     
@@ -35,50 +29,64 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupKeyboard()
+        self.becomeFirstResponder()     // for keyboard
+        let frame = self.view.frame
+        keyboard = KeyboardView(frame: CGRect(x: 0, y: frame.maxY - frame.height / 3, width: frame.width, height: frame.height / 3))
+        self.view.addSubview(keyboard)
         setupTextView()
     }
     
-    private func setupKeyboard() {
-        self.view.backgroundColor = toolKit.header_background
-        keyboard.backgroundColor = toolKit.header_background
-        
-        colorButtons = [redButton, blueButton, greenButton, blackButton]
-        redButton.addColor(color: toolKit.red)
-        blueButton.addColor(color: toolKit.blue)
-        greenButton.addColor(color: toolKit.green)
-        blackButton.addColor(color: toolKit.black)
-        
-        currColor = blackButton
-        currColor.select()
-        
-        keyboard.removeFromSuperview()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.post(name: UIResponder.keyboardWillShowNotification, object: nil)
     }
+
+    // TODO: CAN THIS CODE GO?
+//    private func setupKeyboard() {
+//        self.view.backgroundColor = toolKit.header_background
+//        keyboard.backgroundColor = toolKit.header_background
+//
+//        colorButtons = [redButton, blueButton, greenButton, blackButton]
+//        redButton.addColor(color: toolKit.red)
+//        blueButton.addColor(color: toolKit.blue)
+//        greenButton.addColor(color: toolKit.green)
+//        blackButton.addColor(color: toolKit.black)
+//
+//        currColor = blackButton
+//        currColor.select()
+//
+//        keyboard.removeFromSuperview()
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+//    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    // edit button corner radius after keyboard has appeared and constrained correctly
-    @objc private func keyboardWillAppear() {
-        let rowStack = keyboard.subviews[0]
-        let rows = rowStack.subviews
-        
-        for row in rows {
-            let buttons = row.subviews
-            for subview in buttons {
-                let button = subview as! KeyboardButton
-                button.layer.cornerRadius = button.frame.width / 2
-            }
-        }
-    }
+    // TODO: CAN THIS CODE GO?
+//    // edit button corner radius after keyboard has appeared and constrained correctly
+//    @objc private func keyboardWillAppear() {
+//        let rowStack = keyboard.subviews[0]
+//        let rows = rowStack.subviews
+//
+//        for row in rows {
+//            let buttons = row.subviews
+//            for subview in buttons {
+//                let button = subview as! KeyboardButton
+//                button.layer.cornerRadius = button.frame.width / 2
+//            }
+//        }
+//
+//        self.view.addSubview(keyboard)
+//    }
     
     private func setupTextView() {
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(EditViewController.handleZoom(pinchRecognizer:)))
-        textView.inputView = keyboard
         textView.addGestureRecognizer(pinchRecognizer)
         textView.attributedText = barText
+        
+        textView.inputView = nil
+        textView.reloadInputViews()
+        textView.inputView = keyboard
     }
     
     @objc private func handleZoom(pinchRecognizer: UIPinchGestureRecognizer) {

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BWt-1w-ZQT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BWt-1w-ZQT">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,231 +56,6 @@
                                     <constraint firstAttribute="bottom" secondItem="uvL-Ct-tyP" secondAttribute="bottom" id="raj-2c-8u1"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-mn-zpI" userLabel="KeyboardView">
-                                <rect key="frame" x="0.0" y="599" width="375" height="130"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="jK2-j7-mnm" userLabel="KeyBoard">
-                                        <rect key="frame" x="16" y="30" width="343" height="176.33333333333334"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QWP-xK-eC5" userLabel="Top Row">
-                                                <rect key="frame" x="100.33333333333333" y="0.0" width="142.33333333333337" height="42"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiI-qf-Ieo" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="xiI-qf-Ieo" secondAttribute="height" multiplier="1:1" id="SFW-w8-Mp6"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
-                                                        <state key="normal" title="I"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="UQK-8d-9c9"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAJ-G7-pqj" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="50.000000000000014" y="0.0" width="42.333333333333329" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="dAJ-G7-pqj" secondAttribute="height" multiplier="1:1" id="0Hn-vh-GM6"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <state key="normal" title="="/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="7Sr-kf-zgF"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bs-aM-mjq" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="100.33333333333333" y="0.0" width="41.999999999999986" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="7bs-aM-mjq" secondAttribute="height" multiplier="1:1" id="jUZ-I0-kRO"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <state key="normal" title="?"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="mdJ-Cz-83J"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CMA-dt-lHt" userLabel="Middle Row">
-                                                <rect key="frame" x="0.0" y="67" width="343" height="42.333333333333343"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrM-ui-PEC" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="42.333333333333336"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="height" multiplier="1:1" id="5Ki-93-YI7"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <state key="normal" title="1"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="4n6-VJ-pLi"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-qo-FH4" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="50" y="0.0" width="42.333333333333343" height="42.333333333333336"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="YhJ-qo-FH4" secondAttribute="height" multiplier="1:1" id="euJ-lP-ncz"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <state key="normal" title="2"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="1oe-Xi-4dj"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa0-nB-DrZ" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="100.33333333333333" y="0.0" width="41.999999999999986" height="42.333333333333336"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="Qa0-nB-DrZ" secondAttribute="height" multiplier="1:1" id="5OX-1K-HYU"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <state key="normal" title="3"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="QJ5-Ym-fGs"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRh-ir-40J" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="150.33333333333334" y="0.0" width="42.333333333333343" height="42.333333333333336"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="GRh-ir-40J" secondAttribute="height" multiplier="1:1" id="bpO-qn-GwM"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <state key="normal" title="4"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="4II-2u-o33"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53Q-sB-K4G" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="200.66666666666666" y="0.0" width="42" height="42.333333333333336"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="53Q-sB-K4G" secondAttribute="height" multiplier="1:1" id="cZK-RL-0Nw"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <state key="normal" title="5"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="0dn-II-plP"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLE-lz-NWK" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="250.66666666666671" y="0.0" width="42.333333333333343" height="42.333333333333336"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="oLE-lz-NWK" secondAttribute="height" multiplier="1:1" id="xRz-QD-Ukh"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <state key="normal" title="6"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="ivx-oe-U3i"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rge-cj-5os" customClass="CharKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="301" y="0.0" width="42" height="42.333333333333336"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="rge-cj-5os" secondAttribute="height" multiplier="1:1" id="Rva-wG-wvu"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <state key="normal" title="7"/>
-                                                        <connections>
-                                                            <action selector="addItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="kbd-We-z03"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vWl-Uk-PXL" userLabel="Bottom Row">
-                                                <rect key="frame" x="25" y="134.33333333333337" width="293" height="42"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrM-Uq-iu9" customClass="ColorKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42.333333333333336" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="xrM-Uq-iu9" secondAttribute="height" multiplier="1:1" id="aOg-SJ-wkk"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <action selector="selectColor:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="7sh-HE-rwQ"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1H-vX-Ruk" customClass="ColorKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="50.333333333333329" y="0.0" width="42" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="Y1H-vX-Ruk" secondAttribute="height" multiplier="1:1" id="wTw-zw-CZy"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <action selector="selectColor:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="3ZZ-vU-2YL"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SF8-U7-YHw" customClass="ColorKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="100.33333333333334" y="0.0" width="42.333333333333343" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="SF8-U7-YHw" secondAttribute="height" multiplier="1:1" id="cTm-Dx-1Vc"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <action selector="selectColor:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="3VL-dZ-cHf"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oG2-bi-TP6" customClass="ColorKeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="150.66666666666666" y="0.0" width="42" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="oG2-bi-TP6" secondAttribute="height" multiplier="1:1" id="z33-4E-Q2M"/>
-                                                        </constraints>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <action selector="selectColor:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="Gia-mm-kb2"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pfj-OO-cvz" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="200.66666666666666" y="0.0" width="42" height="42"/>
-                                                        <color key="backgroundColor" red="0.36395931240000001" green="0.98887890580000004" blue="0.7969326377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="Pfj-OO-cvz" secondAttribute="height" multiplier="1:1" id="dsj-Pa-KBI"/>
-                                                        </constraints>
-                                                        <color key="tintColor" red="0.36395931240000001" green="0.98887890580000004" blue="0.7969326377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                                        <state key="normal" image="space">
-                                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="insertSpace:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="Nd0-z0-UEU"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-xD-AzA" customClass="KeyboardButton" customModule="Do_Your_Bars" customModuleProvider="target">
-                                                        <rect key="frame" x="250.66666666666671" y="0.0" width="42.333333333333343" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="lJC-xD-AzA" secondAttribute="height" multiplier="1:1" id="h7J-yb-UmY"/>
-                                                        </constraints>
-                                                        <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                                        <state key="normal" image="backspace"/>
-                                                        <connections>
-                                                            <action selector="deleteItem:" destination="BWt-1w-ZQT" eventType="touchUpInside" id="4ji-TX-EJQ"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="SF8-U7-YHw" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="8Co-wb-WVy"/>
-                                            <constraint firstItem="oG2-bi-TP6" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="KYT-Kb-tJr"/>
-                                            <constraint firstItem="Y1H-vX-Ruk" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="NRv-ou-8tR"/>
-                                            <constraint firstItem="dAJ-G7-pqj" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="NYm-jZ-wiq"/>
-                                            <constraint firstItem="xiI-qf-Ieo" firstAttribute="height" secondItem="RrM-ui-PEC" secondAttribute="height" id="bQa-h1-8eI"/>
-                                            <constraint firstItem="7bs-aM-mjq" firstAttribute="height" secondItem="RrM-ui-PEC" secondAttribute="height" id="bxm-FP-iY6"/>
-                                            <constraint firstAttribute="trailing" secondItem="CMA-dt-lHt" secondAttribute="trailing" id="cmd-TT-DUb"/>
-                                            <constraint firstItem="xiI-qf-Ieo" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="eTU-Fn-uKY"/>
-                                            <constraint firstItem="xrM-Uq-iu9" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="fVy-HW-qtK"/>
-                                            <constraint firstItem="7bs-aM-mjq" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="hAQ-ma-lt9"/>
-                                            <constraint firstItem="Pfj-OO-cvz" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="jn3-HU-wY9"/>
-                                            <constraint firstItem="dAJ-G7-pqj" firstAttribute="height" secondItem="RrM-ui-PEC" secondAttribute="height" id="oGZ-7x-Gfd"/>
-                                            <constraint firstItem="lJC-xD-AzA" firstAttribute="width" secondItem="RrM-ui-PEC" secondAttribute="width" id="tqT-3u-yUU"/>
-                                            <constraint firstItem="CMA-dt-lHt" firstAttribute="leading" secondItem="jK2-j7-mnm" secondAttribute="leading" id="xy2-8E-PnU"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="jK2-j7-mnm" secondAttribute="trailing" constant="16" id="4UQ-PF-HzI"/>
-                                    <constraint firstAttribute="height" priority="750" constant="130" id="SJf-Mn-7qh"/>
-                                    <constraint firstItem="jK2-j7-mnm" firstAttribute="leading" secondItem="gSC-mn-zpI" secondAttribute="leading" constant="16" id="amI-aO-aoF"/>
-                                    <constraint firstItem="jK2-j7-mnm" firstAttribute="top" secondItem="gSC-mn-zpI" secondAttribute="top" constant="30" id="ekB-76-9Ua"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omU-LP-mhe" userLabel="TextView">
                                 <rect key="frame" x="0.0" y="74" width="375" height="655"/>
                                 <subviews>
@@ -303,9 +77,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gSC-mn-zpI" firstAttribute="leading" secondItem="BKp-Uw-Muz" secondAttribute="leading" id="3Uf-9i-JAb"/>
-                            <constraint firstItem="BKp-Uw-Muz" firstAttribute="bottom" secondItem="gSC-mn-zpI" secondAttribute="bottom" id="61N-z2-H0P"/>
-                            <constraint firstItem="BKp-Uw-Muz" firstAttribute="trailing" secondItem="gSC-mn-zpI" secondAttribute="trailing" id="B6H-8a-hMk"/>
                             <constraint firstItem="hJm-6a-GRp" firstAttribute="top" secondItem="BKp-Uw-Muz" secondAttribute="top" id="KHj-eZ-Xq1"/>
                             <constraint firstItem="omU-LP-mhe" firstAttribute="leading" secondItem="BKp-Uw-Muz" secondAttribute="leading" id="PhZ-Q1-nBL"/>
                             <constraint firstItem="BKp-Uw-Muz" firstAttribute="trailing" secondItem="omU-LP-mhe" secondAttribute="trailing" id="Rao-xV-rAo"/>
@@ -319,11 +90,6 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="blackButton" destination="xrM-Uq-iu9" id="uSs-a6-mnt"/>
-                        <outlet property="blueButton" destination="Y1H-vX-Ruk" id="dEk-kE-lWD"/>
-                        <outlet property="greenButton" destination="SF8-U7-YHw" id="AhD-6M-BeQ"/>
-                        <outlet property="keyboard" destination="gSC-mn-zpI" id="5G9-Ld-WWr"/>
-                        <outlet property="redButton" destination="oG2-bi-TP6" id="SRV-aO-c7d"/>
                         <outlet property="textView" destination="1AQ-2z-bij" id="FHk-00-2iK"/>
                     </connections>
                 </viewController>
@@ -332,8 +98,4 @@
             <point key="canvasLocation" x="890.39999999999998" y="77.58620689655173"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="backspace" width="144" height="144"/>
-        <image name="space" width="144" height="144"/>
-    </resources>
 </document>
