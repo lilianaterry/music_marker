@@ -56,42 +56,17 @@
                                     <constraint firstAttribute="bottom" secondItem="uvL-Ct-tyP" secondAttribute="bottom" id="raj-2c-8u1"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omU-LP-mhe" userLabel="TextView">
-                                <rect key="frame" x="0.0" y="74" width="375" height="655"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="temp" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1AQ-2z-bij">
-                                        <rect key="frame" x="16" y="4" width="343" height="647"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="1AQ-2z-bij" firstAttribute="leading" secondItem="omU-LP-mhe" secondAttribute="leading" constant="16" id="9Q7-Aj-qoV"/>
-                                    <constraint firstAttribute="bottom" secondItem="1AQ-2z-bij" secondAttribute="bottom" constant="4" id="KJD-z6-dHP"/>
-                                    <constraint firstItem="1AQ-2z-bij" firstAttribute="top" secondItem="omU-LP-mhe" secondAttribute="top" constant="4" id="N05-7n-DoV"/>
-                                    <constraint firstAttribute="trailing" secondItem="1AQ-2z-bij" secondAttribute="trailing" constant="16" id="UVS-8F-FY9"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hJm-6a-GRp" firstAttribute="top" secondItem="BKp-Uw-Muz" secondAttribute="top" id="KHj-eZ-Xq1"/>
-                            <constraint firstItem="omU-LP-mhe" firstAttribute="leading" secondItem="BKp-Uw-Muz" secondAttribute="leading" id="PhZ-Q1-nBL"/>
-                            <constraint firstItem="BKp-Uw-Muz" firstAttribute="trailing" secondItem="omU-LP-mhe" secondAttribute="trailing" id="Rao-xV-rAo"/>
                             <constraint firstItem="hJm-6a-GRp" firstAttribute="leading" secondItem="BKp-Uw-Muz" secondAttribute="leading" constant="16" id="SXZ-uL-ljw"/>
                             <constraint firstItem="BKp-Uw-Muz" firstAttribute="trailing" secondItem="hJm-6a-GRp" secondAttribute="trailing" constant="16" id="a7F-ED-i34"/>
-                            <constraint firstItem="omU-LP-mhe" firstAttribute="top" secondItem="hJm-6a-GRp" secondAttribute="bottom" id="dWm-lU-zNe"/>
-                            <constraint firstItem="BKp-Uw-Muz" firstAttribute="bottom" secondItem="omU-LP-mhe" secondAttribute="bottom" priority="750" id="mpM-Yf-R0R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BKp-Uw-Muz"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="textView" destination="1AQ-2z-bij" id="FHk-00-2iK"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVC-ze-hlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

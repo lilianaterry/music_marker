@@ -22,29 +22,52 @@ class KeyboardView: UIView, ColorDelegate {
     let toolkit = UIExtensions()
     
     // actual attributes
-    var currColor: UIColor = UIColor.clear
+    var currColor: UIColor?
 
-    var symbolButtons: [CharKeyboardButton] = (0...2).map { (index) in
+    let symbolButtons: [CharKeyboardButton] = (0...2).map { (index) in
         let symbols = "I=?" as String
         let strIndex = symbols.index(symbols.startIndex, offsetBy: index)
         
         let button = CharKeyboardButton(type: .system)
         button.accessibilityTraits = [.keyboardKey]
         button.setTitle(String(symbols[strIndex]), for: .normal)
+        button.tag = index
         
         return button
     }
     
-    var colorButtons: [ColorKeyboardButton] = (0...3).map { (index) in
+    let colorButtons: [ColorKeyboardButton] = (0...3).map { (index) in
         let toolKit = UIExtensions()
         let colors = [toolKit.black, toolKit.blue, toolKit.green, toolKit.red]
         
-        let button = ColorKeyboardButton(type: .system)
+        let button = ColorKeyboardButton(type: .custom)
         button.accessibilityTraits = [.keyboardKey]
         button.addColor(color: colors[index])
         
         return button
     }
+    
+    let numberButtons: [CharKeyboardButton] = (1...7).map { (index) in
+        let button = CharKeyboardButton(type: .system)
+        button.accessibilityTraits = [.keyboardKey]
+        button.setTitle(String(index), for: .normal)
+        return button
+    }
+    
+    var spaceButton: SpaceKeyboardButton = {
+        let space = SpaceKeyboardButton(type: .system)
+        space.setTitle(String("␣"), for: .normal)
+        return space
+    }()
+    
+    let backspaceButton: BackspaceKeyboardButton = {
+        let backspace = BackspaceKeyboardButton(type: .system)
+        let delSymbolChar = 0x232B;
+        backspace.setTitle(String(UnicodeScalar(delSymbolChar)!), for: .normal)
+        return backspace
+    }()
+    
+    var allButtons: [KeyboardButton]?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -57,7 +80,36 @@ class KeyboardView: UIView, ColorDelegate {
     }
     
     func changeColor(color: UIColor) {
-        currColor = color
+        if currColor != color {
+            currColor = color
+            for button in colorButtons {
+                if button.color != color {
+                    button.deselect()
+                }
+            }
+        }
+    }
+    
+    func addTextViewDelegate(delegate: AnyObject) {
+        for button in symbolButtons {
+            button.delegate = delegate
+        }
+        
+        for button in numberButtons {
+            button.delegate = delegate
+        }
+        
+        spaceButton.delegate = delegate
+        backspaceButton.delegate = delegate
+    }
+}
+
+// MARK: - Private action methods
+private extension KeyboardView {
+    @objc func buttonTapped(_ sender: AnyObject) {
+        let recognizer = sender as! UITapGestureRecognizer
+        let button = recognizer.view as! KeyboardButton
+        button.isPressed()
     }
 }
 
@@ -66,8 +118,29 @@ private extension KeyboardView {
     func configure() {
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        self.backgroundColor = UIExtensions().background
+        // setup keyboard colors and instance variables
+        self.backgroundColor = UIExtensions().header_background
+        let currColorButton = colorButtons[0]
+        currColorButton.select()
+        currColor = currColorButton.color
+        
+        allButtons = symbolButtons + colorButtons + numberButtons
+        allButtons?.append(spaceButton)
+        allButtons?.append(backspaceButton)
+        
         addButtons()
+        configureButtons()
+    }
+    
+    /// Adds a gesture recognizer to each button
+    func configureButtons() {
+        for button in allButtons! {
+            addGestureRecognizer(button: button)
+        }
+        
+        for button in colorButtons {
+            button.delegate = self
+        }
     }
     
     /// Adds all buttons to the keyboard in a vertical stack of horizontal stack rows
@@ -103,31 +176,25 @@ private extension KeyboardView {
                 }
                 break
             case 1: // numbered buttons
-                for column in 1 ... 7 {
-                    button = CharKeyboardButton(type: .system)
-                    button.setTitle(String(column), for: .normal)
+                for column in 0 ..< 7 {
+                    button = numberButtons[column]
                     constrainButton(button: button)
                     subStackView.addArrangedSubview(button)
                 }
                 break
             case 2: // colored/action buttons
+                // colors
                 for column in 0 ..< 4 {
                     button = colorButtons[column]
-                    constrainButton(button: button)
                     button.delegate = self
-                    subStackView.addArrangedSubview(button)
                     constrainButton(button: button)
                     subStackView.addArrangedSubview(button)
                 }
-                let space = KeyboardButton(type: .system)
-                let backspace = KeyboardButton(type: .system)
-                let delSymbolChar = 0x232B;
-                backspace.setTitle(String(UnicodeScalar(delSymbolChar)!), for: .normal)
-                space.setTitle(String("␣"), for: .normal)
-                constrainButton(button: space)
-                constrainButton(button: backspace)
-                subStackView.addArrangedSubview(space)
-                subStackView.addArrangedSubview(backspace)
+                // space and backspace
+                constrainButton(button: spaceButton)
+                constrainButton(button: backspaceButton)
+                subStackView.addArrangedSubview(spaceButton)
+                subStackView.addArrangedSubview(backspaceButton)
                 break
             default:
                 print("error, case not found")
@@ -135,6 +202,7 @@ private extension KeyboardView {
             
             stackView.addArrangedSubview(subStackView)
         }
+        
     }
     
     func constrainButton(button: KeyboardButton) {
@@ -161,7 +229,11 @@ private extension KeyboardView {
         
         button.layer.cornerRadius = buttonSize / 2
     }
-
+    
+    func addGestureRecognizer(button: KeyboardButton) {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(buttonTapped))
+        button.addGestureRecognizer(recognizer)
+    }
     
     /// Used to create a new stack view when building keyboard
     ///

@@ -8,9 +8,14 @@
 
 import UIKit
 
-class EditViewController: UIViewController {
+protocol TextEditorDelegate: AnyObject {
+    func addItem(newItem: String)
+    func deleteSelected()
+}
 
-    @IBOutlet weak var textView: UITextView!
+class EditViewController: UIViewController, TextEditorDelegate {
+    
+    var textView: UITextView!
     
     var keyboard: KeyboardView!
     
@@ -29,15 +34,23 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.becomeFirstResponder()     // for keyboard
-        let frame = self.view.frame
-        keyboard = KeyboardView(frame: CGRect(x: 0, y: frame.maxY - frame.height / 3, width: frame.width, height: frame.height / 3))
-        self.view.addSubview(keyboard)
+
+        setupKeyboard()
         setupTextView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.post(name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    func setupKeyboard() {
+        self.becomeFirstResponder()     // for keyboard
+        let frame = self.view.frame
+        let keyboard = KeyboardView(frame: CGRect(x: 0, y: frame.maxY - frame.height / 3, width: frame.width, height: frame.height / 3))
+        
+        keyboard.addTextViewDelegate(delegate: self)
+        
+        self.keyboard = keyboard
     }
 
     // TODO: CAN THIS CODE GO?
@@ -80,13 +93,21 @@ class EditViewController: UIViewController {
 //    }
     
     private func setupTextView() {
+        let startingY = (navigationController?.navigationBar.frame.height)! + 30
+        let frame = CGRect(x: 0, y: startingY, width: view.frame.width, height: view.bounds.height * (2/3) - startingY)
+        let textView = UITextView(frame: frame)
+        textView.backgroundColor = UIColor.white
+        
+        self.textView = textView
+        self.view.addSubview(textView)
+        
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(EditViewController.handleZoom(pinchRecognizer:)))
+
         textView.addGestureRecognizer(pinchRecognizer)
         textView.attributedText = barText
-        
-        textView.inputView = nil
-        textView.reloadInputViews()
         textView.inputView = keyboard
+        
+        textView.becomeFirstResponder() // to pull up keyboard immediately
     }
     
     @objc private func handleZoom(pinchRecognizer: UIPinchGestureRecognizer) {
@@ -97,12 +118,19 @@ class EditViewController: UIViewController {
     @IBAction func cancelSelected(_ sender: Any) {
         self.navigationController?.popViewController(animated: false)
     }
+    
     @IBAction func saveSelected(_ sender: Any) {
         performSegue(withIdentifier: "saveSegue", sender: self)
     }
     
-    @IBAction func addItem(_ sender: CharKeyboardButton) {
-        let newItem = sender.addItem(color: currColor.color!)
+    func addItem(newItem: String) {
+        let size = textView.font != nil ? textView.font!.pointSize : toolKit.barSize
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: size),
+            .foregroundColor: keyboard.currColor as Any,
+        ]
+        let item = NSMutableAttributedString(string: newItem, attributes: attributes)
+        
         var currString = textView.attributedText.mutableCopy() as! NSMutableAttributedString
         let selection = textView.selectedRange
         
@@ -110,14 +138,14 @@ class EditViewController: UIViewController {
             currString = deleteRange(range: selection)
         }
         
-        currString.insert(newItem, at: selection.lowerBound)
+        currString.insert(item, at: selection.lowerBound)
         textView.attributedText = currString
         
         let newSelection = NSMakeRange(selection.lowerBound + 1, 0)
         textView.selectedRange = newSelection
     }
     
-    @IBAction func deleteItem(_ sender: Any) {
+    func deleteSelected() {
         let selection = textView.selectedRange
         deleteRange(range: selection)
     }

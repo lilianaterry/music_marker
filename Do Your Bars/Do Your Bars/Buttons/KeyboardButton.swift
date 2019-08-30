@@ -30,19 +30,26 @@ class KeyboardButton: UIButton {
     }
     
     func isPressed() {
-        // TODO: MAKE IT LOOK LIKE BUTTON IS PRESSED
+        print("shouldn't ever get here")
     }
+
 }
 
 class CharKeyboardButton: KeyboardButton {
+    override func isPressed() {
+        (delegate as! TextEditorDelegate).addItem(newItem: String((self.titleLabel?.text)!))        
+    }
+}
 
-    @objc func addItem(color: UIColor) -> NSAttributedString {
-        let size = (self.titleLabel?.text?.isNumber)! ? toolKit.numSize : toolKit.barSize
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: size),
-            .foregroundColor: color,
-        ]
-        return NSMutableAttributedString(string: (self.titleLabel?.text)!, attributes: attributes)
+class BackspaceKeyboardButton: KeyboardButton {
+    override func isPressed() {
+        (delegate as! TextEditorDelegate).deleteSelected()
+    }
+}
+
+class SpaceKeyboardButton: KeyboardButton {
+    override func isPressed() {
+        (delegate as! TextEditorDelegate).addItem(newItem: " ")
     }
 }
 
@@ -101,5 +108,4 @@ class ColorKeyboardButton: KeyboardButton {
             self.selectedPath?.stroke()
         }
     }
-    
 }
