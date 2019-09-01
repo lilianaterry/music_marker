@@ -15,11 +15,12 @@ protocol TextEditorDelegate: AnyObject {
 
 class EditViewController: UIViewController, TextEditorDelegate {
     
-    var textView: UITextView!
+    let toolKit = UIExtensions()
     
+    @IBOutlet var navBar: UIView!
+    var textView: UITextView!
     var keyboard: KeyboardView!
     
-    let toolKit = UIExtensions()
     
     var barText: NSAttributedString = NSAttributedString()
     
@@ -34,7 +35,6 @@ class EditViewController: UIViewController, TextEditorDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         setupKeyboard()
         setupTextView()
     }
@@ -46,55 +46,22 @@ class EditViewController: UIViewController, TextEditorDelegate {
     func setupKeyboard() {
         self.becomeFirstResponder()     // for keyboard
         let frame = self.view.frame
-        let keyboard = KeyboardView(frame: CGRect(x: 0, y: frame.maxY - frame.height / 3, width: frame.width, height: frame.height / 3))
+        let keyboard = KeyboardView(frame: CGRect(x: 0, y: frame.maxY - (frame.height / 3.0), width: frame.width, height: frame.height / 3.0))
         
         keyboard.addTextViewDelegate(delegate: self)
         
         self.keyboard = keyboard
     }
-
-    // TODO: CAN THIS CODE GO?
-//    private func setupKeyboard() {
-//        self.view.backgroundColor = toolKit.header_background
-//        keyboard.backgroundColor = toolKit.header_background
-//
-//        colorButtons = [redButton, blueButton, greenButton, blackButton]
-//        redButton.addColor(color: toolKit.red)
-//        blueButton.addColor(color: toolKit.blue)
-//        greenButton.addColor(color: toolKit.green)
-//        blackButton.addColor(color: toolKit.black)
-//
-//        currColor = blackButton
-//        currColor.select()
-//
-//        keyboard.removeFromSuperview()
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
-//    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    // TODO: CAN THIS CODE GO?
-//    // edit button corner radius after keyboard has appeared and constrained correctly
-//    @objc private func keyboardWillAppear() {
-//        let rowStack = keyboard.subviews[0]
-//        let rows = rowStack.subviews
-//
-//        for row in rows {
-//            let buttons = row.subviews
-//            for subview in buttons {
-//                let button = subview as! KeyboardButton
-//                button.layer.cornerRadius = button.frame.width / 2
-//            }
-//        }
-//
-//        self.view.addSubview(keyboard)
-//    }
-    
     private func setupTextView() {
-        let startingY = (navigationController?.navigationBar.frame.height)! + 30
-        let frame = CGRect(x: 0, y: startingY, width: view.frame.width, height: view.bounds.height * (2/3) - startingY)
+        let padding = 16.0 as CGFloat
+        let startingY = navBar.frame.maxY
+        
+        let frame = CGRect(x: padding, y: startingY, width: view.frame.width - padding * 2, height: view.frame.maxY * (2.0/3.0) - startingY)
         let textView = UITextView(frame: frame)
         textView.backgroundColor = UIColor.white
         
@@ -106,6 +73,7 @@ class EditViewController: UIViewController, TextEditorDelegate {
         textView.addGestureRecognizer(pinchRecognizer)
         textView.attributedText = barText
         textView.inputView = keyboard
+        textView.inputView?.autoresizingMask = []
         
         textView.becomeFirstResponder() // to pull up keyboard immediately
     }
@@ -165,25 +133,6 @@ class EditViewController: UIViewController, TextEditorDelegate {
         textView.selectedRange = cursorPos
         
         return textView.attributedText.mutableCopy() as! NSMutableAttributedString
-    }
-    
-    @IBAction func insertSpace(_ sender: Any) {
-        let index = textView.selectedRange.lowerBound
-        let currString = textView.attributedText.mutableCopy() as! NSMutableAttributedString
-        
-        currString.insert(toolKit.space, at: index)
-        textView.attributedText = currString
-        textView.selectedRange = NSMakeRange(index + toolKit.space.length, 0)
-    }
-    
-    @IBAction func selectColor(_ sender: Any) {
-        let button = sender as! ColorKeyboardButton
-        
-        if (currColor != button) {
-            currColor.deselect()
-            currColor = button
-            currColor.select()
-        }
     }
     
     private func updateBarTotal() -> Float {

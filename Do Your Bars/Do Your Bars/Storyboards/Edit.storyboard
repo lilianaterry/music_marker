@@ -67,6 +67,9 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="navBar" destination="hJm-6a-GRp" id="LZR-44-mN9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVC-ze-hlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
