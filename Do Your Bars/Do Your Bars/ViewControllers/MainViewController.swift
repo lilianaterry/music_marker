@@ -14,17 +14,13 @@ protocol Button {
     func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString
 }
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, NumberButtonDelegate {
     
-    static var kViewHorizontalMargin: CGFloat = 32.0
-    static var kViewVerticalMargin: CGFloat = 16.0
-    static var kTextViewMargin: CGFloat = 8.0
-    
-    @IBOutlet weak var wheelView: UIView!
+    var wheelView: UIView!
     var barView: UIView!
-    @IBOutlet weak var barTextView: UITextView!
-    @IBOutlet weak var numberButtonView: UIStackView!
-    @IBOutlet weak var totalLabel: UILabel!
+    var barTextView: UITextView!
+    var numberButtonView: NumberButtonRowView!
+    var totalLabel: UILabel!
     
     let toolKit = UIExtensions()
     
@@ -38,45 +34,88 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
-        setupBarView()
+        
+       layoutSubViews()
+    }
+    
+    func layoutSubViews() {
+        let externalPadding: CGFloat = 16.0
+        let internalPadding: CGFloat = 10.0
+        let componentGap: CGFloat = 32.0
+        
+        var currY: CGFloat = externalPadding
+        let maxWidth: CGFloat = self.view.bounds.size.width - (2 * externalPadding)
+        let maxHeight: CGFloat = self.view.bounds.size.height
+        
+        let barViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: maxHeight / 5.0)
+        setupBarView(frame: barViewFrame)
+        self.view.addSubview(barView)
+        currY += barViewFrame.height + internalPadding
+        
+        let fontSize: CGFloat = 12.0
+        let totalNumberLabelFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: fontSize)
+        setupTotalNumberLabel(frame: totalNumberLabelFrame)
+        self.view.addSubview(totalLabel)
+        currY += totalNumberLabelFrame.height + componentGap
+        
+        let wheelViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: maxWidth)
+        setupWheelView(frame: wheelViewFrame)
+        self.view.addSubview(wheelView)
+        currY += wheelViewFrame.height + componentGap
+
+        let buttonSpace = maxWidth - (internalPadding * 6)
+        let buttonHeight = buttonSpace / 7.0
+        let buttonViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: buttonHeight)
+        setupNumberButtonView(frame: buttonViewFrame)
+        self.view.addSubview(numberButtonView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // have to set this when all views have been loaded AND sized to phone dimensions
-        if wheelView.subviews.count <= 0 {
-            createSimonWheel()
-            setupNumberButtonView()
-        }
+//        // have to set this when all views have been loaded AND sized to phone dimensions
+//        if wheelView.subviews.count <= 0 {
+//            createSimonWheel()
+//        }
+        layoutSubViews()
     }
     
-    func setupBarView() {
+    func setupWheelView(frame: CGRect) {
+        wheelView = UIView(frame: frame)
+        createSimonWheel()
+    }
+    
+    func setupBarView(frame: CGRect) {
+        barView = UIView(frame: frame)
+        barTextView = UITextView(frame: barView.frame)
+        barView.addSubview(barTextView)
+        
         let tappedView = UITapGestureRecognizer(target: self, action: #selector(MainViewController.viewTapDetected))
-                
+        
         barView.addGestureRecognizer(tappedView)
         barView.layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 4, blur: 8, spread: 0)
         barView.clipsToBounds = false
         barView.layer.cornerRadius = 10
         
         barTextView.scrollToTop()
-        barTextView.textContainerInset = UIEdgeInsets.zero
+        barTextView.showsHorizontalScrollIndicator = false
+        barTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         barTextView.attributedText = barText
-        
-        barTextView.frame = CGRect(x: MainViewController.kViewHorizontalMargin, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
-        self.view.addSubview(barTextView);
-        
+    }
+    
+    func setupTotalNumberLabel(frame: CGRect) {
+        totalLabel = UILabel(frame: frame)
         updateTotalLabel()
         totalLabel.textColor = toolKit.header
+        totalLabel.font = UIFont(name: "SF-Pro-Display-Black", size: frame.height)
+    }
+    
+    func setupNumberButtonView(frame: CGRect) {
+        numberButtonView = NumberButtonRowView(frame: frame)
+        numberButtonView.delegate = self
     }
     
     private func updateTotalLabel() {
         if totalLabel != nil {
             totalLabel.text = toolKit.total + String(barTotal)
-        }
-    }
-    
-    private func setupNumberButtonView() {
-        for button in numberButtonView.subviews {
-            button.layer.cornerRadius = button.frame.width / 2
         }
     }
     
@@ -166,7 +205,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Bar Collection
-    private func addBarItem(button: Button) {
+    func addBarItem(button: Button) {
         let currString = barTextView.attributedText.mutableCopy() as! NSMutableAttributedString
         let newItem = button.addItem(prevChar: currString.last())
         
@@ -190,12 +229,6 @@ class MainViewController: UIViewController {
         barTextView.attributedText = currString
         barTextView.scrollToBottom()
     }
-    
-    // MARK - Number Buttons
-    @IBAction func numberButtonPressed(_ sender: Any) {
-        addBarItem(button: sender as! Button)
-    }
-    
     
     // MARK - Segue to Edit
     @IBAction func deleteSelectedButton(_ sender: Any) {

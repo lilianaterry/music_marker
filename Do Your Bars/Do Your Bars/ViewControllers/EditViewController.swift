@@ -188,7 +188,7 @@ class EditViewController: UIViewController, TextEditorDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navControl = segue.destination as! UINavigationController
-        let destVC = navControl.topViewController as! ViewController
+        let destVC = navControl.topViewController as! MainViewController
         
         removeTrailingWhitespace()
         

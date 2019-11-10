@@ -37,7 +37,7 @@ class KeyboardButton: UIButton {
 
 class CharKeyboardButton: KeyboardButton {
     override func isPressed() {
-        (delegate as! TextEditorDelegate).addItem(newItem: String((self.titleLabel?.text)!))        
+        (delegate as! TextEditorDelegate).addItem(newItem: String((self.titleLabel?.text)!))    
     }
 }
 

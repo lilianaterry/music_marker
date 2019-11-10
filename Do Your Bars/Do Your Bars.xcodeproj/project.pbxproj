@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */; };
-		CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91C21D2D479005A7B81 /* ViewController.swift */; };
+		CE21E91D21D2D479005A7B81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91C21D2D479005A7B81 /* MainViewController.swift */; };
+		CE33C81E237895A400E47D45 /* NumberButtonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33C81D237895A400E47D45 /* NumberButtonRowView.swift */; };
 		CE54305A230617B300E050AA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE543059230617B300E050AA /* KeyboardView.swift */; };
 		CE64E78021DC236A008C3A03 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64E77F21DC236A008C3A03 /* EditViewController.swift */; };
 		CE64E78221DC23D3008C3A03 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE64E78121DC23D3008C3A03 /* Edit.storyboard */; };
 		CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */; };
 		CE95857321DD394700FB163D /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95857221DD394600FB163D /* KeyboardButton.swift */; };
 		CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BAF20AA35F10082754C /* AppDelegate.swift */; };
-		CE9A9BB520AA35F10082754C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB320AA35F10082754C /* Main.storyboard */; };
 		CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */; };
 		CE9A9BBA20AA35F10082754C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB920AA35F10082754C /* Assets.xcassets */; };
 		CE9A9BBD20AA35F10082754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */; };
@@ -23,6 +23,7 @@
 		CE9A9BC920AD1CF70082754C /* SF Font in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BC820AD1CF70082754C /* SF Font */; };
 		CEBDD24E21D7F1B300FC5D19 /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD24D21D7F1B300FC5D19 /* NumberButton.swift */; };
 		CEBDD25021D848C400FC5D19 /* InnerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD24F21D848C400FC5D19 /* InnerButtonView.swift */; };
+		CECC6B1223654BC600EBD4F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECC6B1123654BC600EBD4F4 /* Main.storyboard */; };
 		F4C1F66FBDA5D6630E9BD78C /* Pods_Do_Your_Bars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E448717C72B36B2CA66B13D /* Pods_Do_Your_Bars.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +45,8 @@
 		A8590E6CB3B02B63FE09CE7F /* Pods-Do Your Bars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Do Your Bars.release.xcconfig"; path = "Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars.release.xcconfig"; sourceTree = "<group>"; };
 		C9A00E284DDEBF60E194EBBA /* Pods-Do Your Bars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Do Your Bars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars.debug.xcconfig"; sourceTree = "<group>"; };
 		CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonWedgeView.swift; sourceTree = "<group>"; };
-		CE21E91C21D2D479005A7B81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE21E91C21D2D479005A7B81 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CE33C81D237895A400E47D45 /* NumberButtonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButtonRowView.swift; sourceTree = "<group>"; };
 		CE543059230617B300E050AA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		CE64E77F21DC236A008C3A03 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		CE64E78121DC23D3008C3A03 /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
@@ -52,7 +54,6 @@
 		CE95857221DD394600FB163D /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		CE9A9BAC20AA35F10082754C /* Do Your Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Do Your Bars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9A9BAF20AA35F10082754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE9A9BB420AA35F10082754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE9A9BB720AA35F10082754C /* Do_Your_Bars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Do_Your_Bars.xcdatamodel; sourceTree = "<group>"; };
 		CE9A9BB920AA35F10082754C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE9A9BBC20AA35F10082754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +62,7 @@
 		CE9A9BC820AD1CF70082754C /* SF Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Font"; sourceTree = "<group>"; };
 		CEBDD24D21D7F1B300FC5D19 /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
 		CEBDD24F21D848C400FC5D19 /* InnerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerButtonView.swift; sourceTree = "<group>"; };
+		CECC6B1123654BC600EBD4F4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */,
-				CE9A9BB320AA35F10082754C /* Main.storyboard */,
 				CE64E78121DC23D3008C3A03 /* Edit.storyboard */,
+				CECC6B1123654BC600EBD4F4 /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				CE543059230617B300E050AA /* KeyboardView.swift */,
+				CE33C81D237895A400E47D45 /* NumberButtonRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -116,7 +119,7 @@
 		CE64E77E21DC2349008C3A03 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CE21E91C21D2D479005A7B81 /* ViewController.swift */,
+				CE21E91C21D2D479005A7B81 /* MainViewController.swift */,
 				CE64E77F21DC236A008C3A03 /* EditViewController.swift */,
 			);
 			path = ViewControllers;
@@ -230,9 +233,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9A9BBD20AA35F10082754C /* LaunchScreen.storyboard in Resources */,
+				CECC6B1223654BC600EBD4F4 /* Main.storyboard in Resources */,
 				CE64E78221DC23D3008C3A03 /* Edit.storyboard in Resources */,
 				CE9A9BBA20AA35F10082754C /* Assets.xcassets in Resources */,
-				CE9A9BB520AA35F10082754C /* Main.storyboard in Resources */,
 				CE9A9BC920AD1CF70082754C /* SF Font in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,9 +287,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE95857321DD394700FB163D /* KeyboardButton.swift in Sources */,
-				CE21E91D21D2D479005A7B81 /* ViewController.swift in Sources */,
+				CE21E91D21D2D479005A7B81 /* MainViewController.swift in Sources */,
 				CEBDD24E21D7F1B300FC5D19 /* NumberButton.swift in Sources */,
 				CEBDD25021D848C400FC5D19 /* InnerButtonView.swift in Sources */,
+				CE33C81E237895A400E47D45 /* NumberButtonRowView.swift in Sources */,
 				CE54305A230617B300E050AA /* KeyboardView.swift in Sources */,
 				CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */,
 				CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */,
@@ -300,14 +304,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CE9A9BB320AA35F10082754C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE9A9BB420AA35F10082754C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
