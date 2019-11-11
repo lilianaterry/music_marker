@@ -17,7 +17,6 @@ class NumberButtonRowView: UIView {
     var delegate: NumberButtonDelegate!
     
     // asthetics
-    let externalPadding = 16.0 as CGFloat
     let internalPadding = 10.0 as CGFloat
     var buttonSize = 50.0 as CGFloat
 
@@ -70,10 +69,11 @@ class NumberButtonRowView: UIView {
     }
        
     func layoutButtonSubviews() {
-        let buttonSize = self.bounds.height
-        var currX = externalPadding
+        let buttonSize: CGFloat = self.bounds.height
+        var currX: CGFloat = 0.0
+        let currY: CGFloat = 0.0
         for button in numberButtons {
-            let buttonFrame = CGRect(x: currX, y: 0, width: buttonSize, height: buttonSize)
+            let buttonFrame = CGRect(x: currX, y: currY, width: buttonSize, height: buttonSize)
             button.frame = buttonFrame
             button.layer.cornerRadius = buttonSize / 2
             self.addSubview(button)

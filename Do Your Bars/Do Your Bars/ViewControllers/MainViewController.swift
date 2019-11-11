@@ -16,6 +16,8 @@ protocol Button {
 
 class MainViewController: UIViewController, NumberButtonDelegate {
     
+    var shouldLayoutSubviews: Bool = true
+    
     var wheelView: UIView!
     var barView: UIView!
     var barTextView: UITextView!
@@ -34,48 +36,52 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
-        
-       layoutSubViews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if (shouldLayoutSubviews) {
+            layoutSubViews()
+            shouldLayoutSubviews = false
+        }
     }
     
     func layoutSubViews() {
         let externalPadding: CGFloat = 16.0
         let internalPadding: CGFloat = 10.0
-        let componentGap: CGFloat = 32.0
+        let componentGap: CGFloat = 16.0
         
-        var currY: CGFloat = externalPadding
-        let maxWidth: CGFloat = self.view.bounds.size.width - (2 * externalPadding)
-        let maxHeight: CGFloat = self.view.bounds.size.height
-        
-        let barViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: maxHeight / 5.0)
-        setupBarView(frame: barViewFrame)
-        self.view.addSubview(barView)
-        currY += barViewFrame.height + internalPadding
+        let safeTop = self.view.safeAreaInsets.top
+        let safeBottom = self.view.safeAreaInsets.bottom
         
         let fontSize: CGFloat = 12.0
-        let totalNumberLabelFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: fontSize)
+        
+        var currY: CGFloat = safeTop + externalPadding
+        let maxWidth: CGFloat = self.view.bounds.width - (2 * externalPadding)
+        let maxHeight: CGFloat = self.view.bounds.height - safeTop - safeBottom - (self.navigationController?.toolbar.frame.height)!
+        
+        let numberButtonRowViewHeight = (maxWidth - (internalPadding * 6)) / 7.0
+        let wheelViewHeight = maxWidth
+        let totalNumberLabelHeight = fontSize
+        let barViewHeight = maxHeight - numberButtonRowViewHeight - wheelViewHeight - (2 * componentGap) - (2 * externalPadding) - internalPadding - totalNumberLabelHeight
+        
+        let barViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: barViewHeight)
+        setupBarView(frame: barViewFrame)
+        self.view.addSubview(barView)
+        currY += barViewHeight + internalPadding
+        
+        let totalNumberLabelFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: totalNumberLabelHeight)
         setupTotalNumberLabel(frame: totalNumberLabelFrame)
         self.view.addSubview(totalLabel)
-        currY += totalNumberLabelFrame.height + componentGap
+        currY += totalNumberLabelHeight + componentGap
         
-        let wheelViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: maxWidth)
+        let wheelViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: wheelViewHeight)
         setupWheelView(frame: wheelViewFrame)
         self.view.addSubview(wheelView)
-        currY += wheelViewFrame.height + componentGap
+        currY += wheelViewHeight + componentGap
 
-        let buttonSpace = maxWidth - (internalPadding * 6)
-        let buttonHeight = buttonSpace / 7.0
-        let buttonViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: buttonHeight)
+        let buttonViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: numberButtonRowViewHeight)
         setupNumberButtonView(frame: buttonViewFrame)
         self.view.addSubview(numberButtonView)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-//        // have to set this when all views have been loaded AND sized to phone dimensions
-//        if wheelView.subviews.count <= 0 {
-//            createSimonWheel()
-//        }
-        layoutSubViews()
     }
     
     func setupWheelView(frame: CGRect) {
@@ -85,7 +91,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     
     func setupBarView(frame: CGRect) {
         barView = UIView(frame: frame)
-        barTextView = UITextView(frame: barView.frame)
+        barTextView = UITextView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         barView.addSubview(barTextView)
         
         let tappedView = UITapGestureRecognizer(target: self, action: #selector(MainViewController.viewTapDetected))
@@ -94,8 +100,11 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         barView.layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 4, blur: 8, spread: 0)
         barView.clipsToBounds = false
         barView.layer.cornerRadius = 10
+        barTextView.layer.cornerRadius = 10
         
         barTextView.scrollToTop()
+        barTextView.isSelectable = false
+        barTextView.isEditable = false
         barTextView.showsHorizontalScrollIndicator = false
         barTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         barTextView.attributedText = barText
