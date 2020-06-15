@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7s1-a8-z8U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7s1-a8-z8U">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,10 +30,10 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Pj4-5T-gi8"/>
-                                    <barButtonItem title="Delete" width="20" id="Hhg-nT-gbd">
+                                    <barButtonItem title="Clear" width="20" id="Hhg-nT-gbd">
                                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
                                         <connections>
-                                            <action selector="deleteSelected:" destination="df7-Um-xyi" id="ZCI-pg-Wh9"/>
+                                            <action selector="deleteSelectedButton:" destination="df7-Um-xyi" id="5tt-9w-DG6"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="w1u-0r-Bhz"/>
@@ -46,20 +46,12 @@
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="lOL-x7-P1Y"/>
                                 </items>
                             </toolbar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9U-k5-fH8">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="734"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97613006830215454" green="0.98425990343093872" blue="0.9924507737159729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jim-rb-v6I" firstAttribute="bottom" secondItem="riL-q6-3ZG" secondAttribute="bottom" id="1tM-0e-4cJ"/>
-                            <constraint firstItem="Jim-rb-v6I" firstAttribute="top" secondItem="s9U-k5-fH8" secondAttribute="bottom" id="5X5-D6-Nvo"/>
-                            <constraint firstItem="s9U-k5-fH8" firstAttribute="trailing" secondItem="riL-q6-3ZG" secondAttribute="trailing" id="T5M-Em-BqN"/>
                             <constraint firstItem="Jim-rb-v6I" firstAttribute="leading" secondItem="riL-q6-3ZG" secondAttribute="leading" id="g4v-eO-lFE"/>
-                            <constraint firstItem="s9U-k5-fH8" firstAttribute="top" secondItem="ZWI-DT-4gt" secondAttribute="top" id="iCJ-dH-ngF"/>
                             <constraint firstItem="Jim-rb-v6I" firstAttribute="trailing" secondItem="riL-q6-3ZG" secondAttribute="trailing" id="n0s-C8-aCX"/>
-                            <constraint firstItem="s9U-k5-fH8" firstAttribute="leading" secondItem="riL-q6-3ZG" secondAttribute="leading" id="yu3-FN-AmA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="riL-q6-3ZG"/>
                     </view>

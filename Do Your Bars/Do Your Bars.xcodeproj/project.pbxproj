@@ -13,14 +13,19 @@
 		CE54305A230617B300E050AA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE543059230617B300E050AA /* KeyboardView.swift */; };
 		CE64E78021DC236A008C3A03 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64E77F21DC236A008C3A03 /* EditViewController.swift */; };
 		CE64E78221DC23D3008C3A03 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE64E78121DC23D3008C3A03 /* Edit.storyboard */; };
-		CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */; };
 		CE95857321DD394700FB163D /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95857221DD394600FB163D /* KeyboardButton.swift */; };
 		CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BAF20AA35F10082754C /* AppDelegate.swift */; };
 		CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */; };
 		CE9A9BBA20AA35F10082754C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB920AA35F10082754C /* Assets.xcassets */; };
 		CE9A9BBD20AA35F10082754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */; };
 		CE9A9BC720AD07660082754C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BC620AD07660082754C /* UIExtensions.swift */; };
-		CE9A9BC920AD1CF70082754C /* SF Font in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BC820AD1CF70082754C /* SF Font */; };
+		CEBB9A032496CE3F00747B2B /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB99FC2496CE3E00747B2B /* SF-Pro-Display-Black.otf */; };
+		CEBB9A042496CE3F00747B2B /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB99FD2496CE3E00747B2B /* SF-Pro-Display-Heavy.otf */; };
+		CEBB9A052496CE3F00747B2B /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB99FE2496CE3E00747B2B /* SF-Pro-Display-Light.otf */; };
+		CEBB9A062496CE3F00747B2B /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB99FF2496CE3E00747B2B /* SF-Pro-Display-Semibold.otf */; };
+		CEBB9A072496CE3F00747B2B /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB9A002496CE3F00747B2B /* SF-Pro-Display-Bold.otf */; };
+		CEBB9A082496CE3F00747B2B /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB9A012496CE3F00747B2B /* SF-Pro-Display-Medium.otf */; };
+		CEBB9A092496CE3F00747B2B /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB9A022496CE3F00747B2B /* SF-Pro-Display-Regular.otf */; };
 		CEBDD24E21D7F1B300FC5D19 /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD24D21D7F1B300FC5D19 /* NumberButton.swift */; };
 		CEBDD25021D848C400FC5D19 /* InnerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD24F21D848C400FC5D19 /* InnerButtonView.swift */; };
 		CECC6B1223654BC600EBD4F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECC6B1123654BC600EBD4F4 /* Main.storyboard */; };
@@ -50,7 +55,6 @@
 		CE543059230617B300E050AA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		CE64E77F21DC236A008C3A03 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		CE64E78121DC23D3008C3A03 /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
-		CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE95857221DD394600FB163D /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		CE9A9BAC20AA35F10082754C /* Do Your Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Do Your Bars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9A9BAF20AA35F10082754C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +63,13 @@
 		CE9A9BBC20AA35F10082754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE9A9BBE20AA35F10082754C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE9A9BC620AD07660082754C /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
-		CE9A9BC820AD1CF70082754C /* SF Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "SF Font"; sourceTree = "<group>"; };
+		CEBB99FC2496CE3E00747B2B /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Black.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
+		CEBB99FD2496CE3E00747B2B /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Heavy.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		CEBB99FE2496CE3E00747B2B /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Light.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		CEBB99FF2496CE3E00747B2B /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Semibold.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		CEBB9A002496CE3F00747B2B /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Bold.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		CEBB9A012496CE3F00747B2B /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Medium.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		CEBB9A022496CE3F00747B2B /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Regular.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		CEBDD24D21D7F1B300FC5D19 /* NumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButton.swift; sourceTree = "<group>"; };
 		CEBDD24F21D848C400FC5D19 /* InnerButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerButtonView.swift; sourceTree = "<group>"; };
 		CECC6B1123654BC600EBD4F4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +138,13 @@
 		CE9A9BA320AA35F10082754C = {
 			isa = PBXGroup;
 			children = (
+				CEBB99FC2496CE3E00747B2B /* SF-Pro-Display-Black.otf */,
+				CEBB9A002496CE3F00747B2B /* SF-Pro-Display-Bold.otf */,
+				CEBB99FD2496CE3E00747B2B /* SF-Pro-Display-Heavy.otf */,
+				CEBB99FE2496CE3E00747B2B /* SF-Pro-Display-Light.otf */,
+				CEBB9A012496CE3F00747B2B /* SF-Pro-Display-Medium.otf */,
+				CEBB9A022496CE3F00747B2B /* SF-Pro-Display-Regular.otf */,
+				CEBB99FF2496CE3E00747B2B /* SF-Pro-Display-Semibold.otf */,
 				CE9A9BAE20AA35F10082754C /* Do Your Bars */,
 				CE9A9BAD20AA35F10082754C /* Products */,
 				3C554880D8B646CC3504F379 /* Pods */,
@@ -150,13 +167,11 @@
 				CE64E77E21DC2349008C3A03 /* ViewControllers */,
 				CE64E77D21DC2326008C3A03 /* Buttons */,
 				CE21E91E21D30C2B005A7B81 /* Storyboards */,
-				CE9A9BC820AD1CF70082754C /* SF Font */,
 				CE9A9BC620AD07660082754C /* UIExtensions.swift */,
 				CE9A9BAF20AA35F10082754C /* AppDelegate.swift */,
 				CE9A9BB920AA35F10082754C /* Assets.xcassets */,
 				CE9A9BBE20AA35F10082754C /* Info.plist */,
 				CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */,
-				CE67AAFF21D6C58900EF2A84 /* BarCollectionViewCell.swift */,
 			);
 			path = "Do Your Bars";
 			sourceTree = "<group>";
@@ -232,11 +247,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBB9A032496CE3F00747B2B /* SF-Pro-Display-Black.otf in Resources */,
+				CEBB9A042496CE3F00747B2B /* SF-Pro-Display-Heavy.otf in Resources */,
+				CEBB9A052496CE3F00747B2B /* SF-Pro-Display-Light.otf in Resources */,
+				CEBB9A062496CE3F00747B2B /* SF-Pro-Display-Semibold.otf in Resources */,
+				CEBB9A072496CE3F00747B2B /* SF-Pro-Display-Bold.otf in Resources */,
+				CEBB9A082496CE3F00747B2B /* SF-Pro-Display-Medium.otf in Resources */,
+				CEBB9A092496CE3F00747B2B /* SF-Pro-Display-Regular.otf in Resources */,
 				CE9A9BBD20AA35F10082754C /* LaunchScreen.storyboard in Resources */,
 				CECC6B1223654BC600EBD4F4 /* Main.storyboard in Resources */,
 				CE64E78221DC23D3008C3A03 /* Edit.storyboard in Resources */,
 				CE9A9BBA20AA35F10082754C /* Assets.xcassets in Resources */,
-				CE9A9BC920AD1CF70082754C /* SF Font in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +313,6 @@
 				CEBDD25021D848C400FC5D19 /* InnerButtonView.swift in Sources */,
 				CE33C81E237895A400E47D45 /* NumberButtonRowView.swift in Sources */,
 				CE54305A230617B300E050AA /* KeyboardView.swift in Sources */,
-				CE67AB0021D6C58900EF2A84 /* BarCollectionViewCell.swift in Sources */,
 				CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */,
 				CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */,
 				CE9A9BC720AD07660082754C /* UIExtensions.swift in Sources */,

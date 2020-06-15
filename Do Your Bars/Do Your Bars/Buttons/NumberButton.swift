@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class NumberButton: UIButton, Button {
     
-    var path: UIBezierPath!
+    var wedgePath: UIBezierPath!
     
     let toolKit = UIExtensions()
     
@@ -31,7 +31,7 @@ import UIKit
     func commonInit() {
         layer.backgroundColor = UIColor.white.cgColor
         layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 3, blur: 16, spread: 0)
-        path = UIBezierPath()
+        wedgePath = UIBezierPath()
     }
     
     func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString {

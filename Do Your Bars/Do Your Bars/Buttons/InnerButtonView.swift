@@ -8,9 +8,9 @@
 
 import UIKit
 
-@IBDesignable class InnerButtonView: UIView, Button {
+@IBDesignable class InnerButtonView: UIControl, Button {
     
-    var path: UIBezierPath!
+    var wedgePath: UIBezierPath!
     
     let toolKit = UIExtensions()
     
@@ -33,9 +33,9 @@ import UIKit
         addLabel()
         UIColor.white.setFill()
         toolKit.grey.setStroke()
-        path.fill()
-        path.lineWidth = 5.0
-        path.stroke(with: .destinationIn, alpha: 0)
+        wedgePath.fill()
+        wedgePath.lineWidth = 5.0
+        wedgePath.stroke(with: .destinationIn, alpha: 0)
     }
     
     private func commonInit() {
@@ -51,10 +51,10 @@ import UIKit
         let startAngle = .pi as CGFloat
         let endAngle = 0 as CGFloat
         
-        path = UIBezierPath()
-        path.move(to: center)
-        path.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
-        path.close()        
+        wedgePath = UIBezierPath()
+        wedgePath.move(to: center)
+        wedgePath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+        wedgePath.close()        
     }
     
     private func addLabel() {

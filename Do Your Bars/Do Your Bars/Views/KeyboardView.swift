@@ -32,6 +32,7 @@ class KeyboardView: UIView, ColorDelegate {
         button.accessibilityTraits = [.keyboardKey]
         button.setTitle(String(symbols[strIndex]), for: .normal)
         button.tag = index
+        button.titleLabel?.font = UIFont(name:"SFProDisplay-Bold", size: UIExtensions().numButtonTextSize)
         
         return button
     }
@@ -51,19 +52,23 @@ class KeyboardView: UIView, ColorDelegate {
         let button = CharKeyboardButton(type: .system)
         button.accessibilityTraits = [.keyboardKey]
         button.setTitle(String(index), for: .normal)
+        button.titleLabel?.font = UIFont(name:"SFProDisplay-Bold", size: UIExtensions().numButtonTextSize)
         return button
     }
     
     var spaceButton: SpaceKeyboardButton = {
         let space = SpaceKeyboardButton(type: .system)
-        space.setTitle(String("␣"), for: .normal)
+        let spaceSymbolChar = 0x2423
+        space.setTitle(String(UnicodeScalar(spaceSymbolChar)!), for: .normal)
+        space.titleLabel?.font = space.titleLabel?.font.withSize(25)
         return space
     }()
     
     let backspaceButton: BackspaceKeyboardButton = {
         let backspace = BackspaceKeyboardButton(type: .system)
-        let delSymbolChar = 0x232B;
+        let delSymbolChar = 0x232B
         backspace.setTitle(String(UnicodeScalar(delSymbolChar)!), for: .normal)
+        backspace.titleLabel?.font = backspace.titleLabel?.font.withSize(25)
         return backspace
     }()
     
@@ -119,7 +124,7 @@ private extension KeyboardView {
         autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         // setup keyboard colors and instance variables
-        self.backgroundColor = UIExtensions().header_background
+        self.backgroundColor = UIExtensions().background
         let currColorButton = colorButtons[0]
         currColorButton.select()
         currColor = currColorButton.color
@@ -127,7 +132,7 @@ private extension KeyboardView {
         allButtons = symbolButtons + colorButtons + numberButtons
         allButtons?.append(spaceButton)
         allButtons?.append(backspaceButton)
-        
+    
         addButtons()
         configureButtons()
     }

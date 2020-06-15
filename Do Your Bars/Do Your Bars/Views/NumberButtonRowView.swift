@@ -12,7 +12,7 @@ protocol NumberButtonDelegate: AnyObject {
     func addBarItem(button: Button)
 }
 
-class NumberButtonRowView: UIView {
+class NumberButtonRowView: UIControl {
 
     var delegate: NumberButtonDelegate!
     
@@ -28,6 +28,7 @@ class NumberButtonRowView: UIView {
         let button = NumberButton(type: .system)
         button.accessibilityTraits = [.keyboardKey]
         button.setTitle(numberStr, for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Bold", size: UIExtensions().numButtonTextSize)
         button.tag = index
         
         return button
@@ -65,6 +66,7 @@ class NumberButtonRowView: UIView {
     @objc func buttonTapped(_ sender: AnyObject) {
         let recognizer = sender as! UITapGestureRecognizer
         let button = recognizer.view as! Button
+        (button as! UIControl).animate(button as! UIControl)
         delegate.addBarItem(button: button)
     }
        

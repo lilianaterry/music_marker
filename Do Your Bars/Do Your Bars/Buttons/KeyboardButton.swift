@@ -30,25 +30,28 @@ class KeyboardButton: UIButton {
     }
     
     func isPressed() {
-        print("shouldn't ever get here")
+        self.animate(self)
     }
 
 }
 
 class CharKeyboardButton: KeyboardButton {
     override func isPressed() {
-        (delegate as! TextEditorDelegate).addItem(newItem: String((self.titleLabel?.text)!))    
+        super.isPressed()
+        (delegate as! TextEditorDelegate).addItem(newItem: String((self.titleLabel?.text)!))
     }
 }
 
 class BackspaceKeyboardButton: KeyboardButton {
     override func isPressed() {
+        super.isPressed()
         (delegate as! TextEditorDelegate).deleteSelected()
     }
 }
 
 class SpaceKeyboardButton: KeyboardButton {
     override func isPressed() {
+        super.isPressed()
         (delegate as! TextEditorDelegate).addItem(newItem: " ")
     }
 }
@@ -70,6 +73,7 @@ class ColorKeyboardButton: KeyboardButton {
     }
     
     override func isPressed() {
+        super.isPressed()
         (delegate as! ColorDelegate).changeColor(color: self.color!)
         select()
     }

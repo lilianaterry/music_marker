@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol Button {
-    var path: UIBezierPath! { get set }
+    var wedgePath: UIBezierPath! { get set }
     func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString
 }
 
@@ -33,9 +33,10 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     var innerWheelView: UIView!
     
     var buttonList = Array<Button>()
-    
+        
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
+        self.view.backgroundColor = UIExtensions().background
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,7 +54,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         let safeTop = self.view.safeAreaInsets.top
         let safeBottom = self.view.safeAreaInsets.bottom
         
-        let fontSize: CGFloat = 12.0
+        let fontSize: CGFloat = 20.0
         
         var currY: CGFloat = safeTop + externalPadding
         let maxWidth: CGFloat = self.view.bounds.width - (2 * externalPadding)
@@ -114,7 +115,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         totalLabel = UILabel(frame: frame)
         updateTotalLabel()
         totalLabel.textColor = toolKit.header
-        totalLabel.font = UIFont(name: "SF-Pro-Display-Black", size: frame.height)
+        totalLabel.font = UIFont(name: "SFProDisplay-Semibold", size: frame.height)
     }
     
     func setupNumberButtonView(frame: CGRect) {
@@ -207,7 +208,8 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     }
     
     private func hitTest(tapLocation: CGPoint, button: Button) -> Bool {
-        if (button.path.contains(tapLocation)) {
+        if (button.wedgePath.contains(tapLocation)) {
+            (button as! UIControl).animate(button as! UIControl)
             return true
         }
         return false
@@ -242,7 +244,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     // MARK - Segue to Edit
     @IBAction func deleteSelectedButton(_ sender: Any) {
         // Declare Alert message
-        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to clear all bars?", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "Clear bars?", message: "This will remove all bars and cannot be undone.", preferredStyle: .alert)
         
         // Create OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in

@@ -18,7 +18,7 @@ class UIExtensions {
 
     // depth
     let shadow = UIColor.init(hex: 0x1B407E)
-    let background = UIColor.init(hex: 0xF9FBFD)
+    let background = UIColor.init(hex: 0xF2F2F7)
     let header_background = UIColor.init(hex: 0xE9EEF4)
     
     // text colors
@@ -29,6 +29,9 @@ class UIExtensions {
     // text size
     let barSize = 40.0 as CGFloat
     let numSize = 30.0 as CGFloat
+    
+    // button text size
+    let numButtonTextSize = 20.0 as CGFloat
     
     // text
     let space = NSAttributedString(string: "  ")
@@ -145,4 +148,28 @@ extension NSAttributedString {
         }
         return string
     }
+}
+
+extension UIControl {
+  func animate(_ button: UIControl) {
+      var transform = CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95)
+      UIView.animate(withDuration: 0.1,
+                     delay: 0,
+                     usingSpringWithDamping: 0.5,
+                     initialSpringVelocity: 0.5,
+                     options: [.curveEaseInOut],
+                     animations: {
+                        button.transform = transform
+          }, completion: nil)
+      
+      transform = .identity
+      UIView.animate(withDuration: 0.1,
+                     delay: 0.1,
+                     usingSpringWithDamping: 0.5,
+                     initialSpringVelocity: 0.5,
+                     options: [.curveEaseInOut],
+                     animations: {
+                        button.transform = transform
+          }, completion: nil)
+  }
 }

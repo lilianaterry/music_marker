@@ -24,6 +24,7 @@ extension UIBezierPath {
         let innerAngle: Radians = CGFloat.pi / 4 - gap / (2 * innerRadius)
         let outerAngle: Radians = CGFloat.pi / 4 - gap / (2 * outerRadius)
         let path = UIBezierPath()
+        path.lineJoinStyle = CGLineJoin.round
         path.addArc(withCenter: .zero, radius: innerRadius, startAngle: centerAngle - innerAngle, endAngle: centerAngle + innerAngle, clockwise: true)
         path.addArc(withCenter: .zero, radius: outerRadius, startAngle: centerAngle + outerAngle, endAngle: centerAngle - outerAngle, clockwise: false)
         path.close()
@@ -32,9 +33,10 @@ extension UIBezierPath {
     
 }
 
-class SimonWedgeView: UIView, Button {
+class SimonWedgeView: UIControl, Button {
     
-    var path: UIBezierPath!
+    var wedgePath: UIBezierPath!
+    var wedgeBorder: CAShapeLayer!
     let toolKit = UIExtensions()
     
     override init(frame: CGRect) {
@@ -54,7 +56,7 @@ class SimonWedgeView: UIView, Button {
     override func draw(_ rect: CGRect) {
         createWedgePath()
         fillColor.setFill()
-        path.fill()
+        wedgePath.fill()
     }
     
     private func commonInit() {
@@ -65,11 +67,26 @@ class SimonWedgeView: UIView, Button {
     
     private func createWedgePath() {
         let bounds = self.bounds
+        
         let outerRadius = min(bounds.size.width, bounds.size.height) / 2
         let innerRadius = outerRadius / 2
         let gap = (outerRadius - innerRadius) / 4
-        path = UIBezierPath.simonWedge(innerRadius: innerRadius, outerRadius: outerRadius, centerAngle: centerAngle, gap: gap)
-        path.apply(CGAffineTransform(translationX: bounds.midX, y: bounds.midY))
+        
+        wedgePath = UIBezierPath.simonWedge(innerRadius: innerRadius, outerRadius: outerRadius, centerAngle: centerAngle, gap: gap)
+        wedgePath.apply(CGAffineTransform(translationX: bounds.midX, y: bounds.midY))
+        
+        wedgePath.lineWidth = 5
+        wedgePath.lineCapStyle = CGLineCap.round
+        
+        wedgeBorder = CAShapeLayer()
+        wedgeBorder.path = wedgePath.cgPath // Reuse the Bezier path
+        wedgeBorder.fillColor = UIColor.clear.cgColor
+        wedgeBorder.strokeColor = UIColor.white.cgColor
+        wedgeBorder.lineWidth = 5
+        wedgeBorder.lineCap = CAShapeLayerLineCap.round
+        wedgeBorder.frame = self.bounds
+        wedgeBorder.lineJoin = CAShapeLayerLineJoin.round
+        self.layer.addSublayer(wedgeBorder)
         
         self.layer.applyShadow(color: toolKit.shadow, alpha: 0.16, x: 0, y: 6, blur: 4, spread: 0)
     }
