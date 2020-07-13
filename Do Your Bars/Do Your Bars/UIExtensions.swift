@@ -27,8 +27,8 @@ class UIExtensions {
     let defaultText = UIColor.init(hex: 0x007AFF)
     
     // text size
-    let barSize = 40.0 as CGFloat
-    let numSize = 30.0 as CGFloat
+    let barSize = 60.0 as CGFloat
+    let numSize = 45.0 as CGFloat
     
     // button text size
     let numButtonTextSize = 20.0 as CGFloat
@@ -99,7 +99,7 @@ extension UICollectionView {
         
         let lastItemIndexPath = IndexPath(item: numberOfItems(inSection: lastSection) - 1,
                                           section: lastSection)
-        scrollToItem(at: lastItemIndexPath, at: .right, animated: false)
+        scrollToItem(at: lastItemIndexPath, at: .right, animated: true)
     }
 }
 

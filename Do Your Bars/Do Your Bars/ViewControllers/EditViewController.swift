@@ -15,6 +15,8 @@ protocol TextEditorDelegate: AnyObject {
 
 class EditViewController: UIViewController, TextEditorDelegate {
     
+    var delegate: MainViewController? = nil
+    
     let toolKit = UIExtensions()
     
     @IBOutlet var navBar: UIView!
@@ -84,11 +86,18 @@ class EditViewController: UIViewController, TextEditorDelegate {
     }
     
     @IBAction func cancelSelected(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveSelected(_ sender: Any) {
-        performSegue(withIdentifier: "saveSegue", sender: self)
+        removeTrailingWhitespace()
+        
+        delegate?.barText = textView.attributedText
+        delegate?.barTotal = updateBarTotal()
+        delegate?.currBarCount = updateBarCount()
+        
+        delegate?.viewControllerDidFinishEditing(vc: self)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func addItem(newItem: String) {
@@ -186,14 +195,14 @@ class EditViewController: UIViewController, TextEditorDelegate {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navControl = segue.destination as! UINavigationController
-        let destVC = navControl.topViewController as! MainViewController
-        
-        removeTrailingWhitespace()
-        
-        destVC.barText = textView.attributedText
-        destVC.barTotal = updateBarTotal()
-        destVC.currBarCount = updateBarCount()
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let navControl = segue.destination as! UINavigationController
+//        let destVC = navControl.topViewController as! MainViewController
+//
+//        removeTrailingWhitespace()
+//
+//        destVC.barText = textView.attributedText
+//        destVC.barTotal = updateBarTotal()
+//        destVC.currBarCount = updateBarCount()
+//    }
 }

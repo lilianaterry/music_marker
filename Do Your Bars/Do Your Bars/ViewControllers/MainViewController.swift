@@ -26,7 +26,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     
     let toolKit = UIExtensions()
     
-    var barText: NSAttributedString = NSAttributedString()
+    var barText: NSAttributedString = NSAttributedString() { didSet { updateBarText() } }
     var currBarCount: Int = 0
     var barTotal: Float = 0 { didSet { updateTotalLabel() } }
     
@@ -37,6 +37,10 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
         self.view.backgroundColor = UIExtensions().background
+        
+        if #available(iOS 13, *) {
+            overrideUserInterfaceStyle = .light
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,6 +96,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     
     func setupBarView(frame: CGRect) {
         barView = UIView(frame: frame)
+        barView.backgroundColor = UIColor.white
         barTextView = UITextView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         barView.addSubview(barTextView)
         
@@ -121,6 +126,10 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     func setupNumberButtonView(frame: CGRect) {
         numberButtonView = NumberButtonRowView(frame: frame)
         numberButtonView.delegate = self
+    }
+    
+    private func updateBarText() {
+        barTextView.attributedText = barText
     }
     
     private func updateTotalLabel() {
@@ -290,6 +299,27 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destVC : EditViewController = segue.destination as! EditViewController
         destVC.barText = barTextView.attributedText
+        destVC.delegate = self
     }
     
+    // resize back to default heights
+    public func viewControllerDidFinishEditing(vc: EditViewController) {
+        let newBarText: NSMutableAttributedString = NSMutableAttributedString()
+        
+        for (index, char) in barText.string.enumerated() {
+            let fontSize: CGFloat = char.isNumber ? toolKit.numSize : toolKit.barSize
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.boldSystemFont(ofSize: fontSize),
+                .foregroundColor: barText.attribute(.foregroundColor, at: index, effectiveRange: nil) ?? UIColor.purple,
+            ]
+            let item: NSAttributedString = NSAttributedString(string: String(char), attributes: attributes)
+            newBarText.append(item)
+        }
+        
+        if (!barText.isEqual(to: newBarText)) {
+            barText = newBarText
+        }
+            
+        barTextView.scrollToBottom()
+    }
 }

@@ -57,7 +57,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Odd-G2-tp6"/>
                     <connections>
-                        <segue destination="eMQ-gT-3BW" kind="show" identifier="editSegue" animates="NO" id="XMv-3a-BNO"/>
+                        <segue destination="eMQ-gT-3BW" kind="show" identifier="editSegue" id="XMv-3a-BNO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUR-mo-zqC" userLabel="First Responder" sceneMemberID="firstResponder"/>
