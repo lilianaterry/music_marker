@@ -23,7 +23,6 @@ class EditViewController: UIViewController, TextEditorDelegate {
     var textView: UITextView!
     var keyboard: KeyboardView!
     
-    
     var barText: NSAttributedString = NSAttributedString()
     
     var currColor: ColorKeyboardButton = ColorKeyboardButton()
@@ -194,15 +193,4 @@ class EditViewController: UIViewController, TextEditorDelegate {
             lastChar = textView.text.suffix(1)
         }
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let navControl = segue.destination as! UINavigationController
-//        let destVC = navControl.topViewController as! MainViewController
-//
-//        removeTrailingWhitespace()
-//
-//        destVC.barText = textView.attributedText
-//        destVC.barTotal = updateBarTotal()
-//        destVC.currBarCount = updateBarCount()
-//    }
 }

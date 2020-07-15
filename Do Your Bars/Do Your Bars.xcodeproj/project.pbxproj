@@ -19,6 +19,7 @@
 		CE9A9BBA20AA35F10082754C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BB920AA35F10082754C /* Assets.xcassets */; };
 		CE9A9BBD20AA35F10082754C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9A9BBB20AA35F10082754C /* LaunchScreen.storyboard */; };
 		CE9A9BC720AD07660082754C /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A9BC620AD07660082754C /* UIExtensions.swift */; };
+		CEA8377D24BE06FE00CF54E7 /* DataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA8377C24BE06FE00CF54E7 /* DataTransformer.swift */; };
 		CEBB9A032496CE3F00747B2B /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB99FC2496CE3E00747B2B /* SF-Pro-Display-Black.otf */; };
 		CEBB9A042496CE3F00747B2B /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB99FD2496CE3E00747B2B /* SF-Pro-Display-Heavy.otf */; };
 		CEBB9A052496CE3F00747B2B /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEBB99FE2496CE3E00747B2B /* SF-Pro-Display-Light.otf */; };
@@ -63,6 +64,7 @@
 		CE9A9BBC20AA35F10082754C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE9A9BBE20AA35F10082754C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE9A9BC620AD07660082754C /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		CEA8377C24BE06FE00CF54E7 /* DataTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataTransformer.swift; path = "/Users/lilianaterry/Desktop/music_marker/Do Your Bars/Do Your Bars/Helpers/DataTransformer.swift"; sourceTree = "<absolute>"; };
 		CEBB99FC2496CE3E00747B2B /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Black.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
 		CEBB99FD2496CE3E00747B2B /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Heavy.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
 		CEBB99FE2496CE3E00747B2B /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Display-Light.otf"; path = "Do Your Bars/SF Font/SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
@@ -163,17 +165,26 @@
 		CE9A9BAE20AA35F10082754C /* Do Your Bars */ = {
 			isa = PBXGroup;
 			children = (
+				CEA8377B24BE06E500CF54E7 /* Helpers */,
 				CE5430582306178700E050AA /* Views */,
 				CE64E77E21DC2349008C3A03 /* ViewControllers */,
 				CE64E77D21DC2326008C3A03 /* Buttons */,
 				CE21E91E21D30C2B005A7B81 /* Storyboards */,
-				CE9A9BC620AD07660082754C /* UIExtensions.swift */,
 				CE9A9BAF20AA35F10082754C /* AppDelegate.swift */,
 				CE9A9BB920AA35F10082754C /* Assets.xcassets */,
 				CE9A9BBE20AA35F10082754C /* Info.plist */,
 				CE9A9BB620AA35F10082754C /* Do_Your_Bars.xcdatamodeld */,
 			);
 			path = "Do Your Bars";
+			sourceTree = "<group>";
+		};
+		CEA8377B24BE06E500CF54E7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CE9A9BC620AD07660082754C /* UIExtensions.swift */,
+				CEA8377C24BE06FE00CF54E7 /* DataTransformer.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E3BAC26D3298C664BB1E64FE /* Frameworks */ = {
@@ -312,6 +323,7 @@
 				CEBDD24E21D7F1B300FC5D19 /* NumberButton.swift in Sources */,
 				CEBDD25021D848C400FC5D19 /* InnerButtonView.swift in Sources */,
 				CE33C81E237895A400E47D45 /* NumberButtonRowView.swift in Sources */,
+				CEA8377D24BE06FE00CF54E7 /* DataTransformer.swift in Sources */,
 				CE54305A230617B300E050AA /* KeyboardView.swift in Sources */,
 				CE9A9BB020AA35F10082754C /* AppDelegate.swift in Sources */,
 				CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */,

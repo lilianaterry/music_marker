@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol Button {
     var wedgePath: UIBezierPath! { get set }
@@ -41,6 +42,27 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         if #available(iOS 13, *) {
             overrideUserInterfaceStyle = .light
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    // MARK: - Notification oberserver methods
+
+    @objc func didBecomeActive() {
+        let storedState = readCurrentState()
+        if (barTextView != nil) {
+            barTextView.attributedText = storedState
+        }
+        print("did become active")
+    }
+
+    @objc func willEnterForeground() {
+        let storedState = readCurrentState()
+        if (barTextView != nil) {
+            barTextView.attributedText = storedState
+        }
+        print("will enter foreground")
     }
     
     override func viewDidLayoutSubviews() {
@@ -129,7 +151,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
     }
     
     private func updateBarText() {
-        barTextView.attributedText = barText
+        barTextView?.attributedText = barText
     }
     
     private func updateTotalLabel() {
@@ -247,6 +269,9 @@ class MainViewController: UIViewController, NumberButtonDelegate {
 
         currString.append(newItem)
         barTextView.attributedText = currString
+        
+        writeCurrentState(attributedText: currString.copy() as! NSAttributedString)
+        
         barTextView.scrollToBottom()
     }
     
@@ -307,7 +332,15 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         let newBarText: NSMutableAttributedString = NSMutableAttributedString()
         
         for (index, char) in barText.string.enumerated() {
-            let fontSize: CGFloat = char.isNumber ? toolKit.numSize : toolKit.barSize
+            var fontSize: CGFloat
+            if (char.isNumber) {
+                fontSize = toolKit.numSize
+            } else if (char == " ") {
+                fontSize = toolKit.spaceSize
+            } else {
+                fontSize = toolKit.barSize
+            }
+          
             let attributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.boldSystemFont(ofSize: fontSize),
                 .foregroundColor: barText.attribute(.foregroundColor, at: index, effectiveRange: nil) ?? UIColor.purple,
@@ -319,7 +352,56 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         if (!barText.isEqual(to: newBarText)) {
             barText = newBarText
         }
+        
+        writeCurrentState(attributedText: newBarText.copy() as! NSAttributedString)
             
         barTextView.scrollToBottom()
     }
+    
+    // Private
+    
+    private func writeCurrentState(attributedText: NSAttributedString) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<StoredText>(entityName: "StoredText")
+        request.predicate = NSPredicate(format: "attributedText != nil")
+        
+        do {
+            let result = try context.fetch(request)
+                let previousState = result.last ?? nil
+                if (previousState != nil) {
+                    previousState?.attributedText = barTextView.attributedText
+                } else {
+                    let currentState = StoredText(context: context)
+                    currentState.attributedText = barTextView.attributedText
+                }
+        } catch {
+            print(error)
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func readCurrentState() -> NSAttributedString {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<StoredText>(entityName: "StoredText")
+        
+        do {
+            let result = try context.fetch(request)
+            let storedState = result.last ?? nil
+            if (storedState != nil) {
+                return storedState!.attributedText!
+            }
+            return NSAttributedString()
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    
 }

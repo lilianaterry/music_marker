@@ -29,13 +29,16 @@ class UIExtensions {
     // text size
     let barSize = 60.0 as CGFloat
     let numSize = 45.0 as CGFloat
+    let spaceSize = 36.0 as CGFloat
     
     // button text size
     let numButtonTextSize = 20.0 as CGFloat
     
     // text
-    let space = NSAttributedString(string: "  ")
+    let space = NSAttributedString(string: "  ", attributes: [.font: UIFont.boldSystemFont(ofSize: 24.0)])
     let total = "Total: "
+    
+    let savedStateDefaultKey: String = "kSavedStateDefaultKey"
 }
 
 // create UI color from hex code
