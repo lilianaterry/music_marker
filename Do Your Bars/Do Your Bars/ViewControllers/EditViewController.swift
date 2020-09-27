@@ -87,7 +87,7 @@ class EditViewController: UIViewController, TextEditorDelegate {
         
         for (index, char) in textView.text.enumerated() {
             var fontSize: CGFloat
-            if (char.isNumber || char == " ") {
+            if (char.isNumber || char == " " || char == "=") {
                 fontSize = toolKit.nonBarRatio * currTextSize
             } else {
                 fontSize = currTextSize
@@ -121,13 +121,13 @@ class EditViewController: UIViewController, TextEditorDelegate {
     
     func addItem(newItem: String) {
         let fontSize: CGFloat
-        if (newItem.isNumber || newItem == " ") {
+        if (newItem.isNumber || newItem == " " || newItem == "=") {
             fontSize = toolKit.nonBarRatio * currTextSize
         } else {
             fontSize = currTextSize
         }
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: fontSize),
+            .font: UIFont.monospacedDigitSystemFont(ofSize: fontSize, weight:UIFont.Weight.bold),
             .foregroundColor: keyboard.currColor as Any,
         ]
         let item = NSMutableAttributedString(string: newItem, attributes: attributes)

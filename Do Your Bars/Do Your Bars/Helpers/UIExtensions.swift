@@ -36,7 +36,7 @@ class UIExtensions {
     let numButtonTextSize = 20.0 as CGFloat
     
     // text
-    let space = NSAttributedString(string: "  ", attributes: [.font: UIFont.boldSystemFont(ofSize: 24.0)])
+    let space = NSAttributedString(string: "  ", attributes: [.font: UIFont.boldSystemFont(ofSize:45.0)])
     let total = "Total: "
     
     let savedStateDefaultKey: String = "kSavedStateDefaultKey"

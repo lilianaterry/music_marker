@@ -333,10 +333,8 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         
         for (index, char) in barText.string.enumerated() {
             var fontSize: CGFloat
-            if (char.isNumber) {
+            if (char.isNumber || char == " " || char == "=") {
                 fontSize = toolKit.numSize
-            } else if (char == " ") {
-                fontSize = toolKit.spaceSize
             } else {
                 fontSize = toolKit.barSize
             }

@@ -74,10 +74,19 @@ import UIKit
         } else {
             color = toolKit.black
         }
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: toolKit.barSize),
-            .foregroundColor: color,
-            ]
-        return NSMutableAttributedString(string: self.text, attributes: attributes)
+        if (self.text == "?") {
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.boldSystemFont(ofSize: toolKit.barSize),
+                .foregroundColor: color,
+                ]
+            return NSMutableAttributedString(string: self.text, attributes: attributes)
+        } else {
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.boldSystemFont(ofSize: toolKit.numSize),
+                .foregroundColor: color,
+                ]
+            return NSMutableAttributedString(string: self.text, attributes: attributes)
+        }
+
     }
 }
