@@ -30,6 +30,7 @@ class UIExtensions {
     let barSize = 60.0 as CGFloat
     let numSize = 45.0 as CGFloat
     let spaceSize = 36.0 as CGFloat
+    let nonBarRatio = 0.75 as CGFloat
     
     // button text size
     let numButtonTextSize = 20.0 as CGFloat

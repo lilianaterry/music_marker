@@ -24,6 +24,7 @@ class EditViewController: UIViewController, TextEditorDelegate {
     var keyboard: KeyboardView!
     
     var barText: NSAttributedString = NSAttributedString()
+    var currTextSize: CGFloat = 0.0
     
     var currColor: ColorKeyboardButton = ColorKeyboardButton()
     
@@ -77,11 +78,30 @@ class EditViewController: UIViewController, TextEditorDelegate {
         textView.inputView?.autoresizingMask = []
         
         textView.becomeFirstResponder() // to pull up keyboard immediately
+        currTextSize = toolKit.barSize
     }
     
     @objc private func handleZoom(pinchRecognizer: UIPinchGestureRecognizer) {
-        let scaledSize = toolKit.barSize * pinchRecognizer.scale
-        textView.font = UIFont.boldSystemFont(ofSize: scaledSize)
+        currTextSize = toolKit.barSize * pinchRecognizer.scale
+        let newBarText = NSMutableAttributedString()
+        
+        for (index, char) in textView.text.enumerated() {
+            var fontSize: CGFloat
+            if (char.isNumber || char == " ") {
+                fontSize = toolKit.nonBarRatio * currTextSize
+            } else {
+                fontSize = currTextSize
+            }
+          
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.boldSystemFont(ofSize: fontSize),
+                .foregroundColor: textView.attributedText.attribute(.foregroundColor, at: index, effectiveRange: nil) ?? UIColor.purple,
+            ]
+            let item: NSAttributedString = NSAttributedString(string: String(char), attributes: attributes)
+            newBarText.append(item)
+        }
+        
+        textView.attributedText = newBarText
     }
     
     @IBAction func cancelSelected(_ sender: Any) {
@@ -100,9 +120,14 @@ class EditViewController: UIViewController, TextEditorDelegate {
     }
     
     func addItem(newItem: String) {
-        let size = textView.font != nil ? textView.font!.pointSize : toolKit.barSize
+        let fontSize: CGFloat
+        if (newItem.isNumber || newItem == " ") {
+            fontSize = toolKit.nonBarRatio * currTextSize
+        } else {
+            fontSize = currTextSize
+        }
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: size),
+            .font: UIFont.boldSystemFont(ofSize: fontSize),
             .foregroundColor: keyboard.currColor as Any,
         ]
         let item = NSMutableAttributedString(string: newItem, attributes: attributes)
