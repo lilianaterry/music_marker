@@ -53,16 +53,16 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         let storedState = readCurrentState()
         if (barTextView != nil) {
             barTextView.attributedText = storedState
+            barTotal = storedState.string.calculateBarTotal()
         }
-        print("did become active")
     }
 
     @objc func willEnterForeground() {
         let storedState = readCurrentState()
         if (barTextView != nil) {
             barTextView.attributedText = storedState
+            barTotal = storedState.string.calculateBarTotal()
         }
-        print("will enter foreground")
     }
     
     override func viewDidLayoutSubviews() {
@@ -87,9 +87,9 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         let maxHeight: CGFloat = self.view.bounds.height - safeTop - safeBottom - (self.navigationController?.toolbar.frame.height)!
         
         let numberButtonRowViewHeight = (maxWidth - (internalPadding * 6)) / 7.0
-        let wheelViewHeight = maxWidth
+        let wheelViewHeight = maxWidth - (2 * externalPadding)
         let totalNumberLabelHeight = fontSize
-        let barViewHeight = maxHeight - numberButtonRowViewHeight - wheelViewHeight - (2 * componentGap) - (2 * externalPadding) - internalPadding - totalNumberLabelHeight
+        let barViewHeight = maxHeight - numberButtonRowViewHeight - wheelViewHeight - componentGap - (2 * externalPadding) - internalPadding - totalNumberLabelHeight
         
         let barViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: barViewHeight)
         setupBarView(frame: barViewFrame)
@@ -99,9 +99,9 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         let totalNumberLabelFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: totalNumberLabelHeight)
         setupTotalNumberLabel(frame: totalNumberLabelFrame)
         self.view.addSubview(totalLabel)
-        currY += totalNumberLabelHeight + componentGap
+        currY += totalNumberLabelHeight
         
-        let wheelViewFrame = CGRect(x: externalPadding, y: currY, width: maxWidth, height: wheelViewHeight)
+        let wheelViewFrame = CGRect(x: 2 * externalPadding, y: currY, width: wheelViewHeight, height: wheelViewHeight)
         setupWheelView(frame: wheelViewFrame)
         self.view.addSubview(wheelView)
         currY += wheelViewHeight + componentGap
@@ -134,7 +134,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         barTextView.isSelectable = false
         barTextView.isEditable = false
         barTextView.showsHorizontalScrollIndicator = false
-        barTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        barTextView.textContainerInset = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
         barTextView.attributedText = barText
     }
     
@@ -301,6 +301,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
         barTextView.attributedText = NSAttributedString()
         currBarCount = 0
         barTotal = 0
+        writeCurrentState(attributedText: barTextView.attributedText)
     }
     
     @IBAction func undoSelected(_ sender: Any) {
@@ -340,7 +341,7 @@ class MainViewController: UIViewController, NumberButtonDelegate {
             }
           
             let attributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.boldSystemFont(ofSize: fontSize),
+                .font: UIFont.monospacedDigitSystemFont(ofSize: fontSize, weight: UIFont.Weight.bold),
                 .foregroundColor: barText.attribute(.foregroundColor, at: index, effectiveRange: nil) ?? UIColor.purple,
             ]
             let item: NSAttributedString = NSAttributedString(string: String(char), attributes: attributes)

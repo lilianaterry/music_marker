@@ -76,13 +76,13 @@ import UIKit
         }
         if (self.text == "?") {
             let attributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.boldSystemFont(ofSize: toolKit.barSize),
+                .font: UIFont.monospacedDigitSystemFont(ofSize: toolKit.barSize, weight: UIFont.Weight.bold),
                 .foregroundColor: color,
                 ]
             return NSMutableAttributedString(string: self.text, attributes: attributes)
         } else {
             let attributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.boldSystemFont(ofSize: toolKit.numSize),
+                .font: UIFont.monospacedDigitSystemFont(ofSize: toolKit.numSize, weight: UIFont.Weight.bold),
                 .foregroundColor: color,
                 ]
             return NSMutableAttributedString(string: self.text, attributes: attributes)

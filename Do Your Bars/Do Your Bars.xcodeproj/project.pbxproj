@@ -10,6 +10,7 @@
 		CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */; };
 		CE21E91D21D2D479005A7B81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE21E91C21D2D479005A7B81 /* MainViewController.swift */; };
 		CE33C81E237895A400E47D45 /* NumberButtonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE33C81D237895A400E47D45 /* NumberButtonRowView.swift */; };
+		CE3A7FA1252D717E00EAA9B4 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A7FA0252D717E00EAA9B4 /* AlertViewController.swift */; };
 		CE54305A230617B300E050AA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE543059230617B300E050AA /* KeyboardView.swift */; };
 		CE64E78021DC236A008C3A03 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64E77F21DC236A008C3A03 /* EditViewController.swift */; };
 		CE64E78221DC23D3008C3A03 /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE64E78121DC23D3008C3A03 /* Edit.storyboard */; };
@@ -30,7 +31,6 @@
 		CEBDD24E21D7F1B300FC5D19 /* NumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD24D21D7F1B300FC5D19 /* NumberButton.swift */; };
 		CEBDD25021D848C400FC5D19 /* InnerButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBDD24F21D848C400FC5D19 /* InnerButtonView.swift */; };
 		CECC6B1223654BC600EBD4F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECC6B1123654BC600EBD4F4 /* Main.storyboard */; };
-		F4C1F66FBDA5D6630E9BD78C /* Pods_Do_Your_Bars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E448717C72B36B2CA66B13D /* Pods_Do_Your_Bars.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,12 +47,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3E448717C72B36B2CA66B13D /* Pods_Do_Your_Bars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Do_Your_Bars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A8590E6CB3B02B63FE09CE7F /* Pods-Do Your Bars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Do Your Bars.release.xcconfig"; path = "Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars.release.xcconfig"; sourceTree = "<group>"; };
-		C9A00E284DDEBF60E194EBBA /* Pods-Do Your Bars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Do Your Bars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars.debug.xcconfig"; sourceTree = "<group>"; };
 		CE21E91821D2ACAB005A7B81 /* SimonWedgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimonWedgeView.swift; sourceTree = "<group>"; };
 		CE21E91C21D2D479005A7B81 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CE33C81D237895A400E47D45 /* NumberButtonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberButtonRowView.swift; sourceTree = "<group>"; };
+		CE3A7FA0252D717E00EAA9B4 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		CE543059230617B300E050AA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		CE64E77F21DC236A008C3A03 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		CE64E78121DC23D3008C3A03 /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
@@ -82,22 +80,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C1F66FBDA5D6630E9BD78C /* Pods_Do_Your_Bars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3C554880D8B646CC3504F379 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C9A00E284DDEBF60E194EBBA /* Pods-Do Your Bars.debug.xcconfig */,
-				A8590E6CB3B02B63FE09CE7F /* Pods-Do Your Bars.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		CE21E91E21D30C2B005A7B81 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +121,7 @@
 			children = (
 				CE21E91C21D2D479005A7B81 /* MainViewController.swift */,
 				CE64E77F21DC236A008C3A03 /* EditViewController.swift */,
+				CE3A7FA0252D717E00EAA9B4 /* AlertViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -149,8 +138,6 @@
 				CEBB99FF2496CE3E00747B2B /* SF-Pro-Display-Semibold.otf */,
 				CE9A9BAE20AA35F10082754C /* Do Your Bars */,
 				CE9A9BAD20AA35F10082754C /* Products */,
-				3C554880D8B646CC3504F379 /* Pods */,
-				E3BAC26D3298C664BB1E64FE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,14 +174,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		E3BAC26D3298C664BB1E64FE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3E448717C72B36B2CA66B13D /* Pods_Do_Your_Bars.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,11 +181,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE9A9BC120AA35F10082754C /* Build configuration list for PBXNativeTarget "Do Your Bars" */;
 			buildPhases = (
-				A770318A130711116221C9EB /* [CP] Check Pods Manifest.lock */,
 				CE9A9BA820AA35F10082754C /* Sources */,
 				CE9A9BA920AA35F10082754C /* Frameworks */,
 				CE9A9BAA20AA35F10082754C /* Resources */,
-				43618C0A89E516CA89326E39 /* [CP] Embed Pods Frameworks */,
 				CE543055230612DA00E050AA /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -274,45 +251,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		43618C0A89E516CA89326E39 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SimplePDF/SimplePDF.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimplePDF.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Do Your Bars/Pods-Do Your Bars-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A770318A130711116221C9EB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Do Your Bars-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CE9A9BA820AA35F10082754C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -329,6 +267,7 @@
 				CE9A9BB820AA35F10082754C /* Do_Your_Bars.xcdatamodeld in Sources */,
 				CE9A9BC720AD07660082754C /* UIExtensions.swift in Sources */,
 				CE21E91921D2ACAB005A7B81 /* SimonWedgeView.swift in Sources */,
+				CE3A7FA1252D717E00EAA9B4 /* AlertViewController.swift in Sources */,
 				CE64E78021DC236A008C3A03 /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,7 +399,6 @@
 		};
 		CE9A9BC220AA35F10082754C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9A00E284DDEBF60E194EBBA /* Pods-Do Your Bars.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -478,7 +416,6 @@
 		};
 		CE9A9BC320AA35F10082754C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8590E6CB3B02B63FE09CE7F /* Pods-Do Your Bars.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

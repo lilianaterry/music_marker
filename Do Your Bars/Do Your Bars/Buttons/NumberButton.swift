@@ -42,7 +42,7 @@ import UIKit
             color = toolKit.black
         }
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: toolKit.numSize),
+            .font: UIFont.monospacedDigitSystemFont(ofSize: toolKit.numSize, weight: UIFont.Weight.bold),
             .foregroundColor: color,
         ]
         return NSMutableAttributedString(string: (self.titleLabel?.text)!, attributes: attributes)

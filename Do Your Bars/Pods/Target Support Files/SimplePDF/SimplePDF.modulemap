@@ -1,6 +1,0 @@
-framework module SimplePDF {
-  umbrella header "SimplePDF-umbrella.h"
-
-  export *
-  module * { export * }
-}

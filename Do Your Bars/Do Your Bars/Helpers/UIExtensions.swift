@@ -23,6 +23,7 @@ class UIExtensions {
     
     // text colors
     let header = UIColor.init(hex: 0x667B9D)
+    let headerDemp = UIColor.init(hex: 0x95a3bb)
     let subheader = UIColor.init(hex: 0xDBE0E6)
     let defaultText = UIColor.init(hex: 0x007AFF)
     
@@ -32,12 +33,25 @@ class UIExtensions {
     let spaceSize = 36.0 as CGFloat
     let nonBarRatio = 0.75 as CGFloat
     
+    // metadata view size
+    let metadataLabelSize = 14 as CGFloat
+    let metadataViewSize = 76 as CGFloat
+    let metadataFont = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.semibold)
+    
     // button text size
     let numButtonTextSize = 20.0 as CGFloat
     
     // text
-    let space = NSAttributedString(string: "  ", attributes: [.font: UIFont.boldSystemFont(ofSize:45.0)])
+    let space = NSAttributedString(string: "  ", attributes: [.font: UIFont.monospacedDigitSystemFont(ofSize: 45.0, weight: UIFont.Weight.bold)])
     let total = "Total: "
+    let placeholderDivider = " • "
+    let placeholderSong = "Song"
+    let placeholderArtist = "Artist"
+    let placeholderAlbum = "Album"
+    let placeholderTime = "Time mm:ss"
+    let barTotal = "Total: "
+    let barLength = "Length: "
+    let barLengthPlaceholder = "Length: --"
     
     let savedStateDefaultKey: String = "kSavedStateDefaultKey"
 }
@@ -116,6 +130,27 @@ extension String {
     
     var isNumber: Bool {
         return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    
+    func calculateBarTotal() -> Float {
+        var total: Float = 0
+        
+        for char in self {
+            if (char == "I") {
+                total += 1
+            } else {
+                let charStr = String(char)
+                if (charStr.isNumber) {
+                    total += Float(charStr)! / 8
+                }
+            }
+        }
+        
+        return total
+    }
+    
+    func matches(_ regex: String) -> Bool {
+        return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
 }
 

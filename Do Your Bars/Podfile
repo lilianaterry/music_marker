@@ -6,5 +6,4 @@ target 'Do Your Bars' do
   use_frameworks!
 
   # Pods for Do Your Bars
-  pod 'SimplePDF'
 end

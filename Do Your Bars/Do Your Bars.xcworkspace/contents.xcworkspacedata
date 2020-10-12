@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SongMetadata+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:SongMetadata+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:StoredText+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:StoredText+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:/Users/lilianaterry/Desktop/music_marker/Do Your Bars/Do Your Bars/Helpers/DataTransformer.swift">
    </FileRef>
    <FileRef

@@ -94,7 +94,7 @@ class SimonWedgeView: UIControl, Button {
     func addItem(prevChar: NSAttributedString) -> NSMutableAttributedString {
         let color = UIColor.init(hex: (self.colorId?.rawValue)!)
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: toolKit.barSize),
+            .font: UIFont.monospacedDigitSystemFont(ofSize: toolKit.barSize, weight: UIFont.Weight.bold),
             .foregroundColor: color,
         ]
         return NSMutableAttributedString(string: "I", attributes: attributes)
